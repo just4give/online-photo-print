@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html ng-app="photoOrder">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Online Photo Order">
+    <meta name="author" content="XXX">
+    <title><%= title %></title>
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+
+    <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" />
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+  </head>
+  <body>
+    <header class="top-header">
+
+    </header>
+    <nav class="navbar navbar-inverse navbar-opp" role="navigation">
+      <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top-menu">
+          <!-- <span class="glyphicon glyphicon-align-justify"> -->
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="navbar-top-menu">
+        <ul class="nav navbar-nav">
+          <li><a ui-sref="home">Home</a></li>
+          <li><a ui-sref="about">Pricing</a></li>
+          <li><a ui-sref="home">Who We Are</a></li>
+          <li><a ui-sref="about">Contact US</a></li>
+        </ul>
+      </div>
+    </nav>
+
+
+    <div class="row">
+    <!-- carousel slider -->
+
+    <div class="col-sm-9 slider" ng-controller="carouselController">
+      <img ng-repeat="slide in slides" class="slide slide-animation nonDraggableImage"
+           ng-swipe-right="nextSlide()" ng-swipe-left="prevSlide()"
+           ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.image}}">
+
+      <a class="arrow prev" href="#" ng-click="nextSlide()"></a>
+      <a class="arrow next" href="#" ng-click="prevSlide()"></a>
+      <nav class="nav">
+        <div class="wrapper">
+          <ul class="dots">
+            <li class="dot" ng-repeat="slide in slides">
+              <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
+                 ng-click="setCurrentSlideIndex($index);">{{slide.description}}</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <!-- carousel slider -->
+      <div class="col-sm-3">
+
+      </div>
+    </div>
+
+  </body>
+  <script src="vendor/jquery/dist/jquery.min.js"></script>
+  <script src="vendor/angular/angular.min.js"></script>
+  <script src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="vendor/angular-animate/angular-animate.min.js"></script>
+  <script src="vendor/angular-touch/angular-touch.min.js"></script>
+  <script src="vendor/angular-strap/dist/angular-strap.min.js"></script>
+  <script src="vendor/angular-strap/dist/angular-strap.tpl.min.js"></script>
+  <script src="vendor/greensock/src/minified/TweenMax.min.js"></script>
+  <script src="vendor/angular-tweenmax/dist/angular-tweenmax.js"></script>
+
+  <script src="modules/app/AppModule.js"></script>
+  <script src="modules/common/CarouselController.js"></script>
+
+</html>

@@ -1,0 +1,32 @@
+{
+  "name": "PhotoOrder",
+  "version": "0.0.1",
+  "description": "Online Photo Order",
+  "main": "app.js",
+  "keywords": [
+    "Online",
+    "Photo",
+    "Order"
+  ],
+  "authors": [
+    "Mithun D."
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/vendor",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "bootstrap": "~3.3.6",
+    "angular": "~1.4.8",
+    "angular-tweenmax": "~0.0.5",
+    "angular-animate": "~1.4.8",
+    "angular-touch": "~1.4.8",
+    "angular-strap": "~2.3.6",
+    "angular-ui-router": "~0.2.15"
+  }
+}

@@ -1,0 +1,32 @@
+body{
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 300;
+  background-color: #E9E9E9;
+  color: gray;
+}
+
+.navbar-opp{
+  background-color: $menu-background-color;
+  border-color: $menu-background-color;
+}
+.navbar{
+  border-radius: 0px;
+  margin-bottom: 0px;
+}
+
+.navbar-opp .navbar-nav>li>a {
+  color: $menu-color;
+  font-size: larger;
+  -webkit-transition: all 0.3 ease;
+  -moz-transition: all 0.3 ease;
+  -ms-transition: all 0.3 ease;
+  -o-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+}
+.navbar-opp .navbar-nav>li>a:hover {
+  cursor: pointer;
+  font-size: x-large;
+}
+.top-header{
+  min-height: 60px;
+}
