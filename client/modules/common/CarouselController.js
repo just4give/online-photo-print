@@ -35,16 +35,17 @@ appModule.controller("carouselController",["$scope","$log","$interval",function(
     },3000);
 }]);
 
-appModule.animation('.slide-animation', function () {
+appModule.animation('.slide-animation', ["$log",function ($log) {
     return {
         beforeAddClass: function (element, className, done) {
             var scope = element.scope();
-
+            $log.debug(element);
             if (className == 'ng-hide') {
                 var finishPoint = element.parent().width();
                 if(scope.direction !== 'right') {
                     finishPoint = -finishPoint;
                 }
+                $log.debug("finish "+finishPoint);
                 TweenMax.to(element, 0.5, {left: finishPoint, onComplete: done });
             }
             else {
@@ -53,7 +54,7 @@ appModule.animation('.slide-animation', function () {
         },
         removeClass: function (element, className, done) {
             var scope = element.scope();
-
+            $log.debug(element);
             if (className == 'ng-hide') {
                 element.removeClass('ng-hide');
 
@@ -61,7 +62,7 @@ appModule.animation('.slide-animation', function () {
                 if(scope.direction === 'right') {
                     startPoint = -startPoint;
                 }
-
+                $log.debug("start "+startPoint);
                 TweenMax.fromTo(element, 0.5, { left: startPoint }, {left: 0, onComplete: done });
             }
             else {
@@ -69,4 +70,4 @@ appModule.animation('.slide-animation', function () {
             }
         }
     };
-});
+}]);

@@ -1,0 +1,36 @@
+<div class="modal ">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content login-modal">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$hide()"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Login</h4>
+            </div>
+            <div class="modal-body ">
+                <div class="">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="user-email"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" placeholder="Email" aria-describedby="user-email">
+                    </div>
+                    <div class="input-group margin-top-10">
+                        <span class="input-group-addon" id="user-pwd"><i class="fa fa-key"></i></span>
+                        <input type="text" class="form-control" placeholder="Password" aria-describedby="user-pwd">
+                    </div>
+                    <div class="input-group margin-top-10">
+                        <button class="btn btn-danger" ng-click="submitLogin();$hide()">Login</button>
+                    </div>
+                    <div class="input-group margin-top-10">
+                        <ul class="list-inline">
+                            <li><a class="link">Signup</a></li>
+                            <li><a class="link">Forgot Password</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-block btn-primary btn-rect"><i class="fa fa-facebook"></i> Login with Facebook</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
