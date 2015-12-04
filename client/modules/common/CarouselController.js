@@ -31,7 +31,7 @@ appModule.controller("carouselController",["$scope","$log","$interval",function(
     };
 
     $interval(function(){
-        $scope.prevSlide();
+       // $scope.prevSlide();
     },3000);
 }]);
 

@@ -9,10 +9,7 @@ body{
   background-color: $menu-background-color;
   border-color: $menu-background-color;
 }
-.navbar{
-  border-radius: 0px;
-  margin-bottom: 0px;
-}
+
 
 .navbar-opp .navbar-nav>li>a {
   color: $menu-color;
@@ -29,4 +26,8 @@ body{
 }
 .top-header{
   min-height: 60px;
+  padding-top: 10px;
+}
+.cart{
+  color: $menu-background-color;
 }

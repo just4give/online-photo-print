@@ -1,3 +1,10 @@
+.badge {
+  background-color: #D00404; }
+
+.navbar {
+  border-radius: 0px;
+  margin-bottom: 0px; }
+
 body {
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 300;
@@ -7,10 +14,6 @@ body {
 .navbar-opp {
   background-color: #D00404;
   border-color: #D00404; }
-
-.navbar {
-  border-radius: 0px;
-  margin-bottom: 0px; }
 
 .navbar-opp .navbar-nav > li > a {
   color: white;
@@ -26,15 +29,24 @@ body {
   font-size: x-large; }
 
 .top-header {
-  min-height: 60px; }
+  min-height: 60px;
+  padding-top: 10px; }
+
+.cart {
+  color: #D00404; }
 
 .slider {
-  height: 400px;
+  height: 300px;
   overflow: hidden;
   position: relative;
-  background: #e6e6e6; }
+  background: #e6e6e6;
+  background: url("../images/bg1.png") no-repeat;
+  background-size: cover; }
   .slider img {
-    width: 100%; }
+    width: 250px;
+    height: 80%;
+    margin-left: 100px;
+    margin-top: 20px; }
   .slider .nav {
     text-align: center;
     display: block;
