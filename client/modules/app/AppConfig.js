@@ -9,7 +9,8 @@ appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider",functio
          controller: "HomeController"
      }).state('upload', {
         url: '/upload',
-        templateUrl: 'modules/upload/tmpl/upload-container.html'
+        templateUrl: 'modules/upload/tmpl/upload-container.html',
+        controller:"UploadController"
     })
      ;
 

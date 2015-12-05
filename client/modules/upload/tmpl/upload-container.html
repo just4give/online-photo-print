@@ -1,1 +1,49 @@
-<h2>Upload your image</h2>
+<div class="container">
+    <div class="col-sm-9 col-xs-12 gallery-container">
+        <div class="col-xs-12 gallery-header">
+            <button class="btn btn-opp-primary btn-rect btn-lg"><i class="fa fa-plus"></i> Add Photo</button>
+            <button class="btn btn-opp-primary btn-rect btn-lg"><i class="fa fa-plus"></i> Add From Gallery</button>
+            <button class="btn btn-opp-light btn-rect btn-lg"><i class="fa fa-trash"></i> Remove </button>
+
+
+        </div>
+        <div class="col-xs-12 gallery-box">
+            <ul class="list-inline">
+                <li ng-repeat="m in imageBag">
+                    <div class="img-panel">
+                        <div class="img-holder">
+                            <img ng-src="http://placekitten.com/30{{$index+1}}/300">
+                        </div>
+                        <div class="img-status">
+                            <span>cat.png</span>
+                            <span class="pull-right high"><i class="fa fa-smile-o fa-2x"></i></span>
+                        </div>
+                        <div class="img-format" ng-init="m.format=formats[0]">
+                            <div class="btn-group btn-block">
+                                <button type="button" class="btn btn-opp-light btn-rect format-size">{{m.format}}</button>
+                                <button type="button" class="btn btn-opp-light btn-rect dropdown-toggle format-caret" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li ng-repeat="format in formats"><a href="" class="link" ng-click="m.format=format">{{format}}</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="img-quantity">
+                            <button class="btn btn-opp-light btn-rect ">+</button>
+                            <input type="text" >
+                            <button class="btn btn-opp-light btn-rect ">-</button>
+                        </div>
+
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="col-sm-3 col-xs-12">
+
+    </div>
+</div>

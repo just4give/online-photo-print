@@ -22,7 +22,7 @@
 
       </div>
       <div class="col-xs-3 col-sm-2 col-md-1" ng-controller="LoginController">
-        <button class="btn btn-opp-primary btn-rect" ng-click="openLoginPopup()" ng-hide="loggedIn"><i class="fa fa-user"></i> Login</button>
+        <button class="btn btn-opp-primary btn-rect" ng-click="openLoginPopup()" ng-hide="loggedIn"><i class="fa fa-sign-in"></i> Login</button>
         <div class="btn-group user-menu" ng-show="loggedIn">
           <button type="button" class="btn btn-danger">John</button>
           <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -30,10 +30,10 @@
             <span class="sr-only">Toggle Dropdown</span>
           </button>
           <ul class="dropdown-menu">
-            <li><a href="#" class="link"><i class="fa fa-user"></i> My Account</a></li>
-            <li><a href="#" class="link"><i class="fa fa-shopping-basket"></i> My Order</a></li>
+            <li><a href="#" class="link">My Account</a></li>
+            <li><a href="#" class="link">My Order</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#" class="link"><i class="fa fa-power-off"></i> Logout</a></li>
+            <li><a href="#" class="link">Logout</a></li>
           </ul>
         </div>
       </div>
@@ -56,10 +56,10 @@
       <div class="collapse navbar-collapse" id="navbar-top-menu">
         <ul class="nav navbar-nav">
           <li><a ui-sref="/">Home</a></li>
-          <li><a ui-sref="about">Pricing</a></li>
-          <li><a ui-sref="about">Upload</a></li>
-          <li><a ui-sref="home">Who We Are</a></li>
-          <li><a ui-sref="about">Contact US</a></li>
+          <li><a ui-sref="pricing">Pricing</a></li>
+          <li><a ui-sref="upload">Upload</a></li>
+          <li><a ui-sref="about">Who We Are</a></li>
+          <li><a ui-sref="contact">Contact US</a></li>
         </ul>
       </div>
     </nav>
@@ -86,5 +86,6 @@
   <script src="modules/common/CarouselController.js"></script>
   <script src="modules/common/LoginController.js"></script>
   <script src="modules/app/HomeController.js"></script>
+  <script src="modules/upload/UploadController.js"></script>
 
 </html>
