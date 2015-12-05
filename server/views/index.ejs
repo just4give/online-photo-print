@@ -11,13 +11,36 @@
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
 
     <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet" />
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
   </head>
   <body>
     <header class="top-header">
+      <div class="col-xs-6 col-sm-8 col-md-10">
 
+      </div>
+      <div class="col-xs-3 col-sm-2 col-md-1" ng-controller="LoginController">
+        <button class="btn btn-opp-primary btn-rect" ng-click="openLoginPopup()" ng-hide="loggedIn"><i class="fa fa-user"></i> Login</button>
+        <div class="btn-group user-menu" ng-show="loggedIn">
+          <button type="button" class="btn btn-danger">John</button>
+          <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#" class="link"><i class="fa fa-user"></i> My Account</a></li>
+            <li><a href="#" class="link"><i class="fa fa-shopping-basket"></i> My Order</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#" class="link"><i class="fa fa-power-off"></i> Logout</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xs-3 col-sm-2 col-md-1 cart">
+        <span class=""><i class="fa fa-shopping-cart fa-2x"></i></span>
+        <span class="badge">3</span>
+      </div>
     </header>
     <nav class="navbar navbar-inverse navbar-opp" role="navigation">
       <div class="navbar-header">
@@ -32,43 +55,21 @@
       </div>
       <div class="collapse navbar-collapse" id="navbar-top-menu">
         <ul class="nav navbar-nav">
-          <li><a ui-sref="home">Home</a></li>
+          <li><a ui-sref="/">Home</a></li>
           <li><a ui-sref="about">Pricing</a></li>
+          <li><a ui-sref="about">Upload</a></li>
           <li><a ui-sref="home">Who We Are</a></li>
           <li><a ui-sref="about">Contact US</a></li>
         </ul>
       </div>
     </nav>
 
-
-    <div class="row">
-    <!-- carousel slider -->
-
-    <div class="col-sm-9 slider" ng-controller="carouselController">
-      <img ng-repeat="slide in slides" class="slide slide-animation nonDraggableImage"
-           ng-swipe-right="nextSlide()" ng-swipe-left="prevSlide()"
-           ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.image}}">
-
-      <a class="arrow prev" href="#" ng-click="nextSlide()"></a>
-      <a class="arrow next" href="#" ng-click="prevSlide()"></a>
-      <nav class="nav">
-        <div class="wrapper">
-          <ul class="dots">
-            <li class="dot" ng-repeat="slide in slides">
-              <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
-                 ng-click="setCurrentSlideIndex($index);">{{slide.description}}</a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-    <!-- carousel slider -->
-      <div class="col-sm-3">
-
-      </div>
-    </div>
+    <div ui-view></div>
 
   </body>
   <script src="vendor/jquery/dist/jquery.min.js"></script>
+  <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+
   <script src="vendor/angular/angular.min.js"></script>
   <script src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="vendor/angular-animate/angular-animate.min.js"></script>
@@ -77,8 +78,13 @@
   <script src="vendor/angular-strap/dist/angular-strap.tpl.min.js"></script>
   <script src="vendor/greensock/src/minified/TweenMax.min.js"></script>
   <script src="vendor/angular-tweenmax/dist/angular-tweenmax.js"></script>
-
+  <script src="vendor/angular-bootstrap/ui-bootstrap.min.js"></script>
+  <script src="vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
   <script src="modules/app/AppModule.js"></script>
+  <script src="modules/common/HTTPInterceptor.js"></script>
+  <script src="modules/app/AppConfig.js"></script>
   <script src="modules/common/CarouselController.js"></script>
+  <script src="modules/common/LoginController.js"></script>
+  <script src="modules/app/HomeController.js"></script>
 
 </html>
