@@ -1,0 +1,51 @@
+.modal-backdrop.am-fade {
+  opacity: .5;
+  transition: all .35s ease-in-out;
+}
+
+.modal-backdrop.am-fade.ng-enter, .modal-backdrop.am-fade.ng-leave-active {
+  opacity: 0;
+}
+
+
+.modal-backdrop.am-fade.ng-enter-active, .modal-backdrop.am-fade.ng-leave {
+  opacity: 0.5;
+}
+
+
+.modal.am-fade {
+  transform: scale(1, 1);
+  transition: all .35s ease-in-out;
+}
+
+.modal.am-fade.ng-enter, .modal.am-fade.ng-leave-active {
+  transform: scale(0, 0);
+}
+
+
+.modal.am-fade.ng-enter-active, .modal.am-fade.ng-leave {
+  transform: scale(1, 1);
+}
+
+.login-modal{
+
+  border-radius: 0px;
+  .modal-header{
+    padding: 5px;
+    border-top: 5px solid $menu-background-color;
+    background-color: $menu-background-shade;
+  }
+  .link{
+    font-weight: bolder;
+    color: $menu-background-color;
+    font-size: medium;
+    &:hover{
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
+  .modal-footer{
+    padding: 0px;
+
+  }
+}

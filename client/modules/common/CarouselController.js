@@ -32,19 +32,20 @@ appModule.controller("carouselController",["$scope","$log","$interval",function(
 
     $interval(function(){
         $scope.prevSlide();
-    },3000);
+    },5000);
 }]);
 
-appModule.animation('.slide-animation', function () {
+appModule.animation('.slide-animation', ["$log",function ($log) {
     return {
         beforeAddClass: function (element, className, done) {
             var scope = element.scope();
-
+            $log.debug(element);
             if (className == 'ng-hide') {
                 var finishPoint = element.parent().width();
                 if(scope.direction !== 'right') {
                     finishPoint = -finishPoint;
                 }
+                $log.debug("finish "+finishPoint);
                 TweenMax.to(element, 0.5, {left: finishPoint, onComplete: done });
             }
             else {
@@ -53,7 +54,7 @@ appModule.animation('.slide-animation', function () {
         },
         removeClass: function (element, className, done) {
             var scope = element.scope();
-
+            $log.debug(element);
             if (className == 'ng-hide') {
                 element.removeClass('ng-hide');
 
@@ -61,7 +62,7 @@ appModule.animation('.slide-animation', function () {
                 if(scope.direction === 'right') {
                     startPoint = -startPoint;
                 }
-
+                $log.debug("start "+startPoint);
                 TweenMax.fromTo(element, 0.5, { left: startPoint }, {left: 0, onComplete: done });
             }
             else {
@@ -69,4 +70,21 @@ appModule.animation('.slide-animation', function () {
             }
         }
     };
+}]);
+
+appModule.controller('CarouselDemoCtrl', function ($scope) {
+    $scope.myInterval = 5000;
+    $scope.noWrapSlides = false;
+    var slides = $scope.slides = [];
+    $scope.addSlide = function() {
+        var newWidth = 600 + slides.length + 1;
+        slides.push({
+            image: '//placekitten.com/' + newWidth + '/300',
+            text: ['More','Extra','Lots of','Surplus'][slides.length % 4] + ' ' +
+            ['Cats', 'Kittys', 'Felines', 'Cutes'][slides.length % 4]
+        });
+    };
+    for (var i=0; i<4; i++) {
+        $scope.addSlide();
+    }
 });
