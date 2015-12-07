@@ -1,11 +1,35 @@
 .gallery-container{
+
   margin-top: 10px;
   background-color: white;
   padding: 10px;
   min-height: 300px;
   @include box-shadow;
 }
+.checkout-container{
+  margin-top: 10px;
+  margin-left: 5px;
+  background-color: white;
+  padding: 10px;
+  min-height: 300px;
+  @include box-shadow;
+}
+.checout-box{
+  background-color: $background-color;
+  border-radius: 7px;
+  border: 1px solid #E8DDDD;
+  padding: 2px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-top: 20px;
 
+  .price{
+    font-size: x-large;
+    font-weight: bold;
+    color: green;
+    text-align: center;
+  }
+}
 .gallery-box{
   padding: 5px;
   margin-top: 15px;
@@ -14,11 +38,13 @@
   height: 270px;
   width: 180px;
   margin: 10px;
+  border-top-right-radius: 15px;
   background-color: #CECECE;
-  -ms-box-shadow: -5px -5px 2px #999;
-  -moz-box-shadow: -5px -5px 2px #999;
-  -webkit-box-shadow: -5px -5px 2px #999;
-  box-shadow: -5px -5px 2px #999;
+  -ms-box-shadow: 5px 5px 5px #999;
+  -moz-box-shadow: 5px 5px 5px #999;
+  -webkit-box-shadow: 5px 5px 5px #999;
+  box-shadow: 5px 5px 5px #999;
+
 
   .img-holder{
     width: 180px;
@@ -30,6 +56,7 @@
     img{
       width: 100%;
       height: 150px;
+      //border: 1px solid;
     }
   }
 
@@ -52,12 +79,47 @@
   }
 
   .img-quantity{
-    input[type="text"]{
+    input{
       height: 34px;
+      width: 100px;
+      background-color: #CECECE;
+      margin: 0px;
+      border: 0px;
+      padding: 0px;
+      color: white;
+      text-align: center;
+      /* margin-top: 1px; */
+      font-size: larger;
+      font-weight: bold;
+      &:focus,&:active.focus,&:active:focus{
+        -webkit-box-shadow:none;
+        box-shadow: none;
+        border: 0px;
+        outline: none;
+      }
     }
     button{
       height: 35px;
       width: 35px;
+      &:focus,&:active.focus,&:active:focus{
+        -webkit-box-shadow:none;
+        box-shadow: none;
+        border: 0px;
+        outline: none;
+      }
     }
+  }
+}
+
+.close-circle{
+  margin-top: -10px;
+  position: relative;
+  float: right;
+  font-size: x-large;
+  color: #350101;
+  right: -10px;
+  opacity: 1;
+  &:hover{
+    cursor: pointer;
   }
 }

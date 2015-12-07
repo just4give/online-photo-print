@@ -32,13 +32,14 @@
   border-radius: 0px;
   .modal-header{
     padding: 5px;
+    border: 0px;
     border-top: 5px solid $menu-background-color;
-    background-color: $menu-background-shade;
+    //background-color: $menu-background-shade;
   }
   .link{
     font-weight: bolder;
-    color: $menu-background-color;
-    font-size: medium;
+    color: black;
+    font-size: small;
     &:hover{
       cursor: pointer;
       text-decoration: none;
@@ -47,5 +48,12 @@
   .modal-footer{
     padding: 0px;
 
+
   }
+}
+
+.btn-facebook{
+  background-color: #3b5998;
+  color: white;
+  border-color:  #3b5998;;
 }

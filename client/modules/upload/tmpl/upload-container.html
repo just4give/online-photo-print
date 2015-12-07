@@ -1,9 +1,9 @@
 <div class="container">
     <div class="col-sm-9 col-xs-12 gallery-container">
         <div class="col-xs-12 gallery-header">
-            <button class="btn btn-opp-primary btn-rect btn-lg"><i class="fa fa-plus"></i> Add Photo</button>
-            <button class="btn btn-opp-primary btn-rect btn-lg"><i class="fa fa-plus"></i> Add From Gallery</button>
-            <button class="btn btn-opp-light btn-rect btn-lg"><i class="fa fa-trash"></i> Remove </button>
+            <button class="btn btn-opp-primary btn-rect "><i class="fa fa-plus"></i> Add Photo</button>
+            <button class="btn btn-opp-primary btn-rect "><i class="fa fa-plus"></i> Add From Gallery</button>
+            <button class="btn btn-opp-light btn-rect "><i class="fa fa-trash"></i> Remove </button>
 
 
         </div>
@@ -11,8 +11,11 @@
             <ul class="list-inline">
                 <li ng-repeat="m in imageBag">
                     <div class="img-panel">
+                        <div class="img-header" ng-click="deleteImage($index)">
+                            <i class="fa fa-times-circle close-circle"></i>
+                        </div>
                         <div class="img-holder">
-                            <img ng-src="http://placekitten.com/30{{$index+1}}/300">
+                            <img ng-src="http://placekitten.com/60{{$index+1}}/300">
                         </div>
                         <div class="img-status">
                             <span>cat.png</span>
@@ -31,10 +34,10 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="img-quantity">
-                            <button class="btn btn-opp-light btn-rect ">+</button>
-                            <input type="text" >
-                            <button class="btn btn-opp-light btn-rect ">-</button>
+                        <div class="img-quantity" ng-init="m.quantity=0">
+                            <button class="btn btn-opp-light btn-rect " ng-click="decreaseeQuantity(m)"><i class="fa fa-minus"></i></button>
+                            <input type="text" ng-model="m.quantity">
+                            <button class="btn btn-opp-light btn-rect " ng-click="increaseQuantity(m)"><i class="fa fa-plus"></i></button>
                         </div>
 
                     </div>
@@ -44,6 +47,34 @@
         </div>
     </div>
     <div class="col-sm-3 col-xs-12">
+        <div class="row checkout-container">
+            <div class="col-xs-12">
+                <button class="btn btn-opp-light btn-rect btn-block dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-arrows-alt"></i> Format</button>
+                <ul class="dropdown-menu">
+                    <li ng-repeat="format in formats"><a href="" class="link" ng-click="">{{format}}</a></li>
 
+                </ul>
+            </div>
+            <div class="col-xs-12 margin-top-10">
+                <button class="btn btn-opp-light btn-rect btn-block"><i class="fa fa-newspaper-o"></i> Paper Quality</button>
+            </div>
+            <div class="col-xs-12 checout-box">
+
+                    <span class="col-xs-9">Number of Pictures:</span>
+                    <span class="col-xs-3">{{imageBag.length}}</span>
+
+
+                    <span class="col-xs-9">Number of Photos:</span>
+                    <span class="col-xs-3">{{totalPhoto}}</span>
+
+                <div class="col-xs-12 text-center">
+
+                    <span class="price">200 RSD</span>
+                </div>
+                <div class="col-xs-12">
+                    <button class="btn btn-opp-primary btn-block"><i class="fa fa-shopping-cart fa-lg"></i> Checkout </button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
