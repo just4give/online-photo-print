@@ -1,7 +1,7 @@
 <div class="container">
     <div class="col-sm-9 col-xs-12 gallery-container">
         <div class="col-xs-12 gallery-header">
-            <button class="btn btn-opp-primary btn-rect "><i class="fa fa-plus"></i> Add Photo</button>
+            <button class="btn btn-opp-primary btn-rect " ng-click="uploadImage()"><i class="fa fa-plus"></i> Add Photo</button>
             <button class="btn btn-opp-primary btn-rect "><i class="fa fa-plus"></i> Add From Gallery</button>
             <button class="btn btn-opp-light btn-rect "><i class="fa fa-trash"></i> Remove </button>
 
@@ -15,7 +15,7 @@
                             <i class="fa fa-times-circle close-circle"></i>
                         </div>
                         <div class="img-holder">
-                            <img ng-src="http://placekitten.com/60{{$index+1}}/300">
+                            <img ng-src="{{m.imgSrc}}">
                         </div>
                         <div class="img-status">
                             <span>cat.png</span>
@@ -23,13 +23,13 @@
                         </div>
                         <div class="img-format" ng-init="m.format=formats[0]">
                             <div class="btn-group btn-block">
-                                <button type="button" class="btn btn-opp-light btn-rect format-size">{{m.format}}</button>
+                                <button type="button" class="btn btn-opp-light btn-rect format-size">{{m.format.label}}</button>
                                 <button type="button" class="btn btn-opp-light btn-rect dropdown-toggle format-caret" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="caret"></span>
                                     <span class="sr-only">Toggle Dropdown</span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li ng-repeat="format in formats"><a href="" class="link" ng-click="m.format=format">{{format}}</a></li>
+                                    <li ng-repeat="format in formats"><a href="" class="link" ng-click="m.format=format">{{format.label}}</a></li>
 
                                 </ul>
                             </div>
@@ -51,7 +51,7 @@
             <div class="col-xs-12">
                 <button class="btn btn-opp-light btn-rect btn-block dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-arrows-alt"></i> Format</button>
                 <ul class="dropdown-menu">
-                    <li ng-repeat="format in formats"><a href="" class="link" ng-click="">{{format}}</a></li>
+                    <li ng-repeat="format in formats"><a href="" class="link" ng-click="">{{format.label}}</a></li>
 
                 </ul>
             </div>
@@ -72,7 +72,7 @@
                     <span class="price">200 RSD</span>
                 </div>
                 <div class="col-xs-12">
-                    <button class="btn btn-opp-primary btn-block"><i class="fa fa-shopping-cart fa-lg"></i> Checkout </button>
+                    <button class="btn btn-opp-primary btn-block" ng-disabled="totalPhoto==0" ng-click="checkout()"><i class="fa fa-shopping-cart fa-lg"></i> Checkout </button>
                 </div>
             </div>
         </div>

@@ -1,0 +1,124 @@
+<div class="container margin-top-10">
+    <div class="row">
+        <div class="col-xs-6 col-sm-9 text-xx-large">Your Cart</div>
+        <div class="col-xs-6 col-sm-3"><button class="btn btn-opp-primary btn-block" ng-click="placeOrder()">Place Order</button></div>
+    </div>
+
+    <div class="row shipping-info">
+        <div class="col-sm-6 col-xs-12">
+            <h1>Shipping Information</h1>
+            <h3>Ship to:</h3>
+            <h5>{{shippingAddress.firstName}} {{shippingAddress.lastName}}</h5>
+            <h5>{{shippingAddress.address}}</h5>
+            <h5>{{shippingAddress.zip}} {{shippingAddress.city}}</h5>
+            <a class="link" ng-show="shippingAddress" ng-click="openAddressPopup()">Change</a>
+            <a class="link" ng-hide="shippingAddress" ng-click="openAddressPopup('add')"><i class="fa fa-plus"></i> Shipping Address</a>
+        </div>
+
+        <div class="col-lg-3 col-sm-6 col-xs-12 pull-right">
+            <h1>Shipping Method</h1>
+            <select class="form-control" ng-options='option as (option.label+" - "+option.price + " RSD" )  for option in shippingMethods' ng-model="order.shippingMethod"></select>
+            <h5>{{order.shippingMethod.summary}}</h5>
+        </div>
+
+    </div>
+
+
+    <div class="row shipping-items">
+        <div class="col-xs-12">
+            <h1>Your items</h1>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="cartImage in cartImages">
+                    <td class="col-xs-12 col-sm-6">
+
+                        <div class="col-sm-4 col-xs-12">
+                            <img ng-src="{{cartImage.imgSrc}}">
+                        </div>
+                        <div class="col-sm-8 col-xs-12 text-center">
+                            {{cartImage.format.label}}
+                        </div>
+                        <div class="col-sm-12 col-xs-12">
+                            <ul class="list-inline">
+                                <li> <a class="link">Edit Order</a></li>
+                                <li>|</li>
+                                <li><a class="link">Remove</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td class="col-xs-4 col-sm-2">{{cartImage.format.price}}</td>
+                    <td class="col-xs-4 col-sm-2">{{cartImage.quantity}}</td>
+                    <td class="col-xs-4 col-sm-2">{{cartImage.format.price*cartImage.quantity}}</td>
+
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row shipping-summary">
+        <div class="col-sm-6 col-xs-12">
+            <h1>Discounts applied</h1>
+            <ul class="list-unstyled text-success">
+                <li><i class="fa fa-check-circle fa-lg"></i> 10% discount for 10+ photos</li>
+                <li><i class="fa fa-check-circle fa-lg"></i> FREE shipping</li>
+            </ul>
+        </div>
+        <div class="col-sm-6 col-xs-12">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h3>3 products(s)</h3>
+                </div>
+                <div class="col-xs-6">
+                    <h5>200 RSD</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <h3>Shipping & handling</h3>
+                </div>
+                <div class="col-xs-6">
+                    <h5>400 RSD</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 text-success">
+                    <h3>Total savings</h3>
+                </div>
+                <div class="col-xs-6 text-success">
+                    <h5>500 RSD</h5>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6">
+                    <h3><strong>Total</strong></h3>
+                </div>
+                <div class="col-xs-6 text-success text-x-large">
+                    <span><strong>1000 RSD</strong></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 pull-right">
+                    <button class="btn btn-opp-primary btn-block" ng-click="placeOrder()">Place Order</button>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+</div>

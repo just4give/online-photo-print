@@ -1,0 +1,46 @@
+.shipping-info{
+
+  border-bottom: 1px solid #E0DCDC;
+  padding-bottom: 5px;
+
+  h1{
+    font-size: large;
+    font-weight: bold;
+  }
+  h3{
+    font-size: large;
+
+  }
+  h5{
+    font-size: medium;
+  }
+  .link{
+    color: $menu-background-color;
+    font-weight: bold;
+    &:hover{
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
+
+}
+
+.shipping-items{
+  @extend .shipping-info;
+  border: 0px;
+  img{
+    max-width: 100%;
+  }
+}
+
+.shipping-summary{
+  @extend .shipping-info;
+
+}
+
+.address-item{
+  padding: 5px;
+  .addr-text{
+    font-size: medium;
+  }
+}

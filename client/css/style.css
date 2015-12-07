@@ -38,6 +38,18 @@
   font-size: large;
   font-weight: bold; }
 
+.text-x-large {
+  font-size: x-large; }
+
+.text-xx-large {
+  font-size: xx-large; }
+
+.margin-bottom-10 {
+  margin-bottom: 10px; }
+
+.margin-bottom-20 {
+  margin-bottom: 20px; }
+
 .badge {
   background-color: #D00404; }
 
@@ -46,6 +58,9 @@
   margin-bottom: 0px; }
 
 .btn-rect {
+  border-radius: 0px; }
+
+.modal .modal-content {
   border-radius: 0px; }
 
 .modal-backdrop.am-fade {
@@ -83,6 +98,18 @@
       text-decoration: none; }
   .login-modal .modal-footer {
     padding: 0px; }
+
+.order-confirm-modal {
+  border-radius: 0px; }
+  .order-confirm-modal .modal-header {
+    padding: 5px;
+    border: 0px;
+    border-top: 5px solid #D00404;
+    font-size: x-large;
+    border-bottom: 1px solid darkgray; }
+  .order-confirm-modal .modal-footer {
+    border: 0px;
+    border-radius: 0px; }
 
 .btn-facebook {
   background-color: #3b5998;
@@ -431,5 +458,32 @@ NAV
   opacity: 1; }
   .close-circle:hover {
     cursor: pointer; }
+
+.shipping-info, .shipping-items, .shipping-summary {
+  border-bottom: 1px solid #E0DCDC;
+  padding-bottom: 5px; }
+  .shipping-info h1, .shipping-items h1, .shipping-summary h1 {
+    font-size: large;
+    font-weight: bold; }
+  .shipping-info h3, .shipping-items h3, .shipping-summary h3 {
+    font-size: large; }
+  .shipping-info h5, .shipping-items h5, .shipping-summary h5 {
+    font-size: medium; }
+  .shipping-info .link, .shipping-items .link, .shipping-summary .link {
+    color: #D00404;
+    font-weight: bold; }
+    .shipping-info .link:hover, .shipping-items .link:hover, .shipping-summary .link:hover {
+      cursor: pointer;
+      text-decoration: none; }
+
+.shipping-items {
+  border: 0px; }
+  .shipping-items img {
+    max-width: 100%; }
+
+.address-item {
+  padding: 5px; }
+  .address-item .addr-text {
+    font-size: medium; }
 
 /*# sourceMappingURL=style.css.map */
