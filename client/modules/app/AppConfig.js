@@ -19,6 +19,15 @@ appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider",functio
             url: '/myorder',
             templateUrl: 'modules/order/tmpl/my-order.html',
             controller:"MyOrderController"
+    }).state('who', {
+        url: '/who',
+        templateUrl: 'modules/app/tmpl/who-we-are.html'
+    }).state('contact', {
+        url: '/contact',
+        templateUrl: 'modules/app/tmpl/contact-us.html'
+    }).state('pricing', {
+        url: '/pricing',
+        templateUrl: 'modules/app/tmpl/pricing.html'
     })
      ;
 

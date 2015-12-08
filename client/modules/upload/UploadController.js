@@ -1,17 +1,19 @@
 /**
  * Created by Mithun.Das on 12/4/2015.
  */
-appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","$state", "$interval",function($scope,$rootScope,$log,$modal,$state,$interval){
+appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","$state", "$interval","PhotoService",function($scope,$rootScope,$log,$modal,$state,$interval,PhotoService){
 
     $scope.totalPhoto = 0;
     $scope.imageBag =[];
     $scope.totalPrice=0;
-    $scope.formats = [{label:"9x13 cm",price:16},
-        {label:"10x15 cm",price:25},
-        {label:"13x18 cm",price:30},
-        {label:"15x20 cm",price:50},
-        {label:"20x30 cm",price:300},
-        {label:"25x37 cm",price:400}];
+
+
+    PhotoService.getPricing().then(function(data){
+        $scope.formats = data;
+    },function(err){
+        $log.debug(err);
+        $rootScope.$broadcast('api_error',err);
+    })
 
     $scope.increaseQuantity = function(m){
         m.quantity = m.quantity+1;

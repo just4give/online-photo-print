@@ -23,21 +23,21 @@
                         </div>
                         <div class="img-format" ng-init="m.format=formats[0]">
                             <div class="btn-group btn-block">
-                                <button type="button" class="btn btn-opp-light btn-rect format-size">{{m.format.label}}</button>
+                                <button type="button" class="btn btn-opp-light btn-rect format-size">{{m.format.frame_size}}</button>
                                 <button type="button" class="btn btn-opp-light btn-rect dropdown-toggle format-caret" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="caret"></span>
                                     <span class="sr-only">Toggle Dropdown</span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li ng-repeat="format in formats"><a href="" class="link" ng-click="m.format=format;updateTotal()">{{format.label}}</a></li>
+                                    <li ng-repeat="format in formats"><a href="" class="link" ng-click="m.format=format;updateTotal()">{{format.frame_size}}</a></li>
 
                                 </ul>
                             </div>
                         </div>
                         <div class="img-quantity" ng-init="m.quantity=0">
-                            <button class="btn btn-opp-light btn-rect " ng-click="decreaseeQuantity(m)"><i class="fa fa-minus"></i></button>
+                            <button class="btn btn-opp-light btn-rect pull-left" ng-click="decreaseeQuantity(m)"><i class="fa fa-minus"></i></button>
                             <input type="text" ng-model="m.quantity">
-                            <button class="btn btn-opp-light btn-rect " ng-click="increaseQuantity(m)"><i class="fa fa-plus"></i></button>
+                            <button class="btn btn-opp-light btn-rect pull-right" ng-click="increaseQuantity(m)"><i class="fa fa-plus"></i></button>
                         </div>
 
                     </div>
@@ -51,7 +51,7 @@
             <div class="col-xs-12">
                 <button class="btn btn-opp-light btn-rect btn-block dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-arrows-alt"></i> Format</button>
                 <ul class="dropdown-menu">
-                    <li ng-repeat="format in formats"><a href="" class="link" ng-click="">{{format.label}}</a></li>
+                    <li ng-repeat="format in formats"><a href="" class="link" ng-click="">{{format.frame_size}}</a></li>
 
                 </ul>
             </div>

@@ -20,7 +20,7 @@
       <div class="col-xs-6 col-sm-8 col-md-10">
 
       </div>
-      <div class="col-xs-3 col-sm-2 col-md-1" ng-controller="LoginController">
+      <div class="col-xs-3 col-sm-2 col-md-1" ng-controller="LoginController"  ng-init="$parent.apiContext='<%= apiContext %>'">
         <button class="btn btn-opp-primary btn-rect" ng-click="openLoginPopup()" ng-hide="loggedIn"><i class="fa fa-sign-in"></i> Login</button>
         <div class="btn-group user-menu" ng-show="loggedIn">
           <button type="button" class="btn btn-danger">John</button>
@@ -59,7 +59,7 @@
           <li><a ui-sref="/">Home</a></li>
           <li><a ui-sref="pricing">Pricing</a></li>
           <li><a ui-sref="upload">Upload</a></li>
-          <li><a ui-sref="about">Who We Are</a></li>
+          <li><a ui-sref="who">Who We Are</a></li>
           <li><a ui-sref="contact">Contact US</a></li>
         </ul>
       </div>
@@ -91,4 +91,7 @@
   <script src="modules/upload/UploadController.js"></script>
   <script src="modules/checkout/CheckoutController.js"></script>
   <script src="modules/order/MyOrderController.js"></script>
+  <script src="modules/common/PhotoService.js"></script>
+  <script src="modules/common/ExceptionController.js"></script>
+
 </html>
