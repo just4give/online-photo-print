@@ -1,7 +1,7 @@
 <div class="row">
     <!-- carousel slider -->
 
-    <div class="col-xs-12 slider" ng-controller="carouselController">
+    <!--<div class="col-xs-12 slider" ng-controller="carouselController">
         <img ng-repeat="slide in slides" class="slide slide-animation nonDraggableImage"
              ng-swipe-right="nextSlide()" ng-swipe-left="prevSlide()"
              ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.image}}">
@@ -17,6 +17,20 @@
                 </ul>
             </div>
         </nav>
+    </div>-->
+    <div ng-controller="CarouselDemoCtrl">
+        <div class="carousel-box">
+            <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
+                <uib-slide ng-repeat="slide in slides" active="slide.active">
+                    <img ng-src="{{slide.image}}" style="">
+                    <div class="carousel-caption">
+
+                        <h3>{{slide.text}}</h3>
+                    </div>
+                </uib-slide>
+            </uib-carousel>
+        </div>
+
     </div>
     <!-- carousel slider -->
 

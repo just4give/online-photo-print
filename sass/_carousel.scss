@@ -146,3 +146,10 @@ NAV
   background-size: cover;
   height: 300px;
 }
+
+.carousel-inner{
+  img{
+    margin:auto;
+    max-height: 300px
+  }
+}

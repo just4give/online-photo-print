@@ -1,12 +1,13 @@
 <div class="modal ">
     <div class="modal-dialog modal-sm">
-        <div class="modal-content login-modal">
+        <div class="modal-content login-modal" ng-init="formname='login'">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$hide()"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Login</h4>
+                <h4 class="modal-title">{{formname}}</h4>
+
             </div>
-            <div class="modal-body ">
-                <div class="">
+            <div class="modal-body " >
+                <form class="" ng-show="formname==='login'">
                     <div class="input-group">
                         <span class="input-group-addon" id="user-email"><i class="fa fa-user"></i></span>
                         <input type="text" class="form-control" placeholder="Email" aria-describedby="user-email">
@@ -20,16 +21,35 @@
                     </div>
                     <div class="input-group margin-top-10">
                         <ul class="list-inline">
-                            <li><a class="link">New User?</a></li>
+                            <li><a class="link" ng-click="formname='signup'">New User?</a></li>
                             <li><a class="link">Forgot Password?</a></li>
                         </ul>
 
                     </div>
-                </div>
+                </form>
+                <form class="" ng-show="formname==='signup'" >
+                    <div class="input-group">
+                        <span class="input-group-addon" id="user-email-r"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" placeholder="Email" aria-describedby="user-email-r">
+                    </div>
+                    <div class="input-group margin-top-10">
+                        <span class="input-group-addon" id="user-pwd-r"><i class="fa fa-key"></i></span>
+                        <input type="text" class="form-control" placeholder="Password" aria-describedby="user-pwd-r">
+                    </div>
+                    <div class="input-group margin-top-10">
+                        <span class="input-group-addon" id="user-pwd2-r"><i class="fa fa-key"></i></span>
+                        <input type="text" class="form-control" placeholder="Retype password" aria-describedby="user-pwd2-r">
+                    </div>
+                    <div class="input-group margin-top-10">
+                        <button class="btn btn-opp-primary btn-rect" ng-click="register()" ><i ng-show="signupprogress" class="fa fa-spinner fa-spin"></i> Register</button>
+                    </div>
+
+                </form>
             </div>
 
             <div class="modal-footer">
-                <button class="btn btn-block btn-facebook btn-rect"><i class="fa fa-facebook"></i> Login with Facebook</button>
+                <button class="btn btn-block btn-facebook btn-rect" ng-show="formname==='login'"><i class="fa fa-facebook"></i> Login with Facebook</button>
+                <button class="btn btn-block btn-facebook btn-rect" ng-show="formname==='signup'"><i class="fa fa-facebook"></i> Register with Facebook</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

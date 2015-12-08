@@ -30,15 +30,17 @@
           </button>
           <ul class="dropdown-menu">
             <li><a href="#" class="link">My Account</a></li>
-            <li><a href="#" class="link">My Order</a></li>
+            <li><a href="#/myorder" class="link">My Order</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#" class="link">Logout</a></li>
+            <li><a href="" class="link" ng-click="logout()">Logout</a></li>
           </ul>
         </div>
       </div>
-      <div class="col-xs-3 col-sm-2 col-md-1 cart">
-        <span class=""><i class="fa fa-shopping-cart fa-2x"></i></span>
-        <span class="badge">3</span>
+      <div class="col-xs-3 col-sm-2 col-md-1 cart" ng-click="checkout()">
+        <a class="link" href="#/checkout"><i class="fa fa-shopping-cart fa-2x"></i>
+          <span class="badge">3</span>
+        </a>
+
       </div>
     </header>
     <nav class="navbar navbar-inverse navbar-opp" role="navigation">
@@ -79,7 +81,7 @@
   <script src="vendor/angular-tweenmax/dist/angular-tweenmax.js"></script>
   <script src="vendor/angular-bootstrap/ui-bootstrap.min.js"></script>
   <script src="vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-  <script src="vendor/angular-confirm-modal/angular-confirm.min.js"></script>
+  <script src="vendor/angular-confirm-modal/angular-confirm.js"></script>
   <script src="modules/app/AppModule.js"></script>
   <script src="modules/common/HTTPInterceptor.js"></script>
   <script src="modules/app/AppConfig.js"></script>

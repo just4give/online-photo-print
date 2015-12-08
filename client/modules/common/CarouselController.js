@@ -75,16 +75,19 @@ appModule.animation('.slide-animation', ["$log",function ($log) {
 appModule.controller('CarouselDemoCtrl', function ($scope) {
     $scope.myInterval = 5000;
     $scope.noWrapSlides = false;
-    var slides = $scope.slides = [];
-    $scope.addSlide = function() {
+    var slides = $scope.slides = [ {image:'images/img000.png', text:"Make your photo online. Learn more"},
+        {image:'images/img001.png', text:"Buy more and more discount. Learn more"},
+        {image:'images/img002.png', text:"FREE shipping for qualified purchase. Learn more"}];
+    /*$scope.addSlide = function() {
         var newWidth = 600 + slides.length + 1;
         slides.push({
             image: '//placekitten.com/' + newWidth + '/300',
             text: ['More','Extra','Lots of','Surplus'][slides.length % 4] + ' ' +
             ['Cats', 'Kittys', 'Felines', 'Cutes'][slides.length % 4]
         });
-    };
-    for (var i=0; i<4; i++) {
+    };*/
+
+    /*for (var i=0; i<4; i++) {
         $scope.addSlide();
-    }
+    }*/
 });

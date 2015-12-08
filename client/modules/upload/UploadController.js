@@ -5,6 +5,7 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
 
     $scope.totalPhoto = 0;
     $scope.imageBag =[];
+    $scope.totalPrice=0;
     $scope.formats = [{label:"9x13 cm",price:16},
         {label:"10x15 cm",price:25},
         {label:"13x18 cm",price:30},
@@ -14,12 +15,14 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
 
     $scope.increaseQuantity = function(m){
         m.quantity = m.quantity+1;
+        $scope.totalPrice += m.format.price;
         $scope.totalPhoto++
     }
 
     $scope.decreaseeQuantity = function(m){
         if(m.quantity >0 ) {
             m.quantity = m.quantity - 1;
+            $scope.totalPrice -= m.format.price;
             $scope.totalPhoto--;
         }
     }
@@ -49,6 +52,14 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
         }
 
 
+    }
+
+    $scope.updateTotal = function(){
+
+        $scope.totalPrice=0;
+        angular.forEach($scope.imageBag, function(m){
+            $scope.totalPrice  += m.format.price* m.quantity;
+        })
     }
 
 }]);

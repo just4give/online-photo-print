@@ -1,10 +1,14 @@
 <div class="container margin-top-10">
     <div class="row">
-        <div class="col-xs-6 col-sm-9 text-xx-large">Your Cart</div>
-        <div class="col-xs-6 col-sm-3"><button class="btn btn-opp-primary btn-block" ng-click="placeOrder()">Place Order</button></div>
+        <div class="alert alert-danger" ng-hide="$parent.loggedIn">
+            <strong>Please login to place your order</strong>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 text-xx-large">Your Cart</div>
     </div>
 
-    <div class="row shipping-info">
+    <div class="row shipping-info" ng-show="$parent.loggedIn">
         <div class="col-sm-6 col-xs-12">
             <h1>Shipping Information</h1>
             <h3>Ship to:</h3>
@@ -17,7 +21,8 @@
 
         <div class="col-lg-3 col-sm-6 col-xs-12 pull-right">
             <h1>Shipping Method</h1>
-            <select class="form-control" ng-options='option as (option.label+" - "+option.price + " RSD" )  for option in shippingMethods' ng-model="order.shippingMethod"></select>
+            <select class="form-control" ng-options='option as (option.label+" - "+option.price + " RSD" )  for option in shippingMethods'
+                    ng-model="order.shippingMethod" ng-change="updateShippingMethod()"></select>
             <h5>{{order.shippingMethod.summary}}</h5>
         </div>
 
@@ -77,10 +82,10 @@
         <div class="col-sm-6 col-xs-12">
             <div class="row">
                 <div class="col-xs-6">
-                    <h3>3 products(s)</h3>
+                    <h3>{{cartImages.length}} products(s)</h3>
                 </div>
                 <div class="col-xs-6">
-                    <h5>200 RSD</h5>
+                    <h5>{{totalProductPrice}} RSD</h5>
                 </div>
             </div>
             <div class="row">
@@ -88,7 +93,8 @@
                     <h3>Shipping & handling</h3>
                 </div>
                 <div class="col-xs-6">
-                    <h5>400 RSD</h5>
+                    <h5 ng-show="shippingCost == 0">FREE</h5>
+                    <h5 ng-show="shippingCost > 0">{{shippingCost}} RSD</h5>
                 </div>
             </div>
             <div class="row">
@@ -96,7 +102,7 @@
                     <h3>Total savings</h3>
                 </div>
                 <div class="col-xs-6 text-success">
-                    <h5>500 RSD</h5>
+                    <h5>{{savings}} RSD</h5>
                 </div>
             </div>
 
@@ -105,12 +111,12 @@
                     <h3><strong>Total</strong></h3>
                 </div>
                 <div class="col-xs-6 text-success text-x-large">
-                    <span><strong>1000 RSD</strong></span>
+                    <span><strong>{{totalProductPrice+shippingCost-savings}} RSD</strong></span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-6 pull-right">
-                    <button class="btn btn-opp-primary btn-block" ng-click="placeOrder()">Place Order</button>
+                    <button class="btn btn-opp-primary btn-block" ng-click="placeOrder()" ng-disabled="!$parent.loggedIn">Place Order</button>
                 </div>
             </div>
 

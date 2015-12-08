@@ -5,6 +5,10 @@ appModule.controller("CheckoutController",["$scope","$rootScope","$log","$modal"
 
     $log.debug('initializing CheckoutController');
 
+    $scope.totalProductPrice = 0;
+    $scope.shippingCost =0;
+    $scope.savings =0;
+
     $scope.order ={};
 
     $scope.cartImages = $rootScope.cartImages || [];
@@ -71,9 +75,22 @@ appModule.controller("CheckoutController",["$scope","$rootScope","$log","$modal"
         $confirm({text: 'By clicking "I Confirm" , you will finalize your order.' ,ok:"I Confirm",cancel:"Cancel" , title:"Confirm your order"})
             .then(function() {
                 $log.debug("Your order is finalized.");
+
                 $state.go("myorder");
 
             });
+    }
+
+    $scope.getTotalProductPrice = function(){
+        $log.debug('updating price');
+        $scope.totalProductPrice = 0;
+        angular.forEach($scope.cartImages, function(product){
+            $scope.totalProductPrice+= product.format.price* product.quantity;
+        })
+    }();
+
+    $scope.updateShippingMethod = function(){
+        $scope.shippingCost = $scope.order.shippingMethod.price;
     }
 
 }]);
