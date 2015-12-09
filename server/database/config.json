@@ -1,0 +1,18 @@
+{
+  "development": {
+    "host"     : "localhost",
+    "user"     : "root",
+    "password" : "password",
+    "database" : "photos",
+    "connectionLimit": 10,
+    "apiContext":"http://localhost:3000"
+  },
+  "production": {
+    "host"     : "us-cdbr-iron-east-03.cleardb.net",
+    "user"     : "b61afe5470d800",
+    "password" : "c3a8a201",
+    "database" : "heroku_30c4b4e9dd38c02",
+    "connectionLimit": 10,
+    "apiContext":"https://photoprint.herokuapp.com"
+  }
+}
