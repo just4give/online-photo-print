@@ -2,7 +2,7 @@
   "development": {
     "host"     : "localhost",
     "user"     : "root",
-    "password" : "password",
+    "password" : "root",
     "database" : "photos",
     "connectionLimit": 10,
     "apiContext":"http://localhost:3000"

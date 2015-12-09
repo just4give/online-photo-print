@@ -48,6 +48,35 @@ LOCK TABLES `address` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `cart`
+--
+
+DROP TABLE IF EXISTS `cart`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cart` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) DEFAULT NULL,
+  `imgId` varchar(45) NOT NULL,
+  `imgSrc` varchar(255) NOT NULL,
+  `frameSize` varchar(45) NOT NULL,
+  `price` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cart`
+--
+
+LOCK TABLES `cart` WRITE;
+/*!40000 ALTER TABLE `cart` DISABLE KEYS */;
+INSERT INTO `cart` VALUES (3,1,'8-73-12','http://placekitten.com/601/300','10x15',18,2),(4,1,'8-53-73','http://placekitten.com/602/300','13x19',24,2);
+/*!40000 ALTER TABLE `cart` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `pricing`
 --
 
@@ -56,7 +85,7 @@ DROP TABLE IF EXISTS `pricing`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pricing` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `frame_size` varchar(45) DEFAULT NULL,
+  `frameSize` varchar(45) DEFAULT NULL,
   `price` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
@@ -70,6 +99,33 @@ LOCK TABLES `pricing` WRITE;
 /*!40000 ALTER TABLE `pricing` DISABLE KEYS */;
 INSERT INTO `pricing` VALUES (1,'9x13',12),(2,'10x15',18),(3,'13x19',24),(4,'15x23',36),(5,'20x30',120),(6,'25x38',200);
 /*!40000 ALTER TABLE `pricing` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `shipping_method`
+--
+
+DROP TABLE IF EXISTS `shipping_method`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `shipping_method` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `method` varchar(45) NOT NULL,
+  `label` varchar(100) NOT NULL,
+  `summary` varchar(255) NOT NULL,
+  `price` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `shipping_method`
+--
+
+LOCK TABLES `shipping_method` WRITE;
+/*!40000 ALTER TABLE `shipping_method` DISABLE KEYS */;
+INSERT INTO `shipping_method` VALUES (1,'standard','Standard 5 business days','5 business days after print is ready',200),(2,'priority','Priority shipping','2 business days after print is ready',400),(3,'overnight','Overnight shipping','1 business day after print is ready',800);
+/*!40000 ALTER TABLE `shipping_method` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -88,7 +144,7 @@ CREATE TABLE `user` (
   `password` varchar(100) DEFAULT NULL,
   `facebookId` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,6 +153,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'52f8b9d8-c3f6-48b1-8d58-4978350812d7','Micky','Mouse','micky@gmail.com','password',NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -109,4 +166,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-08 17:22:53
+-- Dump completed on 2015-12-09 17:25:52

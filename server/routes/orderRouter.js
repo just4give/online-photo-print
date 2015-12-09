@@ -3,7 +3,42 @@
  */
 var express = require('express');
 var router = express.Router();
+var orderDB = require('../database/orderDB');
+var get_ip = require('ipware')().get_ip;
 
+router.post('/cart', function(req,res,next){
+    console.log(req.body);
+    orderDB.saveCart(req.body, function(err,data){
+        if(err){
+            if(err.status == 403){
+                console.log('potential hack from ');
+                console.log(get_ip(req));
+            }
+            return next(err);
+        }
+        res.json(data);
+
+    });
+
+
+});
+
+router.get('/cart/:uuid', function(req,res,next){
+    console.log(req.params.uuid);
+    orderDB.getCart(req.params.uuid, function(err,data){
+        if(err){
+            if(err.status == 403){
+                console.log('potential hack from ');
+                console.log(get_ip(req));
+            }
+            return next(err);
+        }
+        res.json(data);
+
+    });
+
+
+});
 
 
 module.exports = router;

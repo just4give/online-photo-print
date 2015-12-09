@@ -155,7 +155,8 @@ body {
   padding-top: 10px; }
 
 .cart {
-  color: #D00404; }
+  color: #D00404;
+  margin-left: 10px; }
   .cart:hover {
     cursor: pointer;
     color: black; }

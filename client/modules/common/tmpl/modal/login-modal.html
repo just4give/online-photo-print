@@ -10,7 +10,7 @@
                 <form name="f1" class="" ng-show="formname==='login'" novalidate>
                     <div class="input-group">
                         <span class="input-group-addon" id="user-email"><i class="fa fa-user"></i></span>
-                        <input type="email" class="form-control" placeholder="Email" aria-describedby="user-email" ng-model="loginform.email">
+                        <input type="email" class="form-control" placeholder="Email" aria-describedby="user-email" ng-model="loginform.email" autofocus>
                     </div>
                     <div class="input-group margin-top-10">
                         <span class="input-group-addon" id="user-pwd"><i class="fa fa-key"></i></span>
@@ -32,19 +32,30 @@
                 </form>
                 <form class="" ng-show="formname==='signup'" >
                     <div class="input-group">
-                        <span class="input-group-addon" id="user-email-r"><i class="fa fa-user"></i></span>
-                        <input type="text" class="form-control" placeholder="Email" aria-describedby="user-email-r">
+                        <span class="input-group-addon" id="fname-r"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" placeholder="First Name" aria-describedby="fname-r" ng-model="signupform.firstName" autofocus>
+                    </div>
+                    <div class="input-group margin-top-10">
+                        <span class="input-group-addon" id="lname-r"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" placeholder="Last Name" aria-describedby="lname-r" ng-model="signupform.lastName">
+                    </div>
+                    <div class="input-group margin-top-10">
+                        <span class="input-group-addon" id="user-email-r"><i class="fa fa-at"></i></span>
+                        <input type="email" class="form-control" placeholder="Email" aria-describedby="user-email-r" ng-model="signupform.email">
                     </div>
                     <div class="input-group margin-top-10">
                         <span class="input-group-addon" id="user-pwd-r"><i class="fa fa-key"></i></span>
-                        <input type="text" class="form-control" placeholder="Password" aria-describedby="user-pwd-r">
+                        <input type="password" class="form-control" placeholder="Password" aria-describedby="user-pwd-r" ng-model="signupform.password">
                     </div>
                     <div class="input-group margin-top-10">
                         <span class="input-group-addon" id="user-pwd2-r"><i class="fa fa-key"></i></span>
-                        <input type="text" class="form-control" placeholder="Retype password" aria-describedby="user-pwd2-r">
+                        <input type="password" class="form-control" placeholder="Retype password" aria-describedby="user-pwd2-r" ng-model="signupform.password2">
+                    </div>
+                    <div class="alert alert-danger margin-top-10" ng-show="showSignupErr">
+                        {{showSignupErr}}
                     </div>
                     <div class="input-group margin-top-10">
-                        <button class="btn btn-opp-primary btn-rect" ng-click="register()" ><i ng-show="signupprogress" class="fa fa-spinner fa-spin"></i> Register</button>
+                        <button class="btn btn-opp-primary btn-rect" ng-click="register()" ><i ng-show="signupprogress" class="fa fa-spinner fa-spin"></i> <i class="fa fa-user-plus"></i> Register</button>
                     </div>
 
                 </form>

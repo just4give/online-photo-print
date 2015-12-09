@@ -1,7 +1,8 @@
 /**
  * Created by Mithun.Das on 12/4/2015.
  */
-appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","$state", "$interval","PhotoService",function($scope,$rootScope,$log,$modal,$state,$interval,PhotoService){
+appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","$state", "$interval","PhotoService","localStorageService",
+    function($scope,$rootScope,$log,$modal,$state,$interval,PhotoService,localStorageService){
 
     $scope.totalPhoto = 0;
     $scope.imageBag =[];
@@ -35,7 +36,8 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
 
     $scope.uploadImage = function(){
         var uploadedImage = {
-            imgSrc: "http://placekitten.com/60"+ ($scope.imageBag.length+1)+"/300"
+            imgSrc: "http://placekitten.com/60"+ ($scope.imageBag.length+1)+"/300",
+            imgId:$scope.generateId()
         }
         $scope.imageBag.push(uploadedImage);
     }
@@ -50,6 +52,7 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
             });
 
             $rootScope.cartImages = cartImages;
+            localStorageService.set("cart", $rootScope.cartImages );
             $state.go("checkout")
         }
 
@@ -64,4 +67,8 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
         })
     }
 
+    $scope.generateId = function(){
+        var id = "8-"+Math.floor((Math.random() * 100) + 1)+"-"+Math.floor((Math.random() * 100) + 1);
+        return id;
+    }
 }]);

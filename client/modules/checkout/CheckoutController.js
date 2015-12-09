@@ -11,7 +11,7 @@ appModule.controller("CheckoutController",["$scope","$rootScope","$log","$modal"
 
     $scope.order ={};
 
-    $scope.cartImages = $rootScope.cartImages || [];
+    //$scope.cartImages = $rootScope.cartImages || [];
 
     $scope.addresses =[{ id:1, firstName: "Micky", lastName:"Mouse", address:"123 Main Stree",city:"Belgrade","zip":10104,"defaultAddress":false},
         { id:2 , firstName: "Donald", lastName:"Duck", address:"123 Main Stree",city:"Belgrade","zip":10104, "defaultAddress":true}];
@@ -87,7 +87,8 @@ appModule.controller("CheckoutController",["$scope","$rootScope","$log","$modal"
         angular.forEach($scope.cartImages, function(product){
             $scope.totalProductPrice+= product.format.price* product.quantity;
         })
-    }();
+        return $scope.totalProductPrice;
+    };
 
     $scope.updateShippingMethod = function(){
         $scope.shippingCost = $scope.order.shippingMethod.price;
