@@ -222,7 +222,16 @@ body {
     -webkit-box-shadow: 5px 10px 2px #CCC8C8;
     box-shadow: 5px 10px 2px #CCC8C8; }
     .process-container .size-card h1 {
-      font-weight: bold; }
+      font-weight: bold;
+      margin-top: -20px; }
+    .process-container .size-card h2 {
+      margin-top: 0px; }
+    .process-container .size-card .tag {
+      left: -80px;
+      top: -20px;
+      position: relative;
+      width: 20px;
+      color: green; }
   .process-container .dis-box .card {
     background-color: #D00404;
     color: white;

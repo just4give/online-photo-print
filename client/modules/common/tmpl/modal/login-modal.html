@@ -7,17 +7,20 @@
 
             </div>
             <div class="modal-body " >
-                <form class="" ng-show="formname==='login'">
+                <form name="f1" class="" ng-show="formname==='login'" novalidate>
                     <div class="input-group">
                         <span class="input-group-addon" id="user-email"><i class="fa fa-user"></i></span>
-                        <input type="text" class="form-control" placeholder="Email" aria-describedby="user-email">
+                        <input type="email" class="form-control" placeholder="Email" aria-describedby="user-email" ng-model="loginform.email">
                     </div>
                     <div class="input-group margin-top-10">
                         <span class="input-group-addon" id="user-pwd"><i class="fa fa-key"></i></span>
-                        <input type="text" class="form-control" placeholder="Password" aria-describedby="user-pwd">
+                        <input type="password" class="form-control" placeholder="Password" aria-describedby="user-pwd" ng-model="loginform.password">
+                    </div>
+                    <div class="alert alert-danger margin-top-10" ng-show="showLoginErr">
+                        {{showLoginErr}}
                     </div>
                     <div class="input-group margin-top-10">
-                        <button class="btn btn-opp-primary btn-rect" ng-click="submitLogin();$hide()">Login</button>
+                        <button class="btn btn-opp-primary btn-rect" ng-click="submitLogin()"><i ng-show="signupprogress" class="fa fa-spinner fa-spin"></i> Login</button>
                     </div>
                     <div class="input-group margin-top-10">
                         <ul class="list-inline">

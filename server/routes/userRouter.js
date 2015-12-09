@@ -10,10 +10,39 @@ router.get('/profile', function(req, res) {
     res.json({firstName:"John", lastName:"Smith"});
 });
 
-router.post('/register', function(req,res){
+router.post('/register', function(req,res,next){
    console.log(req.body);
 
-    res.json(req.body);
+    userDB.registerUser(req.body, function(err,data){
+        if(err){
+            return next(err);
+        }
+        res.json(data);
+
+    });
+
+
+});
+
+
+router.post('/login', function(req,res,next){
+    console.log(req.body);
+
+
+    userDB.loginUser(req.body, function(err,data){
+        if(err){
+            return next(err);
+        }
+        if(data.length == 1){
+            res.json(data[0]);
+        }else{
+            res.json({errorCode:"101",errorMessage:"Login failed."})
+        }
+
+
+    });
+
+
 });
 
 module.exports = router;

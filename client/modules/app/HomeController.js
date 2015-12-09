@@ -1,7 +1,15 @@
 /**
  * Created by Mithun.Das on 12/4/2015.
  */
-appModule.controller("HomeController",["$scope","$rootScope","$log","$modal","$state", "$interval",function($scope,$rootScope,$log,$modal,$state,$interval){
+appModule.controller("HomeController",["$scope","$rootScope","$log","$modal","$state", "$interval","PhotoService",
+    function($scope,$rootScope,$log,$modal,$state,$interval,PhotoService){
+
+    PhotoService.getPricing().then(function(data){
+        $scope.formats = data;
+    },function(err){
+        $log.debug(err);
+        $rootScope.$broadcast('api_error',err);
+    });
 
     $scope.processNames =["one","two","three","four"];
     $scope.currentProcess=0;

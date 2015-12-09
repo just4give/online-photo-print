@@ -3,12 +3,17 @@
  */
 var mysql = require('mysql');
 
-var pool = mysql.createPool({
+var app = require('../../app');
+
+var config ={
     host     : '127.0.0.1',
     user     : 'root',
-    password : 'root',
+    password : 'password',
     database : 'photos',
     connectionLimit: 100
-});
+};
+
+
+var pool = mysql.createPool(config);
 
 module.exports = pool;

@@ -13,7 +13,7 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
     },function(err){
         $log.debug(err);
         $rootScope.$broadcast('api_error',err);
-    })
+    });
 
     $scope.increaseQuantity = function(m){
         m.quantity = m.quantity+1;

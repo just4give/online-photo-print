@@ -122,6 +122,18 @@ body{
 
     h1{
       font-weight: bold;
+      margin-top: -20px;
+    }
+    h2{
+      margin-top: 0px;
+    }
+    .tag{
+
+        left: -80px;
+        top: -20px;
+        position: relative;
+        width: 20px;
+        color: green;
     }
   }
   .dis-box{

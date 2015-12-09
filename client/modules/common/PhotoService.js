@@ -6,14 +6,23 @@ appModule.factory('PhotoService', ["$rootScope","$http","$q", function($rootScop
 
     return{
         getPricing : function(){
+
             var deferred = $q.defer();
-            $http.get(apiContext+"/api/photo/pricing")
-                .success(function (data){
-                    deferred.resolve(data);
-                })
-                .error(function(err){
-                    deferred.reject(err);
-                });
+
+            if($rootScope.state.formats){
+                deferred.resolve($rootScope.state.formats);
+            }else{
+                $http.get(apiContext+"/api/photo/pricing")
+                    .success(function (data){
+                        $rootScope.state.formats = data;
+                        deferred.resolve(data);
+                    })
+                    .error(function(err){
+                        deferred.reject(err);
+                    });
+            }
+
+
 
             return deferred.promise;
         }

@@ -89,48 +89,14 @@
         </span>
     </div>
     <ul class="list-inline">
-        <li>
+        <li ng-repeat="f in formats">
             <div class="size-card">
-                <h1>12 DIN</h1>
-                <h2>13 X 9</h2>
+                <i class="tag fa fa-tags fa-4x"></i>
+                <h1>{{f.price}}</h1><span>RSD</span>
+                <h2>{{f.frame_size}}</h2>
             </div>
         </li>
-        <li>
-            <div class="size-card">
-                <h1>12 DIN</h1>
-                <h2>15 X 10</h2>
-            </div>
-        </li>
-        <li >
-            <div class="size-card">
-                <h1>12 DIN</h1>
-                <h2>15 X 10</h2>
-            </div>
-        </li>
-        <li >
-            <div class="size-card">
-                <h1>20 DIN</h1>
-                <h2>20 X 30</h2>
-            </div>
-        </li>
-        <li >
-            <div class="size-card">
-                <h1>25 DIN</h1>
-                <h2>30 X 48</h2>
-            </div>
-        </li>
-        <li >
-            <div class="size-card">
-                <h1>25 DIN</h1>
-                <h2>30 X 48</h2>
-            </div>
-        </li>
-        <li >
-            <div class="size-card">
-                <h1>25 DIN</h1>
-                <h2>30 X 48</h2>
-            </div>
-        </li>
+
     </ul>
 
 
