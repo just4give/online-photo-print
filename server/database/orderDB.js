@@ -2,6 +2,7 @@
  * Created by Mithun.Das on 12/8/2015.
  */
 var pool = require('./connectionPool');
+var Shipping = require('../orm/Shipping');
 
 exports.saveCart = function(cart,callback){
     pool.getConnection(function(err, connection) {
@@ -83,7 +84,7 @@ exports.getCart = function(uuid,callback){
 }
 
 exports.getShipping = function(callback){
-    pool.getConnection(function(err, connection) {
+/*    pool.getConnection(function(err, connection) {
         connection.query("select * from shipping_method", function(err, rows) {
             if (err) {
                 console.log("Database error in getPricing: " + err);
@@ -95,5 +96,13 @@ exports.getShipping = function(callback){
             callback(null,rows);
 
         });
+    });*/
+    Shipping.findAll().then(function(data){
+        callback(null,data);
+    },function(err){
+        console.log("Database error in getShipping: " + err);
+
+        callback(err);
+        return;
     });
 }

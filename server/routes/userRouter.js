@@ -33,10 +33,15 @@ router.post('/login', function(req,res,next){
         if(err){
             return next(err);
         }
-        if(data.length == 1){
+       /* if(data.length == 1){
             res.json(data[0]);
         }else{
             res.json({errorCode:"101",errorMessage:"Login failed."})
+        }*/
+        if(data == null){
+            res.json({errorCode:"101",errorMessage:"Login failed."})
+        }else{
+            res.json(data);
         }
 
 
