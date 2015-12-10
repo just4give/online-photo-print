@@ -81,3 +81,19 @@ exports.getCart = function(uuid,callback){
 
     });
 }
+
+exports.getShipping = function(callback){
+    pool.getConnection(function(err, connection) {
+        connection.query("select * from shipping_method", function(err, rows) {
+            if (err) {
+                console.log("Database error in getPricing: " + err);
+                connection.release();
+                callback(err);
+                return;
+            }
+            connection.release();
+            callback(null,rows);
+
+        });
+    });
+}

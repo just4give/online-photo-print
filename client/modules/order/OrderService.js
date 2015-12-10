@@ -39,6 +39,24 @@ appModule.factory('OrderService', ["$rootScope","$http","$q","$log", function($r
                 });
 
             return deferred.promise;
+        },
+        getShippingMethod: function(){
+            var deferred = $q.defer();
+
+            if($rootScope.state.shipping){
+                deferred.resolve($rootScope.state.shipping);
+            }else {
+                $http.get($rootScope.apiContext + "/api/order/shipping")
+                    .success(function (data) {
+                        $rootScope.state.shipping = data;
+                        deferred.resolve(data);
+                    })
+                    .error(function (err) {
+                        deferred.reject(err);
+                    });
+            }
+
+            return deferred.promise;
         }
     }
 

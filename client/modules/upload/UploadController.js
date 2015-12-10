@@ -1,8 +1,8 @@
 /**
  * Created by Mithun.Das on 12/4/2015.
  */
-appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","$state", "$interval","PhotoService","localStorageService",
-    function($scope,$rootScope,$log,$modal,$state,$interval,PhotoService,localStorageService){
+appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","$state", "$interval","PhotoService","localStorageService","Upload",
+    function($scope,$rootScope,$log,$modal,$state,$interval,PhotoService,localStorageService,Upload){
 
     $scope.totalPhoto = 0;
     $scope.imageBag =[];
@@ -40,6 +40,38 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
             imgId:$scope.generateId()
         }
         $scope.imageBag.push(uploadedImage);
+    }
+
+    $scope.upload = function(file){
+
+
+
+        if(!file ||file.$error){
+            return;
+        }
+        $log.debug(file.$error);
+
+        Upload.upload({
+            url: '/api/photo/upload',
+            method: 'POST',
+            file:file,
+            data: {'username': 'john'}
+        }).then(function (resp) {
+
+            $log.debug(resp.data);
+
+
+            $scope.imageBag.push({
+                imgSrc: resp.data.imgSrc,
+                imgId:$scope.generateId()
+            });
+
+        }, function (resp) {
+            $log.debug('Error status: ' + resp.status);
+        }, function (evt) {
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            $log.debug('progress: ' + progressPercentage + '% ' );
+        });
     }
 
     $scope.checkout = function(){

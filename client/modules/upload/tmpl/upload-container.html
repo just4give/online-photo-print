@@ -1,7 +1,10 @@
 <div class="container">
     <div class="col-sm-9 col-xs-12 gallery-container">
         <div class="col-xs-12 gallery-header">
-            <button class="btn btn-opp-primary btn-rect " ng-click="uploadImage()"><i class="fa fa-plus"></i> Add Photo</button>
+            <!--<button class="btn btn-opp-primary btn-rect " ng-click="uploadImage()"><i class="fa fa-plus"></i> Add Photo</button>-->
+            <button class="btn btn-opp-primary btn-rect " ngf-select="upload($file)"
+                    accept="image/*"  ngf-capture="'camera'" ngf-max-size="5MB"><i class="fa fa-plus"></i> Add Photo</button>
+
             <button class="btn btn-opp-primary btn-rect "><i class="fa fa-plus"></i> Add From Gallery</button>
             <button class="btn btn-opp-light btn-rect "><i class="fa fa-trash"></i> Remove </button>
 

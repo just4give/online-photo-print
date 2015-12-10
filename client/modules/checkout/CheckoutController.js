@@ -1,7 +1,8 @@
 /**
  * Created by Mithun.Das on 12/7/2015.
  */
-appModule.controller("CheckoutController",["$scope","$rootScope","$log","$modal","$state", "$interval","$confirm",function($scope,$rootScope,$log,$modal,$state,$interval,$confirm){
+appModule.controller("CheckoutController",["$scope","$rootScope","$log","$modal","$state", "$interval","$confirm","OrderService",
+    function($scope,$rootScope,$log,$modal,$state,$interval,$confirm,OrderService){
 
     $log.debug('initializing CheckoutController');
 
@@ -24,9 +25,15 @@ appModule.controller("CheckoutController",["$scope","$rootScope","$log","$modal"
     })
 
 
-    $scope.shippingMethods = [{id:1, label:"Standard 5 business days", summary:"5 business days after print is ready",price:200,},
-        {id:2, label:"Priority shipping", summary:"2 business days after print is ready",price:500,},
-        {id:3, label:"Overnight shipping", summary:"1 business day after print is ready",price:1000,}];
+
+
+    OrderService.getShippingMethod()
+        .then(function(data){
+            $scope.shippingMethods = data;
+        },function(err){
+            $rootScope.$broadcast('api_error',err);
+    });
+
 
 
     $scope.openAddressPopup = function(mode){

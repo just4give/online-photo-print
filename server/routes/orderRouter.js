@@ -40,5 +40,15 @@ router.get('/cart/:uuid', function(req,res,next){
 
 });
 
+router.get('/shipping', function(req, res,next) {
+
+    orderDB.getShipping(function(err,data){
+        if(err){
+            return next(err);
+        }
+        res.json(data);
+    });
+
+});
 
 module.exports = router;

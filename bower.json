@@ -31,6 +31,8 @@
     "font-awesome": "~4.5.0",
     "angular-bootstrap": "~0.14.3",
     "angular-confirm-modal": "~1.2.1",
-    "angular-local-storage": "~0.2.3"
+    "angular-local-storage": "~0.2.3",
+    "ng-file-upload-shim": "~10.1.9",
+    "ng-file-upload": "~10.1.9"
   }
 }
