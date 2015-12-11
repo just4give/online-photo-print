@@ -3,7 +3,7 @@
         <div class="col-xs-12 gallery-header">
             <!--<button class="btn btn-opp-primary btn-rect " ng-click="uploadImage()"><i class="fa fa-plus"></i> Add Photo</button>-->
             <button class="btn btn-opp-primary btn-rect " ngf-select="upload($file)"
-                    accept="image/*"  ngf-capture="'camera'" ngf-max-size="5MB"><i class="fa fa-plus"></i> Add Photo</button>
+                    accept="image/*"  ngf-capture="'camera'" ngf-max-size="10MB"><i class="fa fa-plus"></i> Add Photo</button>
 
             <button class="btn btn-opp-primary btn-rect "><i class="fa fa-plus"></i> Add From Gallery</button>
             <button class="btn btn-opp-light btn-rect "><i class="fa fa-trash"></i> Remove </button>
@@ -23,10 +23,12 @@
                             <i class="fa fa-times-circle close-circle"></i>
                         </div>
                         <div class="img-holder">
-                            <img ng-src="{{m.imgSrc}}">
+                            <img ng-src="{{m.imgSrc}}" ng-show="m.imgSrc">
+                            <div class="prog-percentage" ng-hide="m.imgSrc">{{m.progress}}</div>
+                            <div class="prog" ng-hide="m.imgSrc" ng-style="{width: m.progress }"></div>
                         </div>
                         <div class="img-status">
-                            <span>cat.png</span>
+                            <!--<span>cat.png</span>-->
                             <span class="pull-right high"><i class="fa fa-smile-o fa-2x"></i></span>
                         </div>
                         <div class="img-format" ng-init="m.format=formats[0]">

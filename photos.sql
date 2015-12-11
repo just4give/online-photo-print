@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `photos` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `photos`;
--- MySQL dump 10.13  Distrib 5.6.24, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.17, for osx10.6 (i386)
 --
--- Host: localhost    Database: photos
+-- Host: 127.0.0.1    Database: photos
 -- ------------------------------------------------------
--- Server version	5.6.26-log
+-- Server version	5.6.20
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -74,6 +74,36 @@ LOCK TABLES `cart` WRITE;
 /*!40000 ALTER TABLE `cart` DISABLE KEYS */;
 INSERT INTO `cart` VALUES (3,1,'8-73-12','http://placekitten.com/601/300','10x15',18,2),(4,1,'8-53-73','http://placekitten.com/602/300','13x19',24,2);
 /*!40000 ALTER TABLE `cart` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `photo`
+--
+
+DROP TABLE IF EXISTS `photo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `photo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `imgId` varchar(45) NOT NULL,
+  `imgSrc` varchar(255) NOT NULL,
+  `fileName` varchar(100) NOT NULL,
+  `userId` int(11) DEFAULT NULL,
+  `width` int(11) DEFAULT NULL,
+  `height` int(11) DEFAULT NULL,
+  `createdOn` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `photo`
+--
+
+LOCK TABLES `photo` WRITE;
+/*!40000 ALTER TABLE `photo` DISABLE KEYS */;
+INSERT INTO `photo` VALUES (13,'b9e0b730-9fbf-11e5-814f-bbea0d3c903e','http://localhost:3000/repo/b9e0b730-9fbf-11e5-814f-bbea0d3c903e.jpg','b9e0b730-9fbf-11e5-814f-bbea0d3c903e.jpg',NULL,828,729,'2015-12-11 04:29:11'),(14,'3418dcd0-9fc0-11e5-919f-718c79ccba96','http://localhost:3000/repo/3418dcd0-9fc0-11e5-919f-718c79ccba96.jpg','3418dcd0-9fc0-11e5-919f-718c79ccba96.jpg',NULL,828,729,'2015-12-11 04:32:36'),(15,'50f77500-9fc0-11e5-b744-4b0b4f23a53c','http://localhost:3000/repo/50f77500-9fc0-11e5-b744-4b0b4f23a53c.JPG','50f77500-9fc0-11e5-b744-4b0b4f23a53c.JPG',NULL,4546,3452,'2015-12-11 04:33:24');
+/*!40000 ALTER TABLE `photo` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -166,4 +196,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-09 17:25:52
+-- Dump completed on 2015-12-11  8:20:03

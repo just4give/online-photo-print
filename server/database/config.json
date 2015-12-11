@@ -2,11 +2,11 @@
   "development": {
     "host"     : "localhost",
     "user"     : "root",
-    "password" : "root",
+    "password" : "password",
     "database" : "photos",
     "connectionLimit": 10,
     "apiContext":"http://localhost:3000",
-    "imageRepo":"/photo"
+    "imageRepo":"/Users/mithundas/Project_Workspace"
   },
   "production": {
     "host"     : "us-cdbr-iron-east-03.cleardb.net",

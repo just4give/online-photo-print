@@ -47,6 +47,21 @@ appModule.factory('PhotoService', ["$rootScope","$http","$q","$log", function($r
                 });
 
             return deferred.promise;
+        },
+        deletePhoto : function(imgId){
+            var deferred = $q.defer();
+            var uuid = $rootScope.state.user ? $rootScope.state.user.uuid:undefined;
+
+            $http.post($rootScope.apiContext + "/api/photo/delete/"+imgId, {uuid:uuid})
+                .success(function (data){
+
+                    deferred.resolve(data);
+                })
+                .error(function(err){
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
         }
     }
 

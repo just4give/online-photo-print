@@ -1,8 +1,8 @@
 /**
  * Created by Mithun.Das on 12/4/2015.
  */
-appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","$state", "$interval","PhotoService","localStorageService","Upload",
-    function($scope,$rootScope,$log,$modal,$state,$interval,PhotoService,localStorageService,Upload){
+appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","$state", "$interval","PhotoService","localStorageService","Upload","$timeout",
+    function($scope,$rootScope,$log,$modal,$state,$interval,PhotoService,localStorageService,Upload,$timeout){
 
     $scope.totalPhoto = 0;
     $scope.imageBag =[];
@@ -30,48 +30,75 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
         }
     }
 
-    $scope.deleteImage = function($index){
-        $log.debug("image deleted");
+    $scope.deleteImage = function(index){
+        $log.debug("image deleted "+ index);
+        var imgId = $scope.imageBag[index].imgId;
+        $log.debug(imgId);
+        PhotoService.deletePhoto(imgId)
+            .then(function(data){
+                $scope.imageBag.splice(index,1);
+
+            },function(err){
+                $rootScope.$broadcast('api_error',err);
+            });
     }
 
-    $scope.uploadImage = function(){
-        var uploadedImage = {
-            imgSrc: "http://placekitten.com/60"+ ($scope.imageBag.length+1)+"/300",
-            imgId:$scope.generateId()
+    $scope.modalErrorMessage = 'Image size can not be more than 10MB';
+    $scope.prevImgError = false;
+
+    var maxSizeModal = $modal({scope: $scope, templateUrl: 'modules/common/tmpl/modal/api-error-modal.html', show: false});
+    $scope.hide = function(){
+        maxSizeModal.hide();
         }
-        $scope.imageBag.push(uploadedImage);
-    }
-
     $scope.upload = function(file){
 
-
+        $log.debug('****'+file);
 
         if(!file ||file.$error){
+            if(!$scope.prevImgError){
+                maxSizeModal.show();
+                $scope.prevImgError = true;
+            }else{
+                $scope.prevImgError = false;
+            }
+
+
+
             return;
         }
         $log.debug(file.$error);
+        $scope.prevImgError = false;
+        var uuid = $rootScope.state.user ? $rootScope.state.user.uuid:undefined;
+
+        var newImage = {progress: '0%' };
+        $scope.imageBag.push(newImage);
 
         Upload.upload({
             url: '/api/photo/upload',
             method: 'POST',
             file:file,
-            data: {'username': 'john'}
+            data: {'uuid': uuid}
         }).then(function (resp) {
 
             $log.debug(resp.data);
+            newImage.imgSrc = resp.data.imgSrc;
+            newImage.imgId = resp.data.imgId;
+            newImage.width = resp.data.width;
+            newImage.height = resp.data.height;
 
-
-            $scope.imageBag.push({
-                imgSrc: resp.data.imgSrc,
-                imgId:$scope.generateId()
-            });
 
         }, function (resp) {
             $log.debug('Error status: ' + resp.status);
         }, function (evt) {
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             $log.debug('progress: ' + progressPercentage + '% ' );
+            newImage.progress = progressPercentage +'%';
         });
+        //http://localhost:3000/repo/d9f5acf0-9f98-11e5-85e5-8337cc274d49.JPG
+
+       /* $timeout(function(){
+            //newImage.imgSrc = "http://localhost:3000/repo/d9f5acf0-9f98-11e5-85e5-8337cc274d49.JPG";
+        },5000);*/
     }
 
     $scope.checkout = function(){
@@ -103,4 +130,6 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
         var id = "8-"+Math.floor((Math.random() * 100) + 1)+"-"+Math.floor((Math.random() * 100) + 1);
         return id;
     }
+
+
 }]);

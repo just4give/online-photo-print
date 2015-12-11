@@ -58,6 +58,29 @@
       height: 150px;
       //border: 1px solid;
     }
+    .prog{
+      width: 50%;
+      height: 150px;
+      background-color: green;
+      text-align: center;
+      vertical-align: middle;
+      color: white;
+      font-weight: bold;
+      font-size: x-large;
+      line-height: 150px;
+    }
+    .prog-percentage{
+      line-height: 150px;
+      position: relative;
+      top: 0px;
+      float: left;
+      z-index: 1;
+      text-align: center;
+      width: 100%;
+      font-size: x-large;
+      font-weight: bold;
+      color: white;
+    }
   }
 
   .img-status{
