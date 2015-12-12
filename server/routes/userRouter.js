@@ -26,8 +26,6 @@ router.post('/register', function(req,res,next){
 
 
 router.post('/login', function(req,res,next){
-    console.log(req.body);
-
 
     userDB.loginUser(req.body, function(err,data){
         if(err){
@@ -47,6 +45,28 @@ router.post('/login', function(req,res,next){
 
     });
 
+
+});
+
+router.get('/address/:uuid', function(req, res,next) {
+
+    userDB.findDefaultAddress(req.params.uuid, function(err,data){
+        if(err){
+            return next(err);
+        }
+        res.json(data);
+    });
+
+});
+
+router.post('/address/:uuid', function(req, res,next) {
+
+    userDB.createAddress(req.params.uuid, req.body, function(err,data){
+        if(err){
+            return next(err);
+        }
+        res.json(data);
+    });
 
 });
 

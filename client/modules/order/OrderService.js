@@ -11,6 +11,7 @@ appModule.factory('OrderService', ["$rootScope","$http","$q","$log", function($r
             angular.forEach(cart, function(item){
                 tempCart.products.push({imgId: item.imgId, imgSrc: item.imgSrc, frameSize: item.format.frameSize, price: item.format.price, quantity: item.quantity});
             });
+            $log.debug('saving cart');
             $log.debug(tempCart);
 
             var deferred = $q.defer();
@@ -57,7 +58,24 @@ appModule.factory('OrderService', ["$rootScope","$http","$q","$log", function($r
             }
 
             return deferred.promise;
-        }
+        },
+        placeOrder: function(order){
+            var uuid = $rootScope.state.user ? $rootScope.state.user.uuid:undefined;
+            $log.debug(order);
+
+            var deferred = $q.defer();
+
+            $http.post($rootScope.apiContext + "/api/order/place/"+uuid, order)
+                .success(function (data){
+
+                    deferred.resolve(data);
+                })
+                .error(function(err){
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
+        },
     }
 
 }]);

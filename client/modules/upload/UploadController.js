@@ -43,31 +43,19 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
             });
     }
 
-    $scope.modalErrorMessage = 'Image size can not be more than 10MB';
-    $scope.prevImgError = false;
 
-    var maxSizeModal = $modal({scope: $scope, templateUrl: 'modules/common/tmpl/modal/api-error-modal.html', show: false});
-    $scope.hide = function(){
-        maxSizeModal.hide();
-        }
+
+
+
     $scope.upload = function(file){
 
         $log.debug('****'+file);
 
         if(!file ||file.$error){
-            if(!$scope.prevImgError){
-                maxSizeModal.show();
-                $scope.prevImgError = true;
-            }else{
-                $scope.prevImgError = false;
-            }
-
-
-
+            $scope.modalErrorMessage = 'Image size can not be more than 10MB';
             return;
         }
-        $log.debug(file.$error);
-        $scope.prevImgError = false;
+        $scope.modalErrorMessage='';
         var uuid = $rootScope.state.user ? $rootScope.state.user.uuid:undefined;
 
         var newImage = {progress: '0%' };

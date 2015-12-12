@@ -25,6 +25,8 @@ router.post('/cart', function(req,res,next){
 
 router.get('/cart/:uuid', function(req,res,next){
     console.log(req.params.uuid);
+
+
     orderDB.getCart(req.params.uuid, function(err,data){
         if(err){
             if(err.status == 403){
@@ -48,6 +50,23 @@ router.get('/shipping', function(req, res,next) {
         }
         res.json(data);
     });
+
+});
+
+router.post('/place/:uuid', function(req,res,next){
+    console.log(req.body);
+    orderDB.createOrder(req.params.uuid, req.body, function(err,data){
+        if(err){
+            if(err.status == 403){
+                console.log('potential hack from ');
+                console.log(get_ip(req));
+            }
+            return next(err);
+        }
+        res.json(data);
+
+    });
+
 
 });
 

@@ -3,84 +3,78 @@
  */
 var pool = require('./connectionPool');
 var Shipping = require('../orm/Shipping');
+var Cart = require('../orm/Cart');
+var User = require('../orm/User');
+var Order = require('../orm/Order');
+
+
+var IdGenerator = require('node-uuid');
 
 exports.saveCart = function(cart,callback){
-    pool.getConnection(function(err, connection) {
 
-        connection.query("select * from user where uuid=?",[cart.uuid], function(err, rows) {
-            if (err) {
-                console.log("Database error in getPricing: " + err);
-                connection.release();
-                callback(err);
-                return;
-            }
-            if(rows.length!=1){
-                connection.release();
-                callback({status: 403});
-                return;
-            }else{
+    User.findOne({where:{uuid:cart.uuid}})
+        .then(function(user){
 
-                var values =[];
+            if(user != null){
                 cart.products.forEach(function(elem){
-                    var val =[];
-                    val.push(rows[0].id);
-                    val.push(elem.imgId);
-                    val.push(elem.imgSrc);
-                    val.push(elem.frameSize);
-                    val.push(elem.price);
-                    val.push(elem.quantity);
-                   values.push(val);
+                   elem.userId = user.id;
                 });
-                console.log(values);
-                connection.query("insert into cart(userId,imgId,imgSrc,frameSize,price,quantity) values ?",[values], function(err, rows2) {
-                    if (err) {
-                        console.log("Database error in getPricing: " + err);
-                        connection.release();
+                console.log('user found . saving carts');
+                console.log(cart.products);
+
+                Cart.bulkCreate(cart.products)
+                    .then(function(){
+                        console.log('carts created');
+                        callback(null,{});
+                    },function(err){
+                        console.log("Database error in saveCart: " + err);
+
                         callback(err);
                         return;
-                    }
-                    connection.release();
-                    callback(null,rows2);
-
-                });
+                    });
+            }else{
+                console.log("Database error in saveCart:403 ");
+                callback({status: 403});
+                return;
             }
 
-        });
 
-    });
+        },function(err){
+            console.log("Database error in getCart: " + err);
+
+            callback(err);
+            return;
+        });
 }
 
 exports.getCart = function(uuid,callback){
-    pool.getConnection(function(err, connection) {
 
-        connection.query("select * from user where uuid=?",[uuid], function(err, rows) {
-            if (err) {
-                console.log("Database error in getPricing: " + err);
-                connection.release();
-                callback(err);
-                return;
-            }
-            if(rows.length!=1){
-                connection.release();
+
+    User.findOne({where:{uuid:uuid}})
+        .then(function(user){
+            console.log(user);
+            if(user != null){
+                Cart.findAll({ where:{userId: user.id}}).then(function(data){
+                    callback(null,data);
+                },function(err){
+                    console.log("Database error in getCart: " + err);
+
+                    callback(err);
+                    return;
+                });
+            }else{
                 callback({status: 403});
                 return;
-            }else{
-                 connection.query("select * from cart where userId=?",[rows[0].id], function(err, rows2) {
-                 if (err) {
-                 console.log("Database error in getPricing: " + err);
-                 connection.release();
-                 callback(err);
-                 return;
-                 }
-                 connection.release();
-                 callback(null,rows2);
-
-                 });
             }
 
+
+        },function(err){
+            console.log("Database error in getCart: " + err);
+
+            callback(err);
+            return;
         });
 
-    });
 }
 
 exports.getShipping = function(callback){
@@ -106,3 +100,39 @@ exports.getShipping = function(callback){
         return;
     });
 }
+
+exports.createOrder = function(uuid,order,callback){
+
+    User.findOne({where:{uuid:uuid}})
+        .then(function(user){
+
+            if(user != null){
+
+                    order.userId = user.id;
+                    order.trackingId=IdGenerator.v1();
+                    Order.create(order)
+                    .then(function(data){
+
+                        callback(null,data);
+                    },function(err){
+                        console.log("Database error in createOrder: " + err);
+
+                        callback(err);
+                        return;
+                    });
+            }else{
+                console.log("Database error in createOrder:403 ");
+                callback({status: 403});
+                return;
+            }
+
+
+        },function(err){
+            console.log("Database error in getCart: " + err);
+
+            callback(err);
+            return;
+        });
+}
+
+

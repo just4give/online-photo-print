@@ -53,15 +53,18 @@ appModule.controller("loginController",["$scope","$rootScope","$log","$modal", "
                 if( $rootScope.cartImages &&  $rootScope.cartImages.length>0){
                     OrderService.saveCart($rootScope.cartImages)
                         .then(function(data){
-
+                            $log.debug('cart saved...');
+                            $log.debug(data);
                             localStorageService.remove("cart");
                             $rootScope.retrieveCart();
 
 
                         },function(err){
+                            $log.debug('erro saving cart...');
                             $rootScope.$broadcast('api_error',err);
                         });
                 }else{
+                    $log.debug('get cart');
                     $rootScope.retrieveCart();
                 }
                 //then fetch call cart details

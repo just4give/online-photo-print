@@ -4,17 +4,16 @@
 var Sequelize = require('sequelize');
 var sequelize = require('../database/sequelize');
 
-var user = sequelize.define('user', {
+var address = sequelize.define('address', {
     id: {
        type: Sequelize.INTEGER,
         field: 'id',
         primaryKey: true,
         autoIncrement: true
     },
-    uuid: {
-        type: Sequelize.STRING,
-        field: 'uuid',
-        unique: true
+    userId: {
+        type: Sequelize.INTEGER,
+        field: 'userId'
     },
     firstName: {
         type: Sequelize.STRING,
@@ -24,18 +23,25 @@ var user = sequelize.define('user', {
         type: Sequelize.STRING,
         field: 'lastName'
     },
-    email: {
+    address: {
         type: Sequelize.STRING,
-        field: 'email',
-        unique:true
+        field: 'address'
     },
-    password: {
+    city: {
         type: Sequelize.STRING,
-        field: 'password'
+        field: 'city'
     },
-    facebookId: {
+    postalCode: {
         type: Sequelize.STRING,
-        field: 'facebookId'
+        field: 'postalCode'
+    },
+    phone: {
+        type: Sequelize.STRING,
+        field: 'phone'
+    },
+    defaultAddress: {
+        type: Sequelize.BOOLEAN,
+        field: 'defaultAddress'
     }
 
 },{
@@ -43,4 +49,4 @@ var user = sequelize.define('user', {
     timestamps: false
 });
 
-module.exports = user;
+module.exports = address;

@@ -7,7 +7,7 @@ var photoDB = require('../database/photoDB');
 var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart({limit:'01mb'});
 var fs = require('fs');
-var uuid = require('node-uuid');
+var IdGenerator = require('node-uuid');
 var app = express();
 var config = require('../database/config.json')[app.get('env')];
 var path = require('path');
@@ -51,16 +51,18 @@ router.post('/delete/:imgId', function(req, res,next) {
 router.post('/upload', multipartMiddleware,function (req, res, next) {
     console.log(req.body);
     var  file = req.files.file;
-    var id = uuid.v1();
+    var id = IdGenerator.v1();
     var fileName = id +  path.extname(file.name);
     var targetPath = config.imageRepo+ '/repo/temp/'+ fileName;
 
     //var dimensions = sizeOf(file.path);
     //console.log(dimensions.width, dimensions.height);
+    console.log('find user');
     if(req.body.uuid){
         User.findOne({where: {uuid: req.body.uuid}})
             .then(function(user){
                 var targetPath = config.imageRepo+ '/repo/'+ fileName;
+
                 fs.rename(file.path, targetPath, function(err) {
                     if(err) {
                         return next(err);
@@ -87,10 +89,12 @@ router.post('/upload', multipartMiddleware,function (req, res, next) {
                 return next(err);
             });
     }else{
+        console.log('target path '+targetPath);
         fs.rename(file.path, targetPath, function(err) {
             if(err) {
                 return next(err);
             }
+            console.log('renamed');
             sizeOf(targetPath, function(err, dimensions){
                 Photo.create({
                     imgId: id, imgSrc: config.apiContext+'/repo/'+ fileName,
