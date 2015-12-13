@@ -25,5 +25,14 @@
     "connectionLimit": 10,
     "apiContext":"http://ec2-54-213-85-177.us-west-2.compute.amazonaws.com:3000",
     "imageRepo":"/home/ubuntu"
+  },
+  "uat": {
+    "host"     : "localhost",
+    "user"     : "root",
+    "password" : "root",
+    "database" : "photos",
+    "connectionLimit": 10,
+    "apiContext":"http://78.47.249.230:3000",
+    "imageRepo":"/root"
   }
 }
