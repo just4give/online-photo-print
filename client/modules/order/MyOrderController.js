@@ -1,14 +1,24 @@
 /**
  * Created by Mithun.Das on 12/7/2015.
  */
-appModule.controller("MyOrderController",["$scope","$rootScope","$log","$modal","$state", "$interval",function($scope,$rootScope,$log,$modal,$state,$interval){
+appModule.controller("MyOrderController",["$scope","$rootScope","$log","$modal","$state", "$interval","OrderService",
+    function($scope,$rootScope,$log,$modal,$state,$interval,OrderService){
 
-    $scope.orders = [{orderedOn: new Date(), orderId:'080-100-201',orderCost: 900, status:'Ordered'},
-        {orderedOn: new Date(), orderId:'080-100-301',orderCost: 1900, status:'Printed'},
-        {orderedOn: new Date(), orderId:'080-100-401',orderCost: 700, status:'Shipped'},
-        {orderedOn: new Date(), orderId:'080-100-201',orderCost: 900, status:'Ordered'},
-        {orderedOn: new Date(), orderId:'080-100-501',orderCost: 1500, status:'Delivered'}];
+        $rootScope.$watch('loggedIn',function(){
+            if($rootScope.loggedIn){
+                $log.debug('user logged in ');
+                OrderService.getOrders().
+                then(function(data){
+                    $scope.orders = data;
+                },function(err){
+                    $rootScope.$broadcast('api_error',err);
+                });
 
+            }else{
+                $log.debug('user logged out ');
+            }
+
+        });
 
 
 }]);

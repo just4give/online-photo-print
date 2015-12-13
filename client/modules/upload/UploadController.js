@@ -8,6 +8,7 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
     $scope.imageBag =[];
     $scope.totalPrice=0;
 
+    $scope.galleryBag =[];
 
     PhotoService.getPricing().then(function(data){
         $scope.formats = data;
@@ -118,6 +119,39 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
         var id = "8-"+Math.floor((Math.random() * 100) + 1)+"-"+Math.floor((Math.random() * 100) + 1);
         return id;
     }
+
+    var galleryModal ;
+    $scope.openGallery = function(){
+        galleryModal = $modal({scope: $scope, templateUrl: 'modules/upload/tmpl/modal/gallery-modal.html', show: true});
+
+    }
+
+    $scope.addImport = function(){
+        angular.forEach($scope.galleryBag, function(item){
+            if(item.import){
+                $scope.imageBag.push(item);
+            }
+
+        });
+    }
+    $scope.deleteImageFromBag = function(index){
+        $scope.imageBag.splice(index,1);
+    }
+    $rootScope.$watch('loggedIn',function(){
+            if($rootScope.loggedIn){
+                $log.debug('user logged in ');
+                PhotoService.getGallery().
+                then(function(data){
+                    $scope.galleryBag = data;
+                },function(err){
+                    $rootScope.$broadcast('api_error',err);
+                });
+
+            }else{
+                $log.debug('user logged out ');
+            }
+
+        });
 
 
 }]);

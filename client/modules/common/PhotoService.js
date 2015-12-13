@@ -62,6 +62,21 @@ appModule.factory('PhotoService', ["$rootScope","$http","$q","$log", function($r
                 });
 
             return deferred.promise;
+        },
+        getGallery : function(){
+            var deferred = $q.defer();
+            var uuid = $rootScope.state.user ? $rootScope.state.user.uuid:undefined;
+
+            $http.get($rootScope.apiContext + "/api/photo/gallery/"+uuid)
+                .success(function (data){
+
+                    deferred.resolve(data);
+                })
+                .error(function(err){
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
         }
     }
 

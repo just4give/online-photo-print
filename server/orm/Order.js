@@ -27,6 +27,10 @@ var order = sequelize.define('order', {
         type: Sequelize.INTEGER,
         field: 'noOfPrints'
     },
+    printCost: {
+        type: Sequelize.INTEGER,
+        field: 'printCost'
+    },
     shippingCost: {
         type: Sequelize.INTEGER,
         field: 'shippingCost'

@@ -61,6 +61,8 @@ appModule.factory('OrderService', ["$rootScope","$http","$q","$log", function($r
         },
         placeOrder: function(order){
             var uuid = $rootScope.state.user ? $rootScope.state.user.uuid:undefined;
+            order.shippingMethod = order.shippingMethod.method;
+
             $log.debug(order);
 
             var deferred = $q.defer();
@@ -75,7 +77,76 @@ appModule.factory('OrderService', ["$rootScope","$http","$q","$log", function($r
                 });
 
             return deferred.promise;
+        }
+        ,
+        saveAddress : function(address){
+
+        var deferred = $q.defer();
+
+        var uuid = $rootScope.state.user ? $rootScope.state.user.uuid:undefined;
+
+        $http.post($rootScope.apiContext + "/api/user/address/"+uuid,address)
+            .success(function (data){
+
+                deferred.resolve(data);
+            })
+            .error(function(err){
+                deferred.reject(err);
+            });
+
+
+
+
+        return deferred.promise;
+    },
+    defaultAddress : function(){
+
+        var deferred = $q.defer();
+
+        var uuid = $rootScope.state.user ? $rootScope.state.user.uuid:undefined;
+
+        $http.get($rootScope.apiContext + "/api/user/address/"+uuid)
+            .success(function (data){
+
+                deferred.resolve(data);
+            })
+            .error(function(err){
+                deferred.reject(err);
+            });
+        return deferred.promise;
+    },
+    allAddress : function(){
+
+            var deferred = $q.defer();
+
+            var uuid = $rootScope.state.user ? $rootScope.state.user.uuid:undefined;
+
+            $http.get($rootScope.apiContext + "/api/user/addresses/"+uuid)
+                .success(function (data){
+
+                    deferred.resolve(data);
+                })
+                .error(function(err){
+                    deferred.reject(err);
+                });
+            return deferred.promise;
         },
+        getOrders : function(){
+
+            var deferred = $q.defer();
+
+            var uuid = $rootScope.state.user ? $rootScope.state.user.uuid:undefined;
+
+            $http.get($rootScope.apiContext + "/api/order/all/"+uuid)
+                .success(function (data){
+
+                    deferred.resolve(data);
+                })
+                .error(function(err){
+                    deferred.reject(err);
+                });
+            return deferred.promise;
+        }
     }
 
 }]);

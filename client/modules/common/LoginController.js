@@ -49,25 +49,7 @@ appModule.controller("loginController",["$scope","$rootScope","$log","$modal", "
                     modal.hide();
                 }
 
-                //if cart is not empty , persist cart and remove from local storage
-                if( $rootScope.cartImages &&  $rootScope.cartImages.length>0){
-                    OrderService.saveCart($rootScope.cartImages)
-                        .then(function(data){
-                            $log.debug('cart saved...');
-                            $log.debug(data);
-                            localStorageService.remove("cart");
-                            $rootScope.retrieveCart();
 
-
-                        },function(err){
-                            $log.debug('erro saving cart...');
-                            $rootScope.$broadcast('api_error',err);
-                        });
-                }else{
-                    $log.debug('get cart');
-                    $rootScope.retrieveCart();
-                }
-                //then fetch call cart details
             }
         },function(err){
             $scope.signupprogress = false;
@@ -79,20 +61,7 @@ appModule.controller("loginController",["$scope","$rootScope","$log","$modal", "
     $scope.checkout = function(){
       $state.go('checkout');
     }
-    $rootScope.retrieveCart = function(){
-        OrderService.getCart()
-            .then(function(data){
-               // $rootScope.cartImages =data;
-                $rootScope.cartImages =[];
-                angular.forEach(data, function(item){
-                    $rootScope.cartImages.push({imgId:item.imgId, imgSrc:item.imgSrc, quantity: item.quantity, format: {frameSize: item.frameSize, price: item.price}});
-                })
 
-
-            },function(err){
-                $rootScope.$broadcast('api_error',err);
-            });
-    }
     $scope.logout = function(){
         $rootScope.loggedIn = false;
         $rootScope.state.user=undefined;

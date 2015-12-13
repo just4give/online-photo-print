@@ -41,26 +41,6 @@ appModule.factory('UserService', ["$rootScope","$http","$q", "$log",function($ro
 
 
             return deferred.promise;
-        },
-        saveAddress : function(address){
-
-            var deferred = $q.defer();
-
-            var uuid = $rootScope.state.user ? $rootScope.state.user.uuid:undefined;
-
-            $http.post($rootScope.apiContext + "/api/user/address/"+uuid,address)
-                .success(function (data){
-
-                    deferred.resolve(data);
-                })
-                .error(function(err){
-                    deferred.reject(err);
-                });
-
-
-
-
-            return deferred.promise;
         }
 
     }

@@ -55,16 +55,32 @@ exports.createAddress = function(uuid,address,callback){
 
                 address.userId = user.id;
 
-                Address.create(address)
-                    .then(function(data){
+                if(address.id){
+                    //update
+                    Address.update(address,{where:{id: address.id}})
+                        .then(function(data){
 
-                        callback(null,data);
-                    },function(err){
-                        console.log("Database error in createAddress: " + err);
+                            callback(null,data);
+                        },function(err){
+                            console.log("Database error in createAddress: " + err);
 
-                        callback(err);
-                        return;
-                    });
+                            callback(err);
+                            return;
+                        });
+                }
+                else{
+                    Address.create(address)
+                        .then(function(data){
+
+                            callback(null,data);
+                        },function(err){
+                            console.log("Database error in createAddress: " + err);
+
+                            callback(err);
+                            return;
+                        });
+                }
+
             }else{
                 console.log("Database error in createAddress:403 ");
                 callback({status: 403});
@@ -85,15 +101,16 @@ exports.findDefaultAddress = function(uuid,callback){
 
     User.findOne({where:{uuid:uuid}})
         .then(function(user){
-
+                console.log('found user id'+user.id);
             if(user != null){
 
-                address.userId = user.id;
+
 
                 Address.findOne({where:{userId: user.id, defaultAddress:true}})
                     .then(function(data){
 
                         callback(null,data);
+
                     },function(err){
                         console.log("Database error in findDefaultAddress: " + err);
 
@@ -109,6 +126,42 @@ exports.findDefaultAddress = function(uuid,callback){
 
         },function(err){
             console.log("Database error in createAddress: " + err);
+
+            callback(err);
+            return;
+        });
+}
+
+
+exports.addresses = function(uuid,callback){
+
+    User.findOne({where:{uuid:uuid}})
+        .then(function(user){
+            console.log('found user id'+user.id);
+            if(user != null){
+
+
+
+                Address.findAll({where:{userId: user.id}})
+                    .then(function(data){
+
+                        callback(null,data);
+
+                    },function(err){
+                        console.log("Database error in addresses: " + err);
+
+                        callback(err);
+                        return;
+                    });
+            }else{
+                console.log("Database error in addresses:403 ");
+                callback({status: 403});
+                return;
+            }
+
+
+        },function(err){
+            console.log("Database error in addresses: " + err);
 
             callback(err);
             return;

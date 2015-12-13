@@ -112,4 +112,24 @@ router.post('/upload', multipartMiddleware,function (req, res, next) {
 
 });
 
+
+router.get('/gallery/:uuid', function(req,res,next){
+    console.log(req.params.uuid);
+
+
+    photoDB.getPhotos(req.params.uuid, function(err,data){
+        if(err){
+            if(err.status == 403){
+                console.log('potential hack from ');
+                console.log(get_ip(req));
+            }
+            return next(err);
+        }
+        res.json(data);
+
+    });
+
+
+});
+
 module.exports = router;

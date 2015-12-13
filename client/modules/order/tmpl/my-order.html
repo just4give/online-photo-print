@@ -8,6 +8,7 @@
             <tr>
                 <th>Ordered On</th>
                 <th>Order ID</th>
+                <th>No. Prints</th>
                 <th>Your Cost</th>
                 <th>Status</th>
             </tr>
@@ -15,12 +16,13 @@
             <tbody>
             <tr ng-repeat="ord in orders">
                 <td class="col-xs-4 col-sm-2">
-                    {{ord.orderedOn | date: 'shortDate'}}
+                    {{ord.orderDate | date: 'shortDate'}}
                 </td>
-                <td class="col-xs-4 col-sm-4">{{ord.orderId}}</td>
-                <td class="col-xs-4 col-sm-2">{{ord.orderCost}}</td>
-                <td class="col-xs-4 col-sm-2">{{ord.status}}</td>
-                <td class="col-xs-4 col-sm-2" ng-show="ord.status==='Ordered'"><button class="btn btn-trans"><i class="text-danger fa fa-trash fa-lg"></i></button></td>
+                <td class="col-xs-4 col-sm-4">{{ord.trackingId}}</td>
+                <td class="col-xs-4 col-sm-4">{{ord.noOfPrints}}</td>
+                <td class="col-xs-4 col-sm-2">{{ord.finalCost}} RSD</td>
+                <td class="col-xs-4 col-sm-2">{{ord.orderStatus}}</td>
+                <!--<td class="col-xs-4 col-sm-2" ng-show="ord.orderStatus==='ORDERED'"><button class="btn btn-trans"><i class="text-danger fa fa-trash fa-lg"></i></button></td>-->
             </tr>
 
             </tbody>

@@ -49,7 +49,7 @@ router.post('/login', function(req,res,next){
 });
 
 router.get('/address/:uuid', function(req, res,next) {
-
+    console.log('*** getting default address**');
     userDB.findDefaultAddress(req.params.uuid, function(err,data){
         if(err){
             return next(err);
@@ -70,4 +70,14 @@ router.post('/address/:uuid', function(req, res,next) {
 
 });
 
+router.get('/addresses/:uuid', function(req, res,next) {
+
+    userDB.addresses(req.params.uuid, function(err,data){
+        if(err){
+            return next(err);
+        }
+        res.json(data);
+    });
+
+});
 module.exports = router;

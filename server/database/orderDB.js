@@ -6,7 +6,7 @@ var Shipping = require('../orm/Shipping');
 var Cart = require('../orm/Cart');
 var User = require('../orm/User');
 var Order = require('../orm/Order');
-
+var sequelize = require('../database/sequelize');
 
 var IdGenerator = require('node-uuid');
 
@@ -54,7 +54,7 @@ exports.getCart = function(uuid,callback){
         .then(function(user){
             console.log(user);
             if(user != null){
-                Cart.findAll({ where:{userId: user.id}}).then(function(data){
+                Cart.findAll({ where:{userId: user.id,orderId: null}}).then(function(data){
                     callback(null,data);
                 },function(err){
                     console.log("Database error in getCart: " + err);
@@ -78,19 +78,7 @@ exports.getCart = function(uuid,callback){
 }
 
 exports.getShipping = function(callback){
-/*    pool.getConnection(function(err, connection) {
-        connection.query("select * from shipping_method", function(err, rows) {
-            if (err) {
-                console.log("Database error in getPricing: " + err);
-                connection.release();
-                callback(err);
-                return;
-            }
-            connection.release();
-            callback(null,rows);
 
-        });
-    });*/
     Shipping.findAll().then(function(data){
         callback(null,data);
     },function(err){
@@ -108,18 +96,35 @@ exports.createOrder = function(uuid,order,callback){
 
             if(user != null){
 
-                    order.userId = user.id;
-                    order.trackingId=IdGenerator.v1();
-                    Order.create(order)
-                    .then(function(data){
+                order.userId = user.id;
+                order.trackingId=IdGenerator.v1();
+                order.orderStatus ='ORDERED';
+                order.orderDate = new Date();
+                var cartIds=[];
+                order.cart.forEach(function(item){
+                    cartIds.push(item.id);
+                })
 
-                        callback(null,data);
-                    },function(err){
-                        console.log("Database error in createOrder: " + err);
+                sequelize.transaction(function(t){
+                    return Order.create(order,{transaction:t})
+                        .then(function(newOrder){
+                            //now update cart with order id
+                            return Cart.update({orderId:newOrder.id},{ where:{id:{$in:cartIds}}},{transaction:t});
 
-                        callback(err);
-                        return;
-                    });
+
+                        },function(err){
+                            console.log("Database error in createOrder: " + err);
+
+                            callback(err);
+                            return;
+                        });
+                }).then(function(data){
+                    callback(null,data);
+                },function(err){
+                    callback(err);
+                    return;
+                })
+
             }else{
                 console.log("Database error in createOrder:403 ");
                 callback({status: 403});
@@ -135,4 +140,33 @@ exports.createOrder = function(uuid,order,callback){
         });
 }
 
+exports.getOrders = function(uuid,callback){
+
+    User.findOne({where:{uuid:uuid}})
+        .then(function(user){
+
+            if(user != null){
+
+                Order.findAll({where:{userId:user.id} })
+                .then(function(data){
+                    callback(null,data);
+                },function(err){
+                    callback(err);
+                    return;
+                })
+
+            }else{
+                console.log("Database error in getOrders:403 ");
+                callback({status: 403});
+                return;
+            }
+
+
+        },function(err){
+            console.log("Database error in getOrders: " + err);
+
+            callback(err);
+            return;
+        });
+}
 

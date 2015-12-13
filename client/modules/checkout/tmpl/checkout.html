@@ -19,7 +19,7 @@
             <a class="link" ng-hide="shippingAddress" ng-click="openAddressPopup('add')"><i class="fa fa-plus"></i> Shipping Address</a>
         </div>
 
-        <div class="col-lg-3 col-sm-6 col-xs-12 pull-right">
+        <div class="col-lg-3 col-sm-6 col-xs-12 pull-right" >
             <h1>Shipping Method</h1>
             <select class="form-control" ng-options='option as (option.label+" - "+option.price + " RSD" )  for option in shippingMethods'
                     ng-model="order.shippingMethod" ng-change="updateShippingMethod()"></select>
@@ -116,7 +116,8 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-6 pull-right">
-                    <button class="btn btn-opp-primary btn-block" ng-click="placeOrder()" ng-disabled="!$parent.loggedIn">Place Order</button>
+                    <button class="btn btn-opp-primary btn-block" ng-click="placeOrder()" ng-disabled="!$parent.loggedIn || !order.addressId  || !order.shippingMethod || orderprogress">
+                        <i ng-show="orderprogress" class="fa fa-spinner fa-spin"></i> Place Order</button>
                 </div>
             </div>
 

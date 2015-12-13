@@ -70,4 +70,21 @@ router.post('/place/:uuid', function(req,res,next){
 
 });
 
+router.get('/all/:uuid', function(req,res,next){
+
+    orderDB.getOrders(req.params.uuid, function(err,data){
+        if(err){
+            if(err.status == 403){
+                console.log('potential hack from ');
+                console.log(get_ip(req));
+            }
+            return next(err);
+        }
+        res.json(data);
+
+    });
+
+
+});
+
 module.exports = router;

@@ -10,6 +10,7 @@ var routes = require('./server/routes/indexRouter');
 var user = require('./server/routes/userRouter');
 var photo = require('./server/routes/photoRouter');
 var order = require('./server/routes/orderRouter');
+var cors = require('cors');
 
 var app = express();
 
@@ -30,11 +31,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client')));
 app.use(express.static(config.imageRepo));
 
+app.use(cors());
 
 app.use('/', routes);
 app.use('/api/user', user);
 app.use('/api/photo', photo);
 app.use('/api/order', order);
+
 
 
 
