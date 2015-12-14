@@ -97,7 +97,7 @@ router.post('/upload', multipartMiddleware,function (req, res, next) {
             console.log('renamed');
             sizeOf(targetPath, function(err, dimensions){
                 Photo.create({
-                    imgId: id, imgSrc: config.apiContext+'/repo/'+ fileName,
+                    imgId: id, imgSrc: config.apiContext+'/repo/temp/'+ fileName,
                     width:dimensions.width,height:dimensions.height,createdOn:new Date(),fileName: fileName
                 }).then(function(data){
                     res.json({imgSrc:config.apiContext+'/repo/temp/'+ fileName, imgId:id, width:dimensions.width, height:dimensions.height });

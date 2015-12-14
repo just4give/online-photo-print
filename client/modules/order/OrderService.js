@@ -41,6 +41,20 @@ appModule.factory('OrderService', ["$rootScope","$http","$q","$log", function($r
 
             return deferred.promise;
         },
+        deleteCart: function(cartId){
+            var deferred = $q.defer();
+
+            $http.post($rootScope.apiContext + "/api/order/cart/delete/"+cartId,{})
+                .success(function (data){
+
+                    deferred.resolve(data);
+                })
+                .error(function(err){
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
+        },
         getShippingMethod: function(){
             var deferred = $q.defer();
 

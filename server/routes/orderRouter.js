@@ -42,6 +42,22 @@ router.get('/cart/:uuid', function(req,res,next){
 
 });
 
+router.post('/cart/delete/:cartId', function(req,res,next){
+    console.log(req.params.uuid);
+
+
+    orderDB.deleteCart(req.params.cartId, function(err,data){
+        if(err){
+
+            return next(err);
+        }
+        res.json(data);
+
+    });
+
+
+});
+
 router.get('/shipping', function(req, res,next) {
 
     orderDB.getShipping(function(err,data){

@@ -11,15 +11,11 @@ appModule.config(function (localStorageServiceProvider) {
         .setNotify(true, true)
 });
 
-appModule.directive('autofocus', ['$timeout', function($timeout) {
-    return {
-        restrict: 'A',
-        link : function($scope, $element) {
-            $timeout(function() {
-                $element[0].focus();
-            });
-        }
-    }
+appModule.run(["$interval","localStorageService", function($interval,localStorageService){
+    $interval(function(){
+        localStorageService.remove("cart");
+    },1000*60*10);
+
 }]);
 
 appModule.config(['$httpProvider', function($httpProvider) {

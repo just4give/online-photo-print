@@ -13,16 +13,12 @@ appModule.controller("CheckoutController",["$scope","$rootScope","$log","$modal"
     $scope.order ={};
     $scope.addresses=[];
     //$scope.cartImages = $rootScope.cartImages || [];
-
-    /*$scope.addresses =[{ id:1, firstName: "Micky", lastName:"Mouse", address:"123 Main Stree",city:"Belgrade","zip":10104,"defaultAddress":false},
-        { id:2 , firstName: "Donald", lastName:"Duck", address:"123 Main Stree",city:"Belgrade","zip":10104, "defaultAddress":true}];
-*/
-   //find default shipping address
-    /*angular.forEach($scope.addresses , function(addr){
-        if(addr.defaultAddress){
-            $scope.shippingAddress = addr;
-        }
-    })*/
+        PhotoService.getPricing().then(function(data){
+            $scope.formats = data;
+        },function(err){
+            $log.debug(err);
+            $rootScope.$broadcast('api_error',err);
+        });
 
         $rootScope.$watch('loggedIn',function(){
             if($rootScope.loggedIn){
@@ -47,25 +43,6 @@ appModule.controller("CheckoutController",["$scope","$rootScope","$log","$modal"
 
 
 
-                //if cart is not empty , persist cart and remove from local storage
-                if( $rootScope.cartImages &&  $rootScope.cartImages.length>0){
-                    OrderService.saveCart($rootScope.cartImages)
-                        .then(function(data){
-                            $log.debug('cart saved...');
-                            $log.debug(data);
-                            localStorageService.remove("cart");
-                            $rootScope.retrieveCart();
-
-
-                        },function(err){
-                            $log.debug('erro saving cart...');
-                            $rootScope.$broadcast('api_error',err);
-                        });
-                }else{
-                    $log.debug('get cart');
-                    $rootScope.retrieveCart();
-                }
-                //then fetch call cart details
 
             }else{
                 $log.debug('user logged out ');
@@ -239,21 +216,30 @@ appModule.controller("CheckoutController",["$scope","$rootScope","$log","$modal"
         return $scope.totalProductPrice;
     };
 
-    $rootScope.retrieveCart = function(){
-            OrderService.getCart()
-                .then(function(data){
-                    // $rootScope.cartImages =data;
-                    $rootScope.cartImages =[];
-                    angular.forEach(data, function(item){
-                        $rootScope.cartImages.push({id:item.id, imgId:item.imgId, imgSrc:item.imgSrc, quantity: item.quantity, format: {frameSize: item.frameSize, price: item.price}});
-                    })
+    $scope.deleteCartItem = function(index){
+
+        $confirm({text: 'Are you sure,you want to remove from cart?' ,ok:"Yes",cancel:"No" , title:"Confirm delete"})
+            .then(function() {
+                var cartItem = $scope.cartImages[index];
+                if(cartItem.id){
+                    //delete from database
+                    OrderService.deleteCart(cartItem.id)
+                        .then(function(data){
+                            $scope.cartImages.splice(index,1);
+                        },function(err){
+
+                        });
+                }else{
+                    $scope.cartImages.splice(index,1);
+                }
+            });
 
 
-                },function(err){
-                    $rootScope.$broadcast('api_error',err);
-                });
-        }
-
+    }
+    $scope.editCartItem = function(index){
+            $scope.selectedCartItem = $scope.cartImages[index];
+            var modal = $modal({scope: $scope, templateUrl: 'modules/checkout/tmpl/modal/update-cart-item.html', show: true});
+    }
 
 }]);
 

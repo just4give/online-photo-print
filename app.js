@@ -11,6 +11,7 @@ var routes = require('./server/routes/indexRouter');
 var user = require('./server/routes/userRouter');
 var photo = require('./server/routes/photoRouter');
 var order = require('./server/routes/orderRouter');
+var photoDB = require('./server/database/photoDB');
 var cors = require('cors');
 
 var app = express();
@@ -67,5 +68,9 @@ app.use(function(err, req, res, next) {
     res.json(err);
 });
 
+var j = schedule.scheduleJob('*/10 * * * *', function(){
+    console.log('Cleaning up ');
+    photoDB.cleanupRepo(path.join(config.imageRepo, 'repo/temp'),path.join(config.imageRepo, 'repo'));
+});
 
 module.exports = app;

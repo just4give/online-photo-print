@@ -5,6 +5,12 @@ var pool = require('./connectionPool');
 var Pricing = require('../orm/Pricing');
 var Photo = require('../orm/Photo');
 var User = require('../orm/User');
+var fs = require('fs');
+var path = require('path');
+var Cart = require('../orm/Cart');
+var express = require('express');
+var app = express();
+var config = require('./config.json')[app.get('env')];
 
 exports.getPricing = function(callback){
 
@@ -48,4 +54,41 @@ exports.getPhotos = function(uuid,callback){
             callback(err);
             return;
         });
+}
+
+exports.cleanupRepo = function(tempDir, repoDir){
+    Photo.findAll({where: {userId: null} })
+        .then(function (photos) {
+
+
+            photos.forEach(function(photo){
+                Cart.findOne({where:{imgId: photo.imgId}}).
+                    then(function(cart){
+                    if(cart == null){
+
+                        fs.unlink(path.join(tempDir, photo.fileName),function(){
+                            photo.destroy();
+                        });
+
+
+                    }else{
+                        //photo is linked to cart, need to update, move file to repo first
+                        fs.rename(path.join(tempDir, photo.fileName), path.join(repoDir, photo.fileName), function(err) {
+                            if(!err){
+                                Photo.update({userId:cart.userId, imgSrc: config.apiContext+'/repo/'+photo.fileName},
+                                    {where:{id: photo.id}});
+                                Cart.update({imgSrc: config.apiContext+'/repo/'+photo.fileName},{where:{id:cart.id}});
+                            }
+                        });
+
+                    }
+
+                });
+
+
+            })
+        },function(err){
+            //console.log('failed to clen up..')
+        });
+
 }

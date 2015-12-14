@@ -1,0 +1,36 @@
+<div class="modal ">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content login-modal" ng-init="formname='login'">
+
+<div class="modal-body ">
+    <div class="img-panel" style="height: auto">
+
+        <div class="img-format">
+            <div class="btn-group btn-block">
+                <button type="button" class="btn btn-opp-light btn-rect format-size">{{selectedCartItem.format.frameSize}}</button>
+                <button type="button" class="btn btn-opp-light btn-rect dropdown-toggle format-caret" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li ng-repeat="format in formats"><a href="" class="link" ng-click="selectedCartItem.format=format;updateTotal()">{{format.frameSize}}</a></li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="img-quantity" >
+            <button class="btn btn-opp-light btn-rect pull-left" ng-click="decreaseeQuantity(selectedCartItem)"><i class="fa fa-minus"></i></button>
+            <input type="text" ng-model="selectedCartItem.quantity">
+            <button class="btn btn-opp-light btn-rect pull-right" ng-click="increaseQuantity(selectedCartItem)"><i class="fa fa-plus"></i></button>
+        </div>
+
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success ng-binding" ng-click="$hide()">Update</button>
+    <button class="btn btn-default ng-binding" ng-click="$hide()">Cancel</button>
+</div>
+</div>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

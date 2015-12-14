@@ -266,6 +266,24 @@ body {
   margin-bottom: 20px;
   text-transform: uppercase; }
 
+.icon-opp {
+  background: url("../images/poor.png") no-repeat;
+  background-size: cover;
+  height: 30px;
+  width: 30px; }
+
+.icon-opp.excellent {
+  background: url("../images/excellent.png") no-repeat;
+  background-size: cover; }
+
+.icon-opp.poor {
+  background: url("../images/poor.png") no-repeat;
+  background-size: cover; }
+
+.icon-opp.good {
+  background: url("../images/good.png") no-repeat;
+  background-size: cover; }
+
 .slider {
   height: 300px;
   overflow: hidden;

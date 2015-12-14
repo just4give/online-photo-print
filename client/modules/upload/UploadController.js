@@ -1,14 +1,16 @@
 /**
  * Created by Mithun.Das on 12/4/2015.
  */
-appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","$state", "$interval","PhotoService","localStorageService","Upload","$timeout",
-    function($scope,$rootScope,$log,$modal,$state,$interval,PhotoService,localStorageService,Upload,$timeout){
+appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","$state", "$interval","PhotoService","localStorageService","Upload","OrderService","$timeout",
+    function($scope,$rootScope,$log,$modal,$state,$interval,PhotoService,localStorageService,Upload,OrderService,$timeout){
 
     $scope.totalPhoto = 0;
     $scope.imageBag =[];
     $scope.totalPrice=0;
 
     $scope.galleryBag =[];
+
+
 
     PhotoService.getPricing().then(function(data){
         $scope.formats = data;
@@ -37,7 +39,8 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
         $log.debug(imgId);
         PhotoService.deletePhoto(imgId)
             .then(function(data){
-                $scope.imageBag.splice(index,1);
+                //$scope.galleryBag.splice(index,1);
+                $log.debug(data);
 
             },function(err){
                 $rootScope.$broadcast('api_error',err);
@@ -92,15 +95,34 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
 
     $scope.checkout = function(){
         if($scope.totalPhoto >0){
-            var cartImages = [];
+            $rootScope.cartImages =$rootScope.cartImages || [];
+            var newProducs =[];
+
             angular.forEach($scope.imageBag,function(product){
                 if(product.quantity > 0){
-                    cartImages.push(product);
+                    $rootScope.cartImages.push(product);
+                    newProducs.push(product);
                 }
             });
 
-            $rootScope.cartImages = cartImages;
-            localStorageService.set("cart", $rootScope.cartImages );
+            if($rootScope.loggedIn){
+                OrderService.saveCart(newProducs)
+                    .then(function(data){
+
+                        localStorageService.remove("cart");
+                        $rootScope.retrieveCart();
+
+
+                    },function(err){
+                        $log.debug('erro saving cart...');
+                        $rootScope.$broadcast('api_error',err);
+                    });
+
+            }else{
+                localStorageService.set("cart", $rootScope.cartImages );
+            }
+
+
             $state.go("checkout")
         }
 
@@ -152,6 +174,25 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
             }
 
         });
+
+    //image quality checking
+    $scope.qualityMap = {"9x13": {excellent:{height:500, width:600},good:{height:400, width:500}, poor:{height:300, width:400}},
+            "10x15": {excellent:{height:800, width:1000},good:{height:600, width:800}, poor:{height:400, width:600}}};
+
+    $scope.getImageQuality = function(frameSize, heigh, width){
+        var dim = $scope.qualityMap[frameSize];
+        if(!dim ){
+            return "poor";
+        }
+
+        if(heigh>= dim.excellent.height && width >= dim.excellent.width){
+            return "excellent";
+        }else if(heigh>= dim.good.height && width >= dim.good.width){
+            return "good";
+        }else{
+            return "poor";
+        }
+    }
 
 
 }]);

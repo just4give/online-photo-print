@@ -33,9 +33,11 @@
                             <div class="prog-percentage" ng-hide="m.imgSrc">{{m.progress}}</div>
                             <div class="prog" ng-hide="m.imgSrc" ng-style="{width: m.progress }"></div>
                         </div>
-                        <div class="img-status">
+                        <div class="img-status ">
                             <!--<span>cat.png</span>-->
-                            <span class="pull-right high"><i class="fa fa-smile-o fa-2x"></i></span>
+                            <div class="icon-opp pull-right ngClass:getImageQuality(m.format.frameSize,m.height,m.width)"
+                                 data-template-url="modules/upload/tmpl/modal/quality-popover.html" data-animation="am-flip-x" data-auto-close="1" data-trigger="click" bs-popover></div>
+
                         </div>
                         <div class="img-format" ng-init="m.format=formats[0]">
                             <div class="btn-group btn-block">

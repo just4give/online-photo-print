@@ -15,12 +15,24 @@ exports.saveCart = function(cart,callback){
     User.findOne({where:{uuid:cart.uuid}})
         .then(function(user){
 
+
             if(user != null){
+
+                var imagIds=[];
                 cart.products.forEach(function(elem){
                    elem.userId = user.id;
+                    imagIds.push(elem.imgId);
+
                 });
+
+
                 console.log('user found . saving carts');
                 console.log(cart.products);
+
+                var toCreate = [];
+                var toUpdate =[];
+
+
 
                 Cart.bulkCreate(cart.products)
                     .then(function(){
@@ -77,6 +89,24 @@ exports.getCart = function(uuid,callback){
 
 }
 
+exports.deleteCart = function(cartId,callback){
+
+
+    Cart.findOne({where:{id:cartId}})
+        .then(function(cart){
+            console.log(cart);
+            cart.destroy();
+            callback(null,cart);
+
+
+        },function(err){
+            console.log("Database error in deleteCart: " + err);
+
+            callback(err);
+            return;
+        });
+
+}
 exports.getShipping = function(callback){
 
     Shipping.findAll().then(function(data){
