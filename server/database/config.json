@@ -32,7 +32,7 @@
     "password" : "root",
     "database" : "photos",
     "connectionLimit": 10,
-    "apiContext":"http://78.47.249.230:4000",
+    "apiContext":"http://78.47.249.230:3000",
     "imageRepo":"/root"
   }
 }

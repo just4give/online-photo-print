@@ -2,29 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="021355be-42cb-4204-9352-d924ca4bf589" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/modules/checkout/tmpl/modal/update-cart-item.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/modules/upload/tmpl/modal/quality-popover.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sass-cache/f6119d23c8253b2a06b9a726828fda746c9d75a5/_application.scssc" afterPath="$PROJECT_DIR$/.sass-cache/f6119d23c8253b2a06b9a726828fda746c9d75a5/_application.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/www" afterPath="$PROJECT_DIR$/bin/www" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/css/style.css" afterPath="$PROJECT_DIR$/client/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/css/style.css.map" afterPath="$PROJECT_DIR$/client/css/style.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/app/AppModule.js" afterPath="$PROJECT_DIR$/client/modules/app/AppModule.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/app/tmpl/home.html" afterPath="$PROJECT_DIR$/client/modules/app/tmpl/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/checkout/CheckoutController.js" afterPath="$PROJECT_DIR$/client/modules/checkout/CheckoutController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/checkout/tmpl/checkout.html" afterPath="$PROJECT_DIR$/client/modules/checkout/tmpl/checkout.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/common/LoginController.js" afterPath="$PROJECT_DIR$/client/modules/common/LoginController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/order/OrderService.js" afterPath="$PROJECT_DIR$/client/modules/order/OrderService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/upload/UploadController.js" afterPath="$PROJECT_DIR$/client/modules/upload/UploadController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/upload/tmpl/modal/gallery-modal.html" afterPath="$PROJECT_DIR$/client/modules/upload/tmpl/modal/gallery-modal.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/upload/tmpl/upload-container.html" afterPath="$PROJECT_DIR$/client/modules/upload/tmpl/upload-container.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/_application.scss" afterPath="$PROJECT_DIR$/sass/_application.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/database/config.json" afterPath="$PROJECT_DIR$/server/database/config.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/database/orderDB.js" afterPath="$PROJECT_DIR$/server/database/orderDB.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/database/photoDB.js" afterPath="$PROJECT_DIR$/server/database/photoDB.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/routes/orderRouter.js" afterPath="$PROJECT_DIR$/server/routes/orderRouter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/routes/photoRouter.js" afterPath="$PROJECT_DIR$/server/routes/photoRouter.js" />
     </list>
     <ignored path="PhotoOrder.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,16 +23,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="orderDB.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/database/orderDB.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="141" column="46" selection-start-line="141" selection-start-column="40" selection-end-line="141" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CheckoutController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/modules/checkout/CheckoutController.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -114,8 +82,18 @@
       <file leaf-file-name="config.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/database/config.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5496536">
-              <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.72286373">
+              <caret line="34" column="40" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="www" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/www">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -994,14 +972,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/www">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/modules/common/LoginController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1237,10 +1207,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bin/www">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server/database/config.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5496536">
-          <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.72286373">
+          <caret line="34" column="40" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
           <folding />
         </state>
       </provider>
