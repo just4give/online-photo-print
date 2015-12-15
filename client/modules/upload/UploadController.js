@@ -27,7 +27,7 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
     }
 
     $rootScope.decreaseeQuantity = function(m){
-        if(m.quantity >0 ) {
+        if(m.quantity >1 ) {
             m.quantity = m.quantity - 1;
             $scope.totalPrice -= m.format.price;
             $scope.totalPhoto--;

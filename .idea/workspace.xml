@@ -2,29 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="021355be-42cb-4204-9352-d924ca4bf589" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/modules/order/tmpl/modal/order-details-modal.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sass-cache/f6119d23c8253b2a06b9a726828fda746c9d75a5/_override.scssc" afterPath="$PROJECT_DIR$/.sass-cache/f6119d23c8253b2a06b9a726828fda746c9d75a5/_override.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sass-cache/f6119d23c8253b2a06b9a726828fda746c9d75a5/_variable.scssc" afterPath="$PROJECT_DIR$/.sass-cache/f6119d23c8253b2a06b9a726828fda746c9d75a5/_variable.scssc" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/css/style.css" afterPath="$PROJECT_DIR$/client/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/css/style.css.map" afterPath="$PROJECT_DIR$/client/css/style.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/checkout/CheckoutController.js" afterPath="$PROJECT_DIR$/client/modules/checkout/CheckoutController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/checkout/tmpl/modal/update-cart-item.html" afterPath="$PROJECT_DIR$/client/modules/checkout/tmpl/modal/update-cart-item.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/common/LoginController.js" afterPath="$PROJECT_DIR$/client/modules/common/LoginController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/common/tmpl/modal/login-modal.html" afterPath="$PROJECT_DIR$/client/modules/common/tmpl/modal/login-modal.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/order/MyOrderController.js" afterPath="$PROJECT_DIR$/client/modules/order/MyOrderController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/order/OrderService.js" afterPath="$PROJECT_DIR$/client/modules/order/OrderService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/order/tmpl/my-order.html" afterPath="$PROJECT_DIR$/client/modules/order/tmpl/my-order.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/upload/UploadController.js" afterPath="$PROJECT_DIR$/client/modules/upload/UploadController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/upload/tmpl/upload-container.html" afterPath="$PROJECT_DIR$/client/modules/upload/tmpl/upload-container.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/_override.scss" afterPath="$PROJECT_DIR$/sass/_override.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/_variable.scss" afterPath="$PROJECT_DIR$/sass/_variable.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/database/config.json" afterPath="$PROJECT_DIR$/server/database/config.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/database/orderDB.js" afterPath="$PROJECT_DIR$/server/database/orderDB.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/database/userDB.js" afterPath="$PROJECT_DIR$/server/database/userDB.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/orm/Cart.js" afterPath="$PROJECT_DIR$/server/orm/Cart.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/routes/orderRouter.js" afterPath="$PROJECT_DIR$/server/routes/orderRouter.js" />
     </list>
     <ignored path="PhotoOrder.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,30 +30,21 @@
         <entry file="file://$PROJECT_DIR$/client/modules/upload/UploadController.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="31" column="48" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
+              <caret line="157" column="5" selection-start-line="157" selection-start-column="5" selection-end-line="157" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="update-cart-item.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="update-cart-item.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/modules/checkout/tmpl/modal/update-cart-item.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.916667">
-              <caret line="28" column="47" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.34642032">
+              <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
               <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="my-order.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/modules/order/tmpl/my-order.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.0">
-              <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -80,61 +52,9 @@
       <file leaf-file-name="upload-container.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/modules/upload/tmpl/upload-container.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.5">
-              <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
+            <state vertical-scroll-proportion="-1.25">
+              <caret line="60" column="26" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="26" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="orderDB.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/database/orderDB.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="211" column="37" selection-start-line="211" selection-start-column="37" selection-end-line="211" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_override.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sass/_override.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.25">
-              <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_variable.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sass/_variable.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.791667">
-              <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/server/database/config.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.58429563">
-              <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="order-details-modal.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/modules/order/tmpl/modal/order-details-modal.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.375">
-              <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
-              <folding>
-                <element signature="n#style#0;n#button#0;n#div#2;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -211,12 +131,12 @@
         <option value="$PROJECT_DIR$/server/routes/orderRouter.js" />
         <option value="$PROJECT_DIR$/client/modules/order/tmpl/modal/order-details-modal.html" />
         <option value="$PROJECT_DIR$/client/modules/order/tmpl/my-order.html" />
-        <option value="$PROJECT_DIR$/client/modules/upload/tmpl/upload-container.html" />
-        <option value="$PROJECT_DIR$/client/modules/checkout/tmpl/modal/update-cart-item.html" />
-        <option value="$PROJECT_DIR$/client/modules/upload/UploadController.js" />
         <option value="$PROJECT_DIR$/server/database/orderDB.js" />
         <option value="$PROJECT_DIR$/sass/_variable.scss" />
         <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/client/modules/upload/UploadController.js" />
+        <option value="$PROJECT_DIR$/client/modules/upload/tmpl/upload-container.html" />
+        <option value="$PROJECT_DIR$/client/modules/checkout/tmpl/modal/update-cart-item.html" />
       </list>
     </option>
   </component>
@@ -1083,14 +1003,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/modules/checkout/tmpl/checkout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="71" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/modules/common/tmpl/modal/login-modal.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-22.125">
@@ -1143,60 +1055,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/modules/checkout/tmpl/modal/update-cart-item.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.916667">
-          <caret line="28" column="47" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/modules/upload/UploadController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="48" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/orm/Order.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3107221">
           <caret line="53" column="13" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/modules/upload/tmpl/upload-container.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.5">
-          <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/database/orderDB.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="211" column="37" selection-start-line="211" selection-start-column="37" selection-end-line="211" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sass/_override.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.25">
-          <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sass/_variable.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.791667">
-          <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -1211,9 +1073,68 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/database/config.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58429563">
-          <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.6882217">
+          <caret line="34" column="43" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="43" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sass/_variable.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65357965">
+          <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sass/_override.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.62355655">
+          <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/database/orderDB.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44857767">
+          <caret line="211" column="37" selection-start-line="211" selection-start-column="37" selection-end-line="211" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/modules/upload/UploadController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="157" column="5" selection-start-line="157" selection-start-column="5" selection-end-line="157" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/modules/checkout/tmpl/checkout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.625">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="71" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/modules/upload/tmpl/upload-container.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.25">
+          <caret line="60" column="26" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/modules/checkout/tmpl/modal/update-cart-item.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34642032">
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
