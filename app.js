@@ -68,8 +68,8 @@ app.use(function(err, req, res, next) {
     res.json(err);
 });
 
-var j = schedule.scheduleJob('*/10 * * * *', function(){
-    console.log('Cleaning up ');
+var j = schedule.scheduleJob('*/30 * * * *', function(){
+    console.log('Cleaning up '+new Date());
     photoDB.cleanupRepo(path.join(config.imageRepo, 'repo/temp'),path.join(config.imageRepo, 'repo'));
 });
 

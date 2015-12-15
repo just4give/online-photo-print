@@ -89,6 +89,37 @@ exports.getCart = function(uuid,callback){
 
 }
 
+exports.getOrderDetails = function(uuid,orderId,callback){
+
+
+    User.findOne({where:{uuid:uuid}})
+        .then(function(user){
+            console.log(user);
+            if(user != null){
+
+                Cart.findAll({ where:{userId: user.id,orderId: orderId}}).then(function(data){
+                    callback(null,data);
+                },function(err){
+                    console.log("Database error in getOrderDetails: " + err);
+
+                    callback(err);
+                    return;
+                });
+            }else{
+                callback({status: 403});
+                return;
+            }
+
+
+        },function(err){
+            console.log("Database error in getOrderDetails: " + err);
+
+            callback(err);
+            return;
+        });
+
+}
+
 exports.deleteCart = function(cartId,callback){
 
 
@@ -177,7 +208,7 @@ exports.getOrders = function(uuid,callback){
 
             if(user != null){
 
-                Order.findAll({where:{userId:user.id} })
+                Order.findAll({where:{userId:user.id} ,order:[['orderDate','DESC']]})
                 .then(function(data){
                     callback(null,data);
                 },function(err){

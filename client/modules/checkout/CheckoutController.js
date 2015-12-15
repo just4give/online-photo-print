@@ -197,6 +197,7 @@ appModule.controller("CheckoutController",["$scope","$rootScope","$log","$modal"
                 OrderService.placeOrder($scope.order)
                     .then(function(data){
                         $scope.orderprogress=false;
+                        $rootScope.cartImages =[];
                         $state.go("myorder");
                     },function(err){
                         $scope.orderprogress=false;

@@ -20,5 +20,22 @@ appModule.controller("MyOrderController",["$scope","$rootScope","$log","$modal",
 
         });
 
+        $scope.openOderDetails = function(index){
+
+            var orderId = $scope.orders[index].id;
+            $log.debug("Order id ="+ orderId);
+
+            OrderService.getOrderDetails(orderId).
+            then(function(data){
+                $scope.orderDetails = data;
+            },function(err){
+                $rootScope.$broadcast('api_error',err);
+            });
+
+
+            var  modal = $modal({scope: $scope, templateUrl: 'modules/order/tmpl/modal/order-details-modal.html', show: true});
+        }
+
+
 
 }]);

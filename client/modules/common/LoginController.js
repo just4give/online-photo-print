@@ -88,7 +88,7 @@ appModule.controller("loginController",["$scope","$rootScope","$log","$modal", "
                // $rootScope.cartImages =data;
                 $rootScope.cartImages =[];
                 angular.forEach(data, function(item){
-                    $rootScope.cartImages.push({id:item.id, imgId:item.imgId, imgSrc:item.imgSrc, quantity: item.quantity, format: {frameSize: item.frameSize, price: item.price}});
+                    $rootScope.cartImages.push({id:item.id, imgId:item.imgId, imgSrc:item.imgSrc, quantity: item.quantity, format: {frameSize: item.frameSize, price: item.price},paperFinish:item.paperFinish});
                 })
 
 
@@ -100,6 +100,8 @@ appModule.controller("loginController",["$scope","$rootScope","$log","$modal", "
     $scope.logout = function(){
         $rootScope.loggedIn = false;
         $rootScope.state.user=undefined;
+        $rootScope.cartImages=[];
+        localStorageService.remove("cart");
     }
 
     $scope.register = function(){

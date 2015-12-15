@@ -4,7 +4,7 @@
     "user"     : "root",
     "password" : "root",
     "database" : "photos",
-    "connectionLimit": 10,
+    "connectionLimit": 50,
     "apiContext":"http://localhost:3000",
     "imageRepo":"/Users/mithundas/Project_Workspace"
   },

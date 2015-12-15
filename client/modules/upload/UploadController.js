@@ -10,6 +10,7 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
 
     $scope.galleryBag =[];
 
+    $scope.globalPaperFinish="glossy";
 
 
     PhotoService.getPricing().then(function(data){
@@ -19,13 +20,13 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
         $rootScope.$broadcast('api_error',err);
     });
 
-    $scope.increaseQuantity = function(m){
+    $rootScope.increaseQuantity = function(m){
         m.quantity = m.quantity+1;
         $scope.totalPrice += m.format.price;
         $scope.totalPhoto++
     }
 
-    $scope.decreaseeQuantity = function(m){
+    $rootScope.decreaseeQuantity = function(m){
         if(m.quantity >0 ) {
             m.quantity = m.quantity - 1;
             $scope.totalPrice -= m.format.price;
@@ -56,10 +57,10 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
         $log.debug('****'+file);
 
         if(!file ||file.$error){
-            $scope.modalErrorMessage = 'Image size can not be more than 10MB';
+            //$scope.modalErrorMessage = 'Image size can not be more than 10MB';
             return;
         }
-        $scope.modalErrorMessage='';
+
         var uuid = $rootScope.state.user ? $rootScope.state.user.uuid:undefined;
 
         var newImage = {progress: '0%' };
@@ -93,6 +94,13 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
         },5000);*/
     }
 
+    $scope.uploadFiles = function(files){
+
+        angular.forEach(files, function(file){
+           $scope.upload(file);
+        });
+    }
+
     $scope.checkout = function(){
         if($scope.totalPhoto >0){
             $rootScope.cartImages =$rootScope.cartImages || [];
@@ -100,6 +108,7 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
 
             angular.forEach($scope.imageBag,function(product){
                 if(product.quantity > 0){
+                    product.paperFinish = $scope.globalPaperFinish;
                     $rootScope.cartImages.push(product);
                     newProducs.push(product);
                 }
@@ -151,7 +160,17 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
     $scope.addImport = function(){
         angular.forEach($scope.galleryBag, function(item){
             if(item.import){
-                $scope.imageBag.push(item);
+                var present = false;
+
+                angular.forEach($scope.imageBag, function(bagItem){
+                    if(bagItem.id == item.id){
+                        present = true;
+                    }
+                })
+                if(!present){
+                    $scope.imageBag.push(item);
+                }
+
             }
 
         });
@@ -180,19 +199,26 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
             "10x15": {excellent:{height:800, width:1000},good:{height:600, width:800}, poor:{height:400, width:600}}};
 
     $scope.getImageQuality = function(frameSize, heigh, width){
-        var dim = $scope.qualityMap[frameSize];
-        if(!dim ){
-            return "poor";
-        }
 
-        if(heigh>= dim.excellent.height && width >= dim.excellent.width){
+        var arr = frameSize.split('x');
+        var fheight = parseInt(arr[0]);
+        var fwidth = parseInt(arr[1]);
+        if((heigh >= 120*fheight && width >= 120*fwidth) || (width >= 120*fheight && heigh >= 120*fwidth)){
             return "excellent";
-        }else if(heigh>= dim.good.height && width >= dim.good.width){
+        }else if((heigh >= 80*fheight && width >= 80*fwidth) || (width >= 80*fheight && heigh >= 80*fwidth)){
             return "good";
         }else{
             return "poor";
         }
     }
 
+    $scope.updateGlobalFormat = function(format){
+        $log.debug('updated global format '+ format.frameSize);
+        angular.forEach($scope.imageBag, function(uploadedImage){
+            uploadedImage.format = format;
+        });
+
+        $scope.updateTotal();
+    }
 
 }]);

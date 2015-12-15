@@ -38,6 +38,10 @@ var cart = sequelize.define('cart', {
     orderId: {
         type: Sequelize.INTEGER,
         field: 'orderId'
+    },
+    paperFinish: {
+        type: Sequelize.STRING,
+        field: 'paperFinish'
     }
 
 },{

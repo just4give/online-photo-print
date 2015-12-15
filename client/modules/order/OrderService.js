@@ -9,7 +9,7 @@ appModule.factory('OrderService', ["$rootScope","$http","$q","$log", function($r
         saveCart: function(cart){
             var tempCart = {uuid:$rootScope.state.user.uuid, products:[]};
             angular.forEach(cart, function(item){
-                tempCart.products.push({imgId: item.imgId, imgSrc: item.imgSrc, frameSize: item.format.frameSize, price: item.format.price, quantity: item.quantity});
+                tempCart.products.push({imgId: item.imgId, imgSrc: item.imgSrc, frameSize: item.format.frameSize, price: item.format.price, quantity: item.quantity,paperFinish: item.paperFinish});
             });
             $log.debug('saving cart');
             $log.debug(tempCart);
@@ -152,6 +152,22 @@ appModule.factory('OrderService', ["$rootScope","$http","$q","$log", function($r
             var uuid = $rootScope.state.user ? $rootScope.state.user.uuid:undefined;
 
             $http.get($rootScope.apiContext + "/api/order/all/"+uuid)
+                .success(function (data){
+
+                    deferred.resolve(data);
+                })
+                .error(function(err){
+                    deferred.reject(err);
+                });
+            return deferred.promise;
+        },
+        getOrderDetails : function(orderId){
+
+            var deferred = $q.defer();
+
+            var uuid = $rootScope.state.user ? $rootScope.state.user.uuid:undefined;
+
+            $http.get($rootScope.apiContext + "/api/order/detail/"+orderId+"/"+uuid)
                 .success(function (data){
 
                     deferred.resolve(data);

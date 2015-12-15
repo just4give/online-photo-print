@@ -1,0 +1,55 @@
+<div class="modal ">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content login-modal" >
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$hide()"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Your order details</h4>
+
+            </div>
+            <div class="modal-body " >
+                <div class="row shipping-items">
+                    <div class="col-xs-12">
+                        <h1>Your items</h1>
+                        <table class="table">
+                            <thead>
+                            <tr>
+
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Finish</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="cartImage in orderDetails">
+                                <td class="col-xs-12 col-sm-6">
+
+                                    <div class="col-sm-4 col-xs-12">
+                                        <img ng-src="{{cartImage.imgSrc}}">
+                                    </div>
+                                    <div class="col-sm-8 col-xs-12 text-center">
+                                        {{cartImage.frameSize}}
+                                    </div>
+
+                                </td>
+                                <td class="col-xs-4 col-sm-2">{{cartImage.price}}</td>
+                                <td class="col-xs-4 col-sm-2">{{cartImage.quantity}}</td>
+                                <td class="col-xs-4 col-sm-2">{{cartImage.paperFinish}}</td>
+
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-opp-primary " style="margin: 10px" ng-click="$hide()"> Close</button>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
