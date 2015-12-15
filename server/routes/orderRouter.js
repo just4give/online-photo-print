@@ -122,4 +122,12 @@ router.get('/all/:uuid', function(req,res,next){
 
 });
 
+router.post('/contactus', function(req,res,next){
+    console.log(req.body);
+
+    res.json({'message':'Your message was sent.'})
+
+
+});
+
 module.exports = router;

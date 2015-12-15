@@ -202,3 +202,15 @@ body{
   background: url("../images/good.png") no-repeat ;
   background-size: cover;
 }
+
+.page-pricing{
+  table{
+    margin-top: 20px;
+    border: 1px solid;
+    thead{
+      border-bottom: 5px solid black;
+      background: #F5D427;
+      color: black;
+    }
+  }
+}

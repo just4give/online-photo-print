@@ -6,7 +6,7 @@
     "database" : "photos",
     "connectionLimit": 50,
     "apiContext":"http://localhost:3000",
-    "imageRepo":"/Users/mithundas/Project_Workspace"
+    "imageRepo":"/photo"
   },
   "production": {
     "host"     : "us-cdbr-iron-east-03.cleardb.net",

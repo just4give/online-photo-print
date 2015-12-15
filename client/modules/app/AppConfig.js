@@ -24,7 +24,8 @@ appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider",functio
         templateUrl: 'modules/app/tmpl/who-we-are.html'
     }).state('contact', {
         url: '/contact',
-        templateUrl: 'modules/app/tmpl/contact-us.html'
+        templateUrl: 'modules/app/tmpl/contact-us.html',
+        controller: 'ContactController'
     }).state('pricing', {
         url: '/pricing',
         templateUrl: 'modules/app/tmpl/pricing.html'

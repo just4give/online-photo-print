@@ -22,15 +22,27 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
 
     $rootScope.increaseQuantity = function(m){
         m.quantity = m.quantity+1;
-        $scope.totalPrice += m.format.price;
-        $scope.totalPhoto++
+       // $scope.totalPrice += m.format.price;
+       // $scope.totalPhoto++
+    }
+
+    $scope.getTotalPhotos = function(){
+        $scope.totalPhoto =0;
+        $scope.totalPrice =0;
+
+        angular.forEach($scope.imageBag, function(item){
+            $scope.totalPhoto += item.quantity;
+            $scope.totalPrice += item.format.price*item.quantity;
+        })
+
+        return $scope.totalPhoto;
     }
 
     $rootScope.decreaseeQuantity = function(m){
         if(m.quantity >1 ) {
             m.quantity = m.quantity - 1;
-            $scope.totalPrice -= m.format.price;
-            $scope.totalPhoto--;
+            //$scope.totalPrice -= m.format.price;
+           // $scope.totalPhoto--;
         }
     }
 
@@ -78,6 +90,7 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
             newImage.imgId = resp.data.imgId;
             newImage.width = resp.data.width;
             newImage.height = resp.data.height;
+            newImage.quantity=1;
 
 
         }, function (resp) {

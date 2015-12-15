@@ -1,0 +1,3 @@
+username root
+pass 6zdUfCcVvVsdY3
+server 78.47.249.230

@@ -176,6 +176,19 @@ appModule.factory('OrderService', ["$rootScope","$http","$q","$log", function($r
                     deferred.reject(err);
                 });
             return deferred.promise;
+        },
+        contactUs : function(form){
+
+            var deferred = $q.defer();
+            $http.post($rootScope.apiContext + "/api/order/contactus",form)
+                .success(function (data){
+
+                    deferred.resolve(data);
+                })
+                .error(function(err){
+                    deferred.reject(err);
+                });
+             return deferred.promise;
         }
     }
 

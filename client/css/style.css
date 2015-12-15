@@ -76,6 +76,13 @@
 .modal .modal-content {
   border-radius: 0px; }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0;
+  /* <-- Apparently some margin are still there even though it's hidden */ }
+
 .modal-backdrop.am-fade {
   opacity: .5;
   transition: all .35s ease-in-out; }
@@ -287,6 +294,14 @@ body {
 .icon-opp.good {
   background: url("../images/good.png") no-repeat;
   background-size: cover; }
+
+.page-pricing table {
+  margin-top: 20px;
+  border: 1px solid; }
+  .page-pricing table thead {
+    border-bottom: 5px solid black;
+    background: #F5D427;
+    color: black; }
 
 .slider {
   height: 300px;
