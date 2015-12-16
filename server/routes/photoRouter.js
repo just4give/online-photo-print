@@ -14,6 +14,7 @@ var path = require('path');
 var sizeOf = require('image-size');
 var User = require('../orm/User');
 var Photo = require('../orm/Photo');
+var easyimg = require('easyimage');
 
 /* GET users listing. */
 router.get('/pricing', function(req, res,next) {
@@ -54,6 +55,7 @@ router.post('/upload', multipartMiddleware,function (req, res, next) {
     var id = IdGenerator.v1();
     var fileName = id +  path.extname(file.name);
     var targetPath = config.imageRepo+ '/repo/temp/'+ fileName;
+    var thumbnailPath = config.imageRepo+ '/repo/thumb/'+ fileName;
 
     //var dimensions = sizeOf(file.path);
     //console.log(dimensions.width, dimensions.height);
@@ -63,24 +65,42 @@ router.post('/upload', multipartMiddleware,function (req, res, next) {
             .then(function(user){
                 var targetPath = config.imageRepo+ '/repo/'+ fileName;
 
+
                 fs.rename(file.path, targetPath, function(err) {
                     if(err) {
                         return next(err);
                     }
-                    sizeOf(targetPath, function(err, dimensions){
+                    //create thumbnail just after moving file to repo
+                    easyimg.thumbnail({
+                         src:targetPath, dst:thumbnailPath,
+                         width:180, height:180,
+                         x:0, y:0
+                         }).then(
+                         function(image) {
+                            console.log('Thumbnail created: ' +thumbnailPath );
+                             sizeOf(targetPath, function(err, dimensions){
 
 
-                    Photo.create({
-                        imgId: id, imgSrc: config.apiContext+'/repo/'+ fileName,userId:user.id,
-                        width:dimensions.width,height:dimensions.height,createdOn:new Date(),fileName: fileName
-                        }).then(function(data){
-                            res.json({imgSrc:config.apiContext+'/repo/'+ fileName, imgId:id, width:dimensions.width, height:dimensions.height });
-                        },function(err){
-                            return next(err);
-                        });
+                                 Photo.create({
+                                     imgId: id, imgSrc: config.apiContext+'/repo/thumb/'+ fileName,userId:user.id,
+                                     width:dimensions.width,height:dimensions.height,createdOn:new Date(),fileName: fileName
+                                 }).then(function(data){
+                                     res.json({imgSrc:config.apiContext+'/repo/thumb/'+ fileName, imgId:id, width:dimensions.width, height:dimensions.height });
+                                 },function(err){
+                                     return next(err);
+                                 });
 
 
-                    });
+                             });
+                         },
+                         function (err) {
+                            console.log(err);
+                             return next(err);
+                         }
+                     );
+
+
+
 
                 });
 
@@ -94,18 +114,32 @@ router.post('/upload', multipartMiddleware,function (req, res, next) {
             if(err) {
                 return next(err);
             }
-            console.log('renamed');
-            sizeOf(targetPath, function(err, dimensions){
-                Photo.create({
-                    imgId: id, imgSrc: config.apiContext+'/repo/temp/'+ fileName,
-                    width:dimensions.width,height:dimensions.height,createdOn:new Date(),fileName: fileName
-                }).then(function(data){
-                    res.json({imgSrc:config.apiContext+'/repo/temp/'+ fileName, imgId:id, width:dimensions.width, height:dimensions.height });
-                },function(err){
-                    return next(err);
-                });
+            //create thumbnail just after moving file to repo
+            easyimg.thumbnail({
+                src:targetPath, dst:thumbnailPath,
+                width:180, height:180,
+                x:0, y:0
+            }).then(
+                function(image) {
+                    console.log('Thumbnail created: ' +thumbnailPath );
+                    sizeOf(targetPath, function(err, dimensions){
+                        Photo.create({
+                            imgId: id, imgSrc: config.apiContext+'/repo/thumb/'+ fileName,
+                            width:dimensions.width,height:dimensions.height,createdOn:new Date(),fileName: fileName
+                        }).then(function(data){
+                            res.json({imgSrc:config.apiContext+'/repo/thumb/'+ fileName, imgId:id, width:dimensions.width, height:dimensions.height });
+                        },function(err){
+                            return next(err);
+                        });
 
-            })
+                    })
+                },
+                function (err) {
+                    console.log(err);
+                    return next(err);
+                }
+            );
+
 
         });
     }

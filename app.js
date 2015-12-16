@@ -14,6 +14,7 @@ var order = require('./server/routes/orderRouter');
 var photoDB = require('./server/database/photoDB');
 var cors = require('cors');
 
+
 var app = express();
 
 // view engine setup
@@ -22,6 +23,19 @@ app.set('view engine', 'ejs');
 
 var config = require('./server/database/config.json')[app.get('env')];
 console.log(config);
+
+/*easyimg.thumbnail({
+    src:'/photo/repo/foo.jpg', dst:'/photo/repo/thumb_foo.jpg',
+    width:180, height:180,
+    x:0, y:0
+}).then(
+    function(image) {
+        console.log('Thumbnail created: ' + image.width + ' x ' + image.height);
+    },
+    function (err) {
+        console.log(err);
+    }
+);*/
 // uncomment after placing your favicon in /client
 //app.use(favicon(__dirname + '/client/favicon.ico'));
 
