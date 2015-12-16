@@ -3,13 +3,27 @@
         <div class="modal-content login-modal" >
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$hide()"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Your order details</h4>
+                <h3 class="modal-title">Your order details</h3>
 
             </div>
             <div class="modal-body " >
                 <div class="row shipping-items">
-                    <div class="col-xs-12">
-                        <h1>Your items</h1>
+                        <div class="col-xs-12">
+
+
+
+                        <div class="row shipping-info margin-bottom-20">
+                            <div class="col-sm-6 col-xs-12">
+                                <h3><strong>Shipping to</strong></h3>
+
+                                <h5>{{shippingAddress.firstName}} {{shippingAddress.lastName}}</h5>
+                                <h5>{{shippingAddress.address}}</h5>
+                                <h5>{{shippingAddress.zip}} {{shippingAddress.city}}</h5>
+
+                            </div>
+                        </div>
+                        </div>
+
                         <table class="table">
                             <thead>
                             <tr>

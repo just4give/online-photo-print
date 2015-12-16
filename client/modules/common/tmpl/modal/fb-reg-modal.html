@@ -1,0 +1,41 @@
+<div class="modal ">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content login-modal">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$hide()"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Register</h4>
+
+            </div>
+            <div class="modal-body " >
+
+                <form class=""  >
+                    <div class="input-group">
+                        <span class="input-group-addon" id="fname-r"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" placeholder="First Name" aria-describedby="fname-r" ng-model="fbUser.first_name" autofocus>
+                    </div>
+                    <div class="input-group margin-top-10">
+                        <span class="input-group-addon" id="lname-r"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" placeholder="Last Name" aria-describedby="lname-r" ng-model="fbUser.last_name">
+                    </div>
+                    <div class="input-group margin-top-10">
+                        <span class="input-group-addon" id="user-email-r"><i class="fa fa-at"></i></span>
+                        <input type="email" class="form-control" placeholder="Email" aria-describedby="user-email-r" ng-model="fbUser.email">
+                    </div>
+
+                    <div class="alert alert-danger margin-top-10" ng-show="fbShowSignupErr">
+                        {{fbShowSignupErr}}
+                    </div>
+                    <div class="input-group margin-top-10">
+                        <button class="btn btn-opp-primary btn-rect" ng-click="fbRegisterAppConfirm()" ><i ng-show="signupprogress" class="fa fa-spinner fa-spin"></i> <i class="fa fa-user-plus"></i> Register</button>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+
+                <button class="btn btn-block btn-facebook btn-rect" style="border-radius: 0px" ><i class="fa fa-facebook"></i> Register with Facebook</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

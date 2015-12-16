@@ -9,11 +9,12 @@ appModule.factory('PhotoService', ["$rootScope","$http","$q","$log", function($r
 
             var deferred = $q.defer();
 
-            if($rootScope.state.formats){
+            if($rootScope.state && $rootScope.state.formats){
                 deferred.resolve($rootScope.state.formats);
             }else{
                 $http.get(apiContext+"/api/photo/pricing")
                     .success(function (data){
+                        $rootScope.state =  $rootScope.state||{};
                         $rootScope.state.formats = data;
                         $rootScope.state.formatMap={};
                         angular.forEach(data,function(f){

@@ -20,7 +20,7 @@
       <div class="col-xs-6 col-sm-8 col-md-8">
 
       </div>
-      <div class="col-xs-6 col-sm-4 col-md-4" ng-controller="loginController"  ng-init="$parent.apiContext='<%= apiContext %>'; $parent.state={}">
+      <div class="col-xs-6 col-sm-4 col-md-4" ng-controller="loginController"  ng-init="$parent.apiContext='<%= apiContext %>'">
         <div class="pull-right">
         <button class="btn btn-opp-primary btn-rect" ng-click="openLoginPopup()" ng-hide="loggedIn"><i class="fa fa-sign-in"></i> Login</button>
         <div class="btn-group user-menu" ng-show="loggedIn">
@@ -84,7 +84,7 @@
   <script src="vendor/angular-confirm-modal/angular-confirm.js"></script>
   <script src="vendor/angular-local-storage/dist/angular-local-storage.min.js"></script>
   <script src="vendor/ng-file-upload/ng-file-upload-all.min.js"></script>
-
+  <script src="vendor/angular-facebook/lib/angular-facebook.js"></script>
 
   <script src="modules/app/AppModule.js"></script>
   <script src="modules/common/HTTPInterceptor.js"></script>

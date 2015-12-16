@@ -181,6 +181,8 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
                     }
                 })
                 if(!present){
+                    item.quantity = 1;
+                    $log.debug('added quantity 1 but not working!!!');
                     $scope.imageBag.push(item);
                 }
 

@@ -129,6 +129,22 @@ appModule.factory('OrderService', ["$rootScope","$http","$q","$log", function($r
             });
         return deferred.promise;
     },
+        getAddress : function( addressId){
+
+            var deferred = $q.defer();
+
+            var uuid = $rootScope.state.user ? $rootScope.state.user.uuid:undefined;
+
+            $http.get($rootScope.apiContext + "/api/user/address/"+uuid+"/"+addressId)
+                .success(function (data){
+
+                    deferred.resolve(data);
+                })
+                .error(function(err){
+                    deferred.reject(err);
+                });
+            return deferred.promise;
+        },
     allAddress : function(){
 
             var deferred = $q.defer();

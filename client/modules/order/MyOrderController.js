@@ -23,11 +23,19 @@ appModule.controller("MyOrderController",["$scope","$rootScope","$log","$modal",
         $scope.openOderDetails = function(index){
 
             var orderId = $scope.orders[index].id;
+            var addressId =  $scope.orders[index].addressId;
             $log.debug("Order id ="+ orderId);
 
             OrderService.getOrderDetails(orderId).
             then(function(data){
                 $scope.orderDetails = data;
+            },function(err){
+                $rootScope.$broadcast('api_error',err);
+            });
+
+            OrderService.getAddress(addressId).
+            then(function(data){
+                $scope.shippingAddress = data;
             },function(err){
                 $rootScope.$broadcast('api_error',err);
             });

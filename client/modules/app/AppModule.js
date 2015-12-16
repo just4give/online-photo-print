@@ -2,7 +2,7 @@
  * Created by mithundas on 12/3/15.
  */
 var appModule = angular.module("photoOrder",['ui.router','ui.bootstrap','ngAnimate', 'ngTouch','mgcrea.ngStrap','angular-confirm',
-    'LocalStorageModule','ngFileUpload']);
+    'LocalStorageModule','ngFileUpload','facebook']);
 
 appModule.config(function (localStorageServiceProvider) {
     localStorageServiceProvider
@@ -26,3 +26,9 @@ appModule.config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
 }
 ]);
+
+appModule.config(function(FacebookProvider) {
+    // Set your appId through the setAppId method or
+    // use the shortcut in the initialize method directly.
+    FacebookProvider.init('341307939406976');
+})

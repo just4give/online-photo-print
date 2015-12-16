@@ -13,7 +13,7 @@ exports.registerUser = function(user,callback){
             if(data == null){
                 var userUUID = uuid.v4();
                 User.create({
-                    uuid: userUUID,firstName:user.firstName, lastName: user.lastName, email:user.email, password:user.password
+                    uuid: userUUID,firstName:user.firstName, lastName: user.lastName, email:user.email, password:user.password,facebookId: user.facebookId
                 }).then(function(data){
 
                     callback(null,data);
@@ -45,6 +45,17 @@ exports.loginUser = function(user,callback){
         })
 }
 
+exports.loginFBUser = function(user,callback){
+
+    User.findOne({where: {email: user.email, facebookId: user.facebookId}})
+        .then(function(data){
+            callback(null,data);
+        },function(err){
+            console.log("Database error in loginUser: " + err);
+            callback(err);
+            return;
+        })
+}
 exports.createAddress = function(uuid,address,callback){
 
     User.findOne({where:{uuid:uuid}})
@@ -131,7 +142,40 @@ exports.findDefaultAddress = function(uuid,callback){
         });
 }
 
+exports.findAddressById = function(uuid,addressId, callback){
 
+    User.findOne({where:{uuid:uuid}})
+        .then(function(user){
+            console.log('found user id'+user.id);
+            if(user != null){
+
+
+
+                Address.findOne({where:{userId: user.id, id:addressId}})
+                    .then(function(data){
+
+                        callback(null,data);
+
+                    },function(err){
+                        console.log("Database error in findDefaultAddress: " + err);
+
+                        callback(err);
+                        return;
+                    });
+            }else{
+                console.log("Database error in findDefaultAddress:403 ");
+                callback({status: 403});
+                return;
+            }
+
+
+        },function(err){
+            console.log("Database error in createAddress: " + err);
+
+            callback(err);
+            return;
+        });
+}
 exports.addresses = function(uuid,callback){
 
     User.findOne({where:{uuid:uuid}})
