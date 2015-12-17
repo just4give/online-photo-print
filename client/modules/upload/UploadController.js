@@ -61,7 +61,9 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
     }
 
 
-
+    $scope.tooltip = {
+        title: 'You have not selected any photo to print. Please increase quantity'
+    }
 
 
     $scope.upload = function(file){
@@ -181,8 +183,8 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
                     }
                 })
                 if(!present){
-                    item.quantity = 1;
-                    $log.debug('added quantity 1 but not working!!!');
+
+                    item.quantity=1;
                     $scope.imageBag.push(item);
                 }
 
@@ -199,6 +201,7 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
                 PhotoService.getGallery().
                 then(function(data){
                     $scope.galleryBag = data;
+
                 },function(err){
                     $rootScope.$broadcast('api_error',err);
                 });
