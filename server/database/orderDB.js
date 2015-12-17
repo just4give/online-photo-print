@@ -138,6 +138,24 @@ exports.deleteCart = function(cartId,callback){
         });
 
 }
+
+exports.updateOneCart = function(userId,cartId,cart,callback){
+
+
+    Cart.update({quantity: cart.quantity, frameSize: cart.frameSize},{where:{id:cartId, userId: userId}})
+        .then(function(cart){
+
+            callback(null,cart);
+
+
+        },function(err){
+            console.log("Database error in deleteCart: " + err);
+
+            callback(err);
+            return;
+        });
+
+}
 exports.getShipping = function(callback){
 
     Shipping.findAll().then(function(data){

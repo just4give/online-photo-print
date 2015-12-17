@@ -58,7 +58,7 @@ appModule.factory('OrderService', ["$rootScope","$http","$q","$log", function($r
         getShippingMethod: function(){
             var deferred = $q.defer();
 
-            if($rootScope.state.shipping){
+            if($rootScope.state && $rootScope.state.shipping){
                 deferred.resolve($rootScope.state.shipping);
             }else {
                 $http.get($rootScope.apiContext + "/api/order/shipping")
@@ -205,6 +205,19 @@ appModule.factory('OrderService', ["$rootScope","$http","$q","$log", function($r
                     deferred.reject(err);
                 });
              return deferred.promise;
+        },
+        updateCartItem : function(userId, cartId, cart){
+
+            var deferred = $q.defer();
+            $http.post($rootScope.apiContext + "/api/order/cart/"+userId+"/"+cartId,cart)
+                .success(function (data){
+
+                    deferred.resolve(data);
+                })
+                .error(function(err){
+                    deferred.reject(err);
+                });
+            return deferred.promise;
         }
     }
 

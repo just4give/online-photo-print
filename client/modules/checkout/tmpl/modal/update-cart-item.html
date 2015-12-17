@@ -6,10 +6,10 @@
     <div class="img-panel" style="height: auto;width: auto;border-radius: 0px">
 
         <div class="img-format">
-            <div class="btn-group btn-block">
-                <button type="button" class="btn btn-opp-light btn-rect format-size dropdown-toggle format-caret" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{selectedCartItem.format.frameSize}}</button>
+            <div class="btn-group " style="width: 100%">
+                <button type="button" class="btn btn-opp-light btn-block btn-rect  dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{selectedCartItem.format.frameSize}}<i class="fa fa-caret-down pull-right"></i></button>
 
-                    <span class="caret"></span>
+
                     <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <ul class="dropdown-menu">
@@ -19,17 +19,15 @@
             </div>
         </div>
         <div class="img-quantity" >
-            <button class="btn btn-opp-light btn-rect pull-left" ng-click="decreaseeQuantity(selectedCartItem)"><i class="fa fa-minus"></i></button>
-            <button class="btn btn-opp-light btn-rect pull-left" ng-click="decreaseeQuantity(selectedCartItem)"><i class="fa fa-minus"></i>10</button>
-            <input type="text" ng-model="selectedCartItem.quantity" disabled>
-            <button class="btn btn-opp-light btn-rect pull-right" ng-click="increaseQuantity(selectedCartItem)"><i class="fa fa-plus"></i>10</button>
-            <button class="btn btn-opp-light btn-rect pull-right" ng-click="increaseQuantity(selectedCartItem)"><i class="fa fa-plus"></i></button>
+            <button class="btn btn-opp-light btn-rect pull-left" ng-click="decreaseeItemQuantity(selectedCartItem)"><i class="fa fa-minus"></i></button>
+            <input type="number" ng-model="selectedCartItem.quantity" min="1" style="width: 60%" >
+            <button class="btn btn-opp-light btn-rect pull-right" ng-click="increaseItemQuantity(selectedCartItem)"><i class="fa fa-plus"></i></button>
         </div>
 
     </div>
 </div>
 <div class="modal-footer" style="margin: 10px;border: 0px">
-    <button class="btn btn-opp-primary ng-binding" ng-click="$hide()">Update</button>
+    <button class="btn btn-opp-primary ng-binding" ng-click="$hide();updateCartItem()">Update</button>
     <button class="btn btn-default ng-binding" ng-click="$hide()">Cancel</button>
 </div>
 </div>

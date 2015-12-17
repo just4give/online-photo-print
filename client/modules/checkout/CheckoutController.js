@@ -23,6 +23,7 @@ appModule.controller("CheckoutController",["$scope","$rootScope","$log","$modal"
         $rootScope.$watch('loggedIn',function(){
             if($rootScope.loggedIn){
                 $log.debug('user logged in ');
+                $rootScope.retrieveCart();
                 //get default addess
                 OrderService.defaultAddress()
                     .then(function(data){
@@ -242,7 +243,32 @@ appModule.controller("CheckoutController",["$scope","$rootScope","$log","$modal"
             var modal = $modal({scope: $scope, templateUrl: 'modules/checkout/tmpl/modal/update-cart-item.html', show: true});
     }
 
-}]);
+    $scope.updateCartItem = function(){
+        $log.debug($scope.selectedCartItem);
+        var cart = {
+            quantity: $scope.selectedCartItem.quantity,
+            frameSize: $scope.selectedCartItem.format.frameSize
+        }
+
+        OrderService.updateCartItem($scope.selectedCartItem.userId, $scope.selectedCartItem.id, cart).
+            then(function(data){
+
+        },function(err){
+
+        })
+    }
+
+    $scope.increaseItemQuantity = function(selectedCartItem){
+        selectedCartItem.quantity=selectedCartItem.quantity+1;
+    }
+
+        $scope.decreaseeItemQuantity = function(selectedCartItem){
+            if(selectedCartItem.quantity>1){
+                selectedCartItem.quantity=selectedCartItem.quantity-1;
+            }
+
+        }
+    }]);
 
 appModule.run(function($confirmModalDefaults) {
     $confirmModalDefaults.templateUrl = 'modules/checkout/tmpl/modal/order-confirm-modal.html';

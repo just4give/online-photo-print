@@ -100,7 +100,8 @@ appModule.controller("loginController",["$scope","$rootScope","$log","$modal", "
                // $rootScope.cartImages =data;
                 $rootScope.cartImages =[];
                 angular.forEach(data, function(item){
-                    $rootScope.cartImages.push({id:item.id, imgId:item.imgId, imgSrc:item.imgSrc, quantity: item.quantity, format: {frameSize: item.frameSize, price: item.price},paperFinish:item.paperFinish});
+                    $rootScope.cartImages.push({id:item.id, imgId:item.imgId, imgSrc:item.imgSrc, quantity: item.quantity, format: {frameSize: item.frameSize, price: item.price},paperFinish:item.paperFinish,
+                        userId:item.userId});
                 })
 
 
