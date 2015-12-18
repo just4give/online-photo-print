@@ -36,7 +36,7 @@
 
 </div>
 
-<section class="row process-container">
+<!--<section class="row process-container">
     <div class="row heading-box">
         <span class="heading">
            Make Your Photos Online
@@ -80,6 +80,58 @@
         </div>
     </div>
 
+</section>-->
+<section class="row circle-container " style="padding: 15px">
+
+    <ul class="list-inline">
+        <li>
+            <div class="circle-container">
+                <div class="circle">
+                    <i class="fa fa-upload"></i>
+                </div>
+                <div class="title">
+                    Upload
+                </div>
+            </div>
+
+        </li>
+
+        <li>
+            <div class="circle-container">
+                <div class="circle">
+                    <i class="fa fa-keyboard-o"></i>
+                </div>
+                <div class="title">
+                    Order
+                </div>
+            </div>
+        </li>
+
+        <li>
+            <div class="circle-container">
+                <div class="circle">
+                    <i class="fa fa-print"></i>
+                </div>
+                <div class="title">
+                    Print
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="circle-container">
+                <div class="circle">
+                    <i class="fa fa-truck"></i>
+                </div>
+                <div class="title">
+                    Delivered
+                </div>
+            </div>
+        </li>
+
+
+    </ul>
+
+
 </section>
 
 <section class="row process-container">
@@ -91,9 +143,16 @@
     <ul class="list-inline">
         <li ng-repeat="f in formats">
             <div class="size-card">
-                <i class="tag fa fa-tags fa-4x"></i>
-                <h1>{{f.price}}</h1><span>RSD</span>
-                <h2>{{f.frameSize}}</h2>
+                <!--<i class="tag fa fa-tags fa-4x"></i>-->
+                <div class="poster">
+                    <img src="../images/card-image.png">
+                </div>
+
+                <h2>{{f.frameSize}} cm</h2>
+                <div class="col-xs-12">
+                    <div class="col-xs-4 icon-opp coin"></div>
+                    <div class="col-xs-8 price"> ${{f.price}}</div>
+                </div>
             </div>
         </li>
 

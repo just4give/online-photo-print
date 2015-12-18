@@ -109,10 +109,10 @@ body{
   }
   .size-card{
     background-color: #f5f5f5;
-    border: 5px solid #444040;
+    border: 10px ridge #444040;
     color: black;
     /* padding: 20px; */
-    height: 150px;
+    height: 160px;
     width: 150px;
     margin: 10px;
 
@@ -135,6 +135,19 @@ body{
         position: relative;
         width: 20px;
         color: green;
+    }
+    .price{
+      font-size: 30px;
+      font-weight: bold;
+      padding: 0px;
+      text-align: left;
+    }
+    .poster{
+      height: 60px;
+      width: 100%;
+      img{
+        height: 100%;
+      }
     }
   }
   .dis-box{
@@ -203,6 +216,12 @@ body{
   background-size: cover;
 }
 
+.icon-opp.coin{
+  background: url("../images/coins.png") no-repeat ;
+  background-size: cover;
+}
+
+
 .page-pricing{
   table{
     margin-top: 20px;
@@ -212,5 +231,32 @@ body{
       background: #F5D427;
       color: black;
     }
+  }
+}
+
+.circle-container{
+  text-align: center;
+  padding: 10px;
+  .circle{
+    background-color: #000000;
+    border-radius: 50%;
+    border: 10px dashed $menu-background-color;
+    color: white;
+    height: 150px;
+    width: 150px;
+    line-height: 200px;
+
+
+    .fa{
+      font-size: 80px;
+      line-height: 150px;
+    }
+
+  }
+  .title{
+    font-size: xx-large;
+    /* font-weight: bold; */
+    color: black;
+    text-transform: uppercase;
   }
 }

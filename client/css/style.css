@@ -223,10 +223,10 @@ body {
     background-color: #f2dede; }
   .process-container .size-card {
     background-color: #f5f5f5;
-    border: 5px solid #444040;
+    border: 10px ridge #444040;
     color: black;
     /* padding: 20px; */
-    height: 150px;
+    height: 160px;
     width: 150px;
     margin: 10px;
     -ms-box-shadow: 5px 10px 2px #CCC8C8;
@@ -244,6 +244,16 @@ body {
       position: relative;
       width: 20px;
       color: green; }
+    .process-container .size-card .price {
+      font-size: 30px;
+      font-weight: bold;
+      padding: 0px;
+      text-align: left; }
+    .process-container .size-card .poster {
+      height: 60px;
+      width: 100%; }
+      .process-container .size-card .poster img {
+        height: 100%; }
   .process-container .dis-box .card {
     background-color: #D00404;
     color: white;
@@ -295,6 +305,10 @@ body {
   background: url("../images/good.png") no-repeat;
   background-size: cover; }
 
+.icon-opp.coin {
+  background: url("../images/coins.png") no-repeat;
+  background-size: cover; }
+
 .page-pricing table {
   margin-top: 20px;
   border: 1px solid; }
@@ -302,6 +316,26 @@ body {
     border-bottom: 5px solid black;
     background: #F5D427;
     color: black; }
+
+.circle-container {
+  text-align: center;
+  padding: 10px; }
+  .circle-container .circle {
+    background-color: #000000;
+    border-radius: 50%;
+    border: 10px dashed #D00404;
+    color: white;
+    height: 150px;
+    width: 150px;
+    line-height: 200px; }
+    .circle-container .circle .fa {
+      font-size: 80px;
+      line-height: 150px; }
+  .circle-container .title {
+    font-size: xx-large;
+    /* font-weight: bold; */
+    color: black;
+    text-transform: uppercase; }
 
 .slider {
   height: 300px;
