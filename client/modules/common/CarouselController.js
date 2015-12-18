@@ -75,9 +75,9 @@ appModule.animation('.slide-animation', ["$log",function ($log) {
 appModule.controller('CarouselDemoCtrl', function ($scope) {
     $scope.myInterval = 5000;
     $scope.noWrapSlides = false;
-    var slides = $scope.slides = [ {image:'images/img000.png', text:"Make your photo online. Learn more"},
-        {image:'images/img001.png', text:"Buy more and more discount. Learn more"},
-        {image:'images/img002.png', text:"FREE shipping for qualified purchase. Learn more"}];
+    var slides = $scope.slides = [ {image:'images/img000.jpg', text:"Make your photo online. Learn more"},
+        {image:'images/img002.jpg', text:"Buy more and more discount. Learn more"},
+        {image:'images/img008.jpg', text:"FREE shipping for qualified purchase. Learn more"}];
     /*$scope.addSlide = function() {
         var newWidth = 600 + slides.length + 1;
         slides.push({
