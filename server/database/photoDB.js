@@ -75,9 +75,9 @@ exports.cleanupRepo = function(tempDir, repoDir){
                         //photo is linked to cart, need to update, move file to repo first
                         fs.rename(path.join(tempDir, photo.fileName), path.join(repoDir, photo.fileName), function(err) {
                             if(!err){
-                                Photo.update({userId:cart.userId, imgSrc: config.apiContext+'/repo/'+photo.fileName},
+                                Photo.update({userId:cart.userId},
                                     {where:{id: photo.id}});
-                                Cart.update({imgSrc: config.apiContext+'/repo/'+photo.fileName},{where:{id:cart.id}});
+
                             }
                         });
 
