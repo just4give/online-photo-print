@@ -19,16 +19,16 @@
 
   </head>
   <body>
-  {{appLoaded}}
+
     <div class="text-center">
       <div class="spinner" ng-hide="hideAppSpinner"></div>
     </div>
-    <div ng-show="appLoaded">
-    <header class="top-header">
-      <div class="col-xs-6 col-sm-8 col-md-8">
+    <div  ng-show="appLoaded">
+    <header class="top-header" style="display: none">
+      <div class="col-xs-12 col-sm-8 col-md-8">
 
       </div>
-      <div class="col-xs-6 col-sm-4 col-md-4" ng-controller="loginController"  ng-init="$parent.apiContext='<%= apiContext %>'">
+      <div class="col-xs-12 col-sm-4 col-md-4" ng-controller="loginController"  ng-init="$parent.apiContext='<%= apiContext %>'">
         <div class="pull-right">
         <button class="btn btn-opp-primary btn-rect" ng-click="openLoginPopup()" ng-hide="loggedIn"><i class="fa fa-sign-in"></i> Login</button>
         <div class="btn-group user-menu" ng-show="loggedIn">
@@ -51,7 +51,7 @@
       </div>
 
     </header>
-    <nav class="navbar navbar-inverse navbar-opp" role="navigation">
+    <nav class="navbar navbar-inverse navbar-opp" role="navigation" style="display: none">
       <div class="navbar-header">
 
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top-menu">

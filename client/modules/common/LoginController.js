@@ -19,6 +19,8 @@ appModule.controller("loginController",["$scope","$rootScope","$log","$modal", "
             $rootScope.hideAppSpinner = true;
             $timeout(function(){
                 $rootScope.appLoaded = true;
+                $('header').css('display','block');
+                $('nav').css('display','block');
             },2000);
 
         });
