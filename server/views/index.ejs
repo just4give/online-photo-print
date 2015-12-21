@@ -11,11 +11,16 @@
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="vendor/angular/angular-csp.css" rel="stylesheet">
+    <link href="vendor/animate.css/animate.min.css" rel="stylesheet">
+
     <link href="css/style.css" rel="stylesheet" />
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
   </head>
   <body>
+    <div class="text-center"><div class="spinner" ng-hide="hideAppSpinner"></div></div>
+    <div ng-show="appLoaded">
     <header class="top-header">
       <div class="col-xs-6 col-sm-8 col-md-8">
 
@@ -65,8 +70,8 @@
       </div>
     </nav>
 
-    <div ui-view></div>
-
+    <div ui-view class="page-view"></div>
+    </div>
   </body>
   <script src="vendor/jquery/dist/jquery.min.js"></script>
   <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>

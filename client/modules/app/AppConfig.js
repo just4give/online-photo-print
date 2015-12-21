@@ -33,7 +33,7 @@ appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider",functio
      ;
 
     $httpProvider.interceptors.push('httpInterceptor');
-    
-    
+
+    console.log('route config...');
         
 }]);

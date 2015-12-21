@@ -1,8 +1,8 @@
 /**
  * Created by Mithun.Das on 12/4/2015.
  */
-appModule.controller("loginController",["$scope","$rootScope","$log","$modal", "$interval","$state","UserService","localStorageService","OrderService","Facebook",
-    function($scope,$rootScope,$log,$modal,$interval,$state,UserService,localStorageService,OrderService,Facebook){
+appModule.controller("loginController",["$scope","$rootScope","$log","$modal", "$interval","$timeout","$state","UserService","localStorageService","OrderService","Facebook",
+    function($scope,$rootScope,$log,$modal,$interval,$timeout,$state,UserService,localStorageService,OrderService,Facebook){
 
     $log.debug('initializing login controller');
     $scope.signupprogress = false;
@@ -14,6 +14,14 @@ appModule.controller("loginController",["$scope","$rootScope","$log","$modal", "
 
     var modal;
 
+        angular.element(document).ready(function() {
+            console.log('document ready inside logib controller...');
+            $rootScope.hideAppSpinner = true;
+            $timeout(function(){
+                $rootScope.appLoaded = true;
+            },1000);
+
+        });
     //check cart
     if( !$rootScope.loggedIn) {
         $rootScope.cartImages = localStorageService.get("cart");

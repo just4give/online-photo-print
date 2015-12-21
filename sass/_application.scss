@@ -260,3 +260,69 @@ body{
     text-transform: uppercase;
   }
 }
+
+@keyframes rotate360 {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@-webkit-keyframes rotate360 {
+  from { -webkit-transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); }
+}
+
+.spinner {
+  display:inline-block;
+  border-radius: 50%;
+  border-style: solid;
+  border-bottom-color: #3b5641;
+  border-top-color: #67b3a9;
+  border-left-color: #df7950;
+  border-right-color: #decb3f;
+  text-align: center;
+  vertical-align: middle;
+  position: relative;
+  animation: rotate360 1s linear infinite;
+  -webkit-animation: rotate360 1s linear infinite;
+
+  border-width: 10px;
+  width: 100px;
+  height: 100px;
+  line-height: 100%;
+  margin-top: 20px;
+}
+
+/*.ng-hide-add {
+  opacity: 1;
+  transition: .35s linear all;
+}
+.ng-hide-add.ng-hide-add-active {
+  opacity: 0;
+}
+.ng-hide-remove {
+  opacity: 0;
+  transition: .35s linear all;
+}
+.ng-hide-remove.ng-hide-remove-active {
+  opacity: 1;
+}*/
+
+.ng-show{
+  -webkit-animation:fadeIn .35s linear;
+  -o-animation:fadeIn .35s linear;
+  animation: fadeIn .35s linear;
+}
+
+.ng-hide{
+  -webkit-animation:fadeOut .35s linear;
+  -o-animation:fadeOut .35s linear;
+  animation: fadeOut .35s linear;
+}
+
+.page-view.ng-enter {
+  animation: fadeInRight .5s linear;
+}
+
+.page-view.ng-leave {
+  animation: fadeOutLeft .5s linear;
+}
