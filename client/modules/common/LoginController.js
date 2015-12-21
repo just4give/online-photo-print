@@ -19,7 +19,7 @@ appModule.controller("loginController",["$scope","$rootScope","$log","$modal", "
             $rootScope.hideAppSpinner = true;
             $timeout(function(){
                 $rootScope.appLoaded = true;
-            },1000);
+            },2000);
 
         });
     //check cart

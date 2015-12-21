@@ -320,9 +320,9 @@ body{
 }
 
 .page-view.ng-enter {
-  animation: fadeInRight .5s linear;
+  animation: fadeInRight .35s linear;
 }
 
 .page-view.ng-leave {
-  animation: fadeOutLeft .5s linear;
+  animation: fadeOutLeft .35s linear;
 }
