@@ -19,7 +19,10 @@
 
   </head>
   <body>
-    <div class="text-center"><div class="spinner" ng-hide="hideAppSpinner"></div></div>
+  {{appLoaded}}
+    <div class="text-center">
+      <div class="spinner" ng-hide="hideAppSpinner"></div>
+    </div>
     <div ng-show="appLoaded">
     <header class="top-header">
       <div class="col-xs-6 col-sm-8 col-md-8">
