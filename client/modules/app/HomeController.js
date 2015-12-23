@@ -27,4 +27,13 @@ appModule.controller("HomeController",["$scope","$rootScope","$log","$modal","$s
         }
     },3000);
 
+    $scope.animateProcess = function(){
+
+        angular.element("#process-list li").addClass('bounce-in-up');
+    }
+    $scope.animateDiscount = function(){
+
+            angular.element("#discount-list li").addClass('bounce-in-up');
+    }
+
 }]);

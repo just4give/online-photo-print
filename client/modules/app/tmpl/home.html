@@ -134,14 +134,15 @@
 
 </section>
 
-<section class="row process-container">
+<section class="row process-container" >
     <div class="row heading-box">
         <span class="heading">
            Best Price Guaranteed
         </span>
     </div>
-    <ul class="list-inline">
-        <li ng-repeat="f in formats">
+    <ul class="list-inline" id="process-list" in-view-container>
+        <any in-view="$inview&&animateProcess()" ></any>
+        <li ng-repeat="f in formats" class="">
             <div class="size-card">
                 <!--<i class="tag fa fa-tags fa-4x"></i>-->
                 <div class="poster">
@@ -165,7 +166,8 @@
         </span>
     </div>
 
-    <ul class="list-inline">
+    <ul class="list-inline" id="discount-list" in-view-container>
+        <any in-view="$inview&&animateDiscount()" ></any>
         <li>
             <div class="dis-box">
                 <div class="card one">
