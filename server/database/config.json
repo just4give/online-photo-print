@@ -23,7 +23,7 @@
     "password" : "password",
     "database" : "photos",
     "connectionLimit": 10,
-    "apiContext":"http://ec2-54-213-85-177.us-west-2.compute.amazonaws.com:3000",
+    "apiContext":"http://ec2-52-25-206-147.us-west-2.compute.amazonaws.com:3000",
     "imageRepo":"/home/ubuntu"
   },
   "uat": {
