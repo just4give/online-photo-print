@@ -14,16 +14,6 @@ appModule.controller("loginController",["$scope","$rootScope","$log","$modal", "
 
     var modal;
 
-        angular.element(document).ready(function() {
-            console.log('document ready inside logib controller...');
-            $rootScope.hideAppSpinner = true;
-            $timeout(function(){
-                $rootScope.appLoaded = true;
-                $('header').css('display','block');
-                $('nav').css('display','block');
-            },2000);
-
-        });
     //check cart
     if( !$rootScope.loggedIn) {
         $rootScope.cartImages = localStorageService.get("cart");

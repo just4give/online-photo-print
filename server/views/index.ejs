@@ -20,11 +20,12 @@
   </head>
   <body>
 
-    <div class="text-center">
+   <!-- <div class="text-center">
       <div class="spinner" ng-hide="hideAppSpinner"></div>
     </div>
-    <div  ng-show="appLoaded">
-    <header class="top-header" style="display: none">
+    <div  ng-show="appLoaded">-->
+      <div >
+    <header class="top-header">
       <div class="col-xs-12 col-sm-8 col-md-8">
 
       </div>
@@ -51,7 +52,7 @@
       </div>
 
     </header>
-    <nav class="navbar navbar-inverse navbar-opp" role="navigation" style="display: none">
+    <nav class="navbar navbar-inverse navbar-opp" role="navigation" >
       <div class="navbar-header">
 
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top-menu">
@@ -75,9 +76,13 @@
 
     <div ui-view class="page-view"></div>
     </div>
+
+
   </body>
   <script src="vendor/jquery/dist/jquery.min.js"></script>
   <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="vendor/wow/dist/wow.min.js"></script>
+
 
   <script src="vendor/angular/angular.min.js"></script>
   <script src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
@@ -93,7 +98,7 @@
   <script src="vendor/angular-local-storage/dist/angular-local-storage.min.js"></script>
   <script src="vendor/ng-file-upload/ng-file-upload-all.min.js"></script>
   <script src="vendor/angular-facebook/lib/angular-facebook.js"></script>
-  <script src="vendor/angular-inview/angular-inview.js"></script>
+
 
   <script src="modules/app/AppModule.js"></script>
   <script src="modules/common/HTTPInterceptor.js"></script>

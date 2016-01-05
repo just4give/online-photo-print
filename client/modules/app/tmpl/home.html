@@ -36,52 +36,8 @@
 
 </div>
 
-<!--<section class="row process-container">
-    <div class="row heading-box">
-        <span class="heading">
-           Make Your Photos Online
-        </span>
 
-    </div>
-    <div class="col-sm-3 process one">
-        <div class="widget-step"><h3>Step 1</h3></div>
-        <div class="widget-image" ng-click="gotoUpload()">
-            <a><img src="images/imageupload.png"></a>
-        </div>
-        <div class="widget-text">
-            <p>Upload your image or send us your CD/DVD</p>
-        </div>
-    </div>
-    <div class="col-sm-3 process two">
-        <div class="widget-step"><h3>Step 2</h3></div>
-        <div class="widget-image" ng-click="gotoUpload()">
-            <a><img src="images/writeaddress.png"></a>
-        </div>
-        <div class="widget-text">
-            <p>Enter your delivery address</p>
-        </div>
-    </div>
-    <div class="col-sm-3 process three">
-        <div class="widget-step"><h3>Step 3</h3></div>
-        <div class="widget-image" ng-click="gotoUpload()">
-            <a><img src="images/printphoto.png"></a>
-        </div>
-        <div class="widget-text">
-            <p>We will make your photos</p>
-        </div>
-    </div>
-    <div class="col-sm-3 process four">
-        <div class="widget-step"><h3>Step 4</h3></div>
-        <div class="widget-image" ng-click="gotoUpload()">
-            <a><img src="images/photodelivery.png"></a>
-        </div>
-        <div class="widget-text">
-            <p>And deliver them to your home</p>
-        </div>
-    </div>
-
-</section>-->
-<section class="row circle-container " style="padding: 15px">
+<section class="row circle-container wow slideInLeft" data-wow-delay="1s" style="padding: 15px">
 
     <ul class="list-inline">
         <li>
@@ -134,14 +90,14 @@
 
 </section>
 
-<section class="row process-container" >
+<section class="row process-container " >
     <div class="row heading-box">
         <span class="heading">
            Best Price Guaranteed
         </span>
     </div>
-    <ul class="list-inline" id="process-list" in-view-container>
-        <any in-view="$inview&&animateProcess()" ></any>
+    <ul class="list-inline wow bounceInUp" id="process-list" data-wow-duration="1s">
+
         <li ng-repeat="f in formats" class="">
             <div class="size-card">
                 <!--<i class="tag fa fa-tags fa-4x"></i>-->
@@ -160,14 +116,14 @@
     </ul>
 
 
-    <div class="row discount-heading">
+    <div class="row discount-heading ">
         <span class="">
            Order more and get exciting discounts
         </span>
     </div>
 
-    <ul class="list-inline" id="discount-list" in-view-container>
-        <any in-view="$inview&&animateDiscount()" ></any>
+    <ul class="list-inline wow bounceInUp" id="discount-list" >
+
         <li>
             <div class="dis-box">
                 <div class="card one">
@@ -215,21 +171,4 @@
         </li>
     </ul>
 
-</section>
-<section>
-
-   <!-- <div ng-controller="CarouselDemoCtrl">
-        <div class="carousel-box">
-            <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
-                <uib-slide ng-repeat="slide in slides" active="slide.active">
-                    <img ng-src="{{slide.image}}" style="margin:auto;">
-                    <div class="carousel-caption">
-                        <h4>Slide {{$index}}</h4>
-                        <p>{{slide.text}}</p>
-                    </div>
-                </uib-slide>
-            </uib-carousel>
-        </div>
-
-    </div>-->
 </section>
