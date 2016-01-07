@@ -2,7 +2,7 @@
  * Created by mithundas on 12/3/15.
  */
 var appModule = angular.module("photoOrder",['ui.router','ui.bootstrap','ngAnimate', 'ngTouch','mgcrea.ngStrap','angular-confirm',
-    'LocalStorageModule','ngFileUpload','facebook']);
+    'LocalStorageModule','ngFileUpload','facebook','headroom']);
 
 appModule.config(function (localStorageServiceProvider) {
     localStorageServiceProvider

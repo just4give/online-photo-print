@@ -144,12 +144,13 @@ body::-webkit-scrollbar {
 body {
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 300;
-  background-color: #E9E9E9;
-  color: gray; }
+  color: gray;
+  padding-top: 80px; }
 
 .navbar-opp {
-  background-color: #D00404;
-  border-color: #D00404; }
+  background-color: black;
+  border-color: black;
+  height: 80px; }
 
 .navbar-opp .navbar-nav > li > a {
   color: white;
@@ -162,11 +163,7 @@ body {
 
 .navbar-opp .navbar-nav > li > a:hover {
   cursor: pointer;
-  font-size: x-large; }
-
-.top-header {
-  min-height: 60px;
-  padding-top: 10px; }
+  color: yellow; }
 
 .cart {
   color: #D00404;
@@ -326,7 +323,6 @@ body {
   .circle-container .circle {
     background-color: #000000;
     border-radius: 50%;
-    border: 10px dashed #D00404;
     color: white;
     height: 150px;
     width: 150px;
@@ -429,12 +425,20 @@ body {
   -moz-animation-duration: 1s;
   animation-duration: 1s; }
 
+.headroom {
+  transition: transform 200ms linear; }
+
+.headroom--pinned {
+  transform: translateY(0%); }
+
+.headroom--unpinned {
+  transform: translateY(-100%); }
+
 .slider {
   height: 300px;
   overflow: hidden;
   position: relative;
   background: #e6e6e6;
-  background: url("../images/bg1.png") no-repeat;
   background-size: cover; }
   .slider img {
     width: 250px;
@@ -537,7 +541,6 @@ NAV
   background-color: transparent; }
 
 .carousel-box {
-  background: url("../images/bg1.png") no-repeat;
   background-size: cover;
   height: 300px; }
 

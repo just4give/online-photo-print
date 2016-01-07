@@ -1,13 +1,15 @@
 body{
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 300;
-  background-color: $background-color;
+  //background-color: $background-color;
   color: gray;
+  padding-top: $header-height;
 }
 
 .navbar-opp{
-  background-color: $menu-background-color;
-  border-color: $menu-background-color;
+  background-color: black;
+  border-color: black;
+  height: $header-height;
 }
 
 
@@ -22,11 +24,12 @@ body{
 }
 .navbar-opp .navbar-nav>li>a:hover {
   cursor: pointer;
-  font-size: x-large;
+  //font-size: x-large;
+  color: yellow;
 }
 .top-header{
-  min-height: 60px;
-  padding-top: 10px;
+  //min-height: 60px;
+  //padding-top: 10px;
 }
 .cart{
   color: $menu-background-color;
@@ -240,7 +243,7 @@ body{
   .circle{
     background-color: #000000;
     border-radius: 50%;
-    border: 10px dashed $menu-background-color;
+    //border: 10px dashed $menu-background-color;
     color: white;
     height: 150px;
     width: 150px;
@@ -356,4 +359,14 @@ body{
   -webkit-animation-duration: 1s;
   -moz-animation-duration: 1s;
   animation-duration: 1s;
+}
+
+.headroom {
+  transition: transform 200ms linear;
+}
+.headroom--pinned {
+  transform: translateY(0%);
+}
+.headroom--unpinned {
+  transform: translateY(-100%);
 }
