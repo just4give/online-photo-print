@@ -23,15 +23,15 @@ $header-height: 80px;
 }
 .btn-opp-primary{
   color: white;
-  background-color: $menu-background-color;
-  border-color: $menu-background-color;
-  background: rgb(188,11,14);
+  background-color: black;
+  border-color: black;
+  /*background: rgb(188,11,14);
   background: -moz-linear-gradient(top, rgba(188,11,14,1) 0%, rgba(181,41,48,1) 1%, rgba(244,0,12,1) 3%, rgba(181,0,12,1) 74%, rgba(188,3,21,1) 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(188,11,14,1)), color-stop(1%,rgba(181,41,48,1)), color-stop(3%,rgba(244,0,12,1)), color-stop(74%,rgba(181,0,12,1)), color-stop(100%,rgba(188,3,21,1)));
   background: -webkit-linear-gradient(top, rgba(188,11,14,1) 0%,rgba(181,41,48,1) 1%,rgba(244,0,12,1) 3%,rgba(181,0,12,1) 74%,rgba(188,3,21,1) 100%);
   background: -o-linear-gradient(top, rgba(188,11,14,1) 0%,rgba(181,41,48,1) 1%,rgba(244,0,12,1) 3%,rgba(181,0,12,1) 74%,rgba(188,3,21,1) 100%);
   background: -ms-linear-gradient(top, rgba(188,11,14,1) 0%,rgba(181,41,48,1) 1%,rgba(244,0,12,1) 3%,rgba(181,0,12,1) 74%,rgba(188,3,21,1) 100%);
-  background: linear-gradient(to bottom, rgba(188,11,14,1) 0%,rgba(181,41,48,1) 1%,rgba(244,0,12,1) 3%,rgba(181,0,12,1) 74%,rgba(188,3,21,1) 100%);
+  background: linear-gradient(to bottom, rgba(188,11,14,1) 0%,rgba(181,41,48,1) 1%,rgba(244,0,12,1) 3%,rgba(181,0,12,1) 74%,rgba(188,3,21,1) 100%);*/
   &:hover{
     color: yellow;
   }

@@ -30,7 +30,7 @@ appModule.factory('OrderService', ["$rootScope","$http","$q","$log", function($r
         getCart: function(){
              var deferred = $q.defer();
 
-            $http.get($rootScope.apiContext + "/api/order/cart/"+$rootScope.state.user.uuid)
+            $http.get("/api/order/cart/"+$rootScope.state.user.uuid)
                 .success(function (data){
 
                     deferred.resolve(data);

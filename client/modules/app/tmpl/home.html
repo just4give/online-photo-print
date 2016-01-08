@@ -37,7 +37,7 @@
 </div>
 
 
-<section class="row circle-container wow slideInLeft" data-wow-delay="1s" style="padding: 15px">
+<section class="row circle-container wow bounceInUp" data-wow-delay="1s" style="padding: 15px">
 
     <ul class="list-inline">
         <li>
@@ -96,13 +96,13 @@
            Best Price Guaranteed
         </span>
     </div>
-    <ul class="list-inline wow bounceInUp" id="process-list" data-wow-duration="1s">
+    <ul class="row list-inline wow bounceInUp" id="process-list" data-wow-duration="1s">
 
-        <li ng-repeat="f in formats" class="">
+        <li ng-repeat="f in formats" class="col-lg-2 col-sm-3">
             <div class="size-card">
                 <!--<i class="tag fa fa-tags fa-4x"></i>-->
                 <div class="poster">
-                    <img src="../images/card-image.png">
+                    <img ng-src="../images/p{{$index+1}}.jpg" class="img-responsive">
                 </div>
 
                 <h2>{{f.frameSize}} cm</h2>
@@ -126,7 +126,7 @@
 
         <li>
             <div class="dis-box">
-                <div class="card one">
+                <div class="card ">
                     <h1>5% </h1>
 
                 </div>
@@ -135,7 +135,7 @@
         </li>
         <li>
             <div class="dis-box">
-                <div class="card two">
+                <div class="card ">
                     <h1>10% </h1>
 
                 </div>
@@ -144,7 +144,7 @@
         </li>
         <li>
             <div class="dis-box">
-                <div class="card three">
+                <div class="card ">
                     <h1>20%</h1>
                     <h3>+ FREE shipping</h3>
                 </div>
@@ -153,22 +153,14 @@
         </li>
         <li>
             <div class="dis-box">
-                <div class="card four">
+                <div class="card ">
                     <h1>25% </h1>
                     <h3>+ FREE shipping</h3>
                 </div>
                 <h2>200+ Photos</h2>
             </div>
         </li>
-        <li>
-            <div class="dis-box">
-                <div class="card five">
-                    <h1>40% </h1>
-                    <h3>+ FREE shipping</h3>
-                </div>
-                <h2>1000+ Photos</h2>
-            </div>
-        </li>
+
     </ul>
 
 </section>

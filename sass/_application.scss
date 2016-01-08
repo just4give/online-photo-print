@@ -58,7 +58,7 @@ body{
 
 .process-container{
   margin: 15px;
-  margin-top: 20px;
+  margin-top: 80px;
   border: 1px solid #D8CDCD;
   padding: 5px;
   text-align: center;
@@ -69,12 +69,13 @@ body{
     margin-bottom: 20px;
 
     .heading{
-      background-color: $background-color;
+      //background-color: $background-color;
       font-size: x-large;
       font-weight: bold;
       padding-left: 5px;
       padding-right: 5px;
       color: $text-color-primary;
+      text-transform: uppercase;
     }
   }
 
@@ -112,7 +113,7 @@ body{
   }
   .size-card{
     background-color: #f5f5f5;
-    border: 10px ridge #444040;
+    //border: 10px ridge #444040;
     color: black;
     /* padding: 20px; */
     height: 160px;
@@ -146,7 +147,7 @@ body{
       text-align: left;
     }
     .poster{
-      height: 60px;
+      height: 100%;
       width: 100%;
       img{
         height: 100%;
@@ -155,13 +156,13 @@ body{
   }
   .dis-box{
     .card{
-      background-color: $menu-background-color;
+      background-color: #777777;
       color: white;
       padding: 20px;
       height: 175px;
       width: 150px;
       margin: 10px;
-      border: 1px dashed;
+      //border: 1px dashed;
       -ms-box-shadow: 5px 10px 2px #CCC8C8;
       -moz-box-shadow: 5px 10px 2px #CCC8C8;
       -webkit-box-shadow: 5px 10px 2px #CCC8C8;
@@ -194,7 +195,7 @@ body{
   font-size: xx-large;
   font-weight: bold;
   color: $text-color-primary;
-  margin-top: 20px;
+  margin-top: 80px;
   margin-bottom: 20px;
   text-transform: uppercase;
 }
@@ -240,6 +241,7 @@ body{
 .circle-container{
   text-align: center;
   padding: 10px;
+  margin-top: 50px;
   .circle{
     background-color: #000000;
     border-radius: 50%;

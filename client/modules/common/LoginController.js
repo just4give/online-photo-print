@@ -13,11 +13,29 @@ appModule.controller("loginController",["$scope","$rootScope","$log","$modal", "
     $rootScope.fbUser = {};
 
     var modal;
+    $rootScope.retrieveCart = function(){
 
+            OrderService.getCart()
+                .then(function(data){
+                    // $rootScope.cartImages =data;
+                    $rootScope.cartImages =[];
+                    angular.forEach(data, function(item){
+                        $rootScope.cartImages.push({id:item.id, imgId:item.imgId, imgSrc:item.imgSrc, quantity: item.quantity, format: {frameSize: item.frameSize, price: item.price},paperFinish:item.paperFinish,
+                            userId:item.userId});
+                    })
+
+
+                },function(err){
+                    $rootScope.$broadcast('api_error',err);
+                });
+        }
     //check cart
     if( !$rootScope.loggedIn) {
         $rootScope.cartImages = localStorageService.get("cart");
     }
+
+    $log.debug('**** user is logged in ? '+ $rootScope.loggedIn) ;
+
     //check if user cookie is available, if yes, log user in
        var userCookie =  localStorageService.cookie.get("app-user");
         if(userCookie && userCookie.uuid){
@@ -26,6 +44,7 @@ appModule.controller("loginController",["$scope","$rootScope","$log","$modal", "
             $rootScope.state = $rootScope.state || {};
             $rootScope.state.user = userCookie;
             $rootScope.loggedIn = true;
+            $rootScope.retrieveCart();
         }
 
     $scope.openLoginPopup = function(){
@@ -94,21 +113,7 @@ appModule.controller("loginController",["$scope","$rootScope","$log","$modal", "
       $state.go('checkout');
     }
 
-    $rootScope.retrieveCart = function(){
-        OrderService.getCart()
-            .then(function(data){
-               // $rootScope.cartImages =data;
-                $rootScope.cartImages =[];
-                angular.forEach(data, function(item){
-                    $rootScope.cartImages.push({id:item.id, imgId:item.imgId, imgSrc:item.imgSrc, quantity: item.quantity, format: {frameSize: item.frameSize, price: item.price},paperFinish:item.paperFinish,
-                        userId:item.userId});
-                })
 
-
-            },function(err){
-                $rootScope.$broadcast('api_error',err);
-            });
-    }
 
     $scope.logout = function(){
         $rootScope.loggedIn = false;
