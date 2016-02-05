@@ -1,6 +1,9 @@
 username root
 pass 6zdUfCcVvVsdY3
 server 78.47.249.230
+RpcWBUcUFV72Gq
+5.9.70.135
+izradafotografija.rs
 
 truncate table `order`;
 truncate table `cart`;
